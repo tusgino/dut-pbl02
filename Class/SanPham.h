@@ -24,16 +24,16 @@ private:
   ll giaBan;
   float giamGia;
   string xuatXu;
-  char size;
+  string size;
 
 public:
   // Init
   SanPham();
-  SanPham(const Ma &, const char &, const string &, const string &, const int &, const ll &, const ll &, const float &);
+  SanPham(const Ma &, const string &, const string &, const string &, const int &, const ll &, const ll &, const float &);
   ~SanPham();
   // Set, Get
   void setMa(const Ma &);
-  void setSize(const char &);
+  void setSize(const string &);
   void setTen(const string &);
   void setXuatXu(const string &);
   void setSoLuong(const ll &);
@@ -43,7 +43,7 @@ public:
   string getLoaiSP();
   int getSTT();
   Ma getMa();
-  char getSize();
+  string getSize();
   string getTen();
   string getXuatXu();
   int getSoLuong();

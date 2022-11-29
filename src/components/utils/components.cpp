@@ -30,8 +30,8 @@ void printError(string status)
 void printWarning(string status)
 {
   cout << "\n\t";
-  printLineColor(" WARNING ", 67);
-  printLineColor(" " + status, 4);
+  printLineColor(" WARNING ", 96);
+  printLineColor(" " + status, 6);
 }
 
 // Print notification
@@ -49,11 +49,13 @@ void printRes(string request)
   cout << request;
 }
 
-void printOpt(string *arr)
+void printOpt(string *arr, int n)
 {
-  for (int i = 0; i < arr->size(); i++)
+  printRes(*arr);
+  cout << endl;
+  for (int i = 1; i <= n; ++i)
   {
-    cout << tabtab << i + 1 << ". " << arr[i];
+    cout << tabtab << i << ". " << *(arr + i);
   }
 }
 
@@ -67,7 +69,7 @@ int getKey(int keyMax)
   while (int(key) < 49 || int(key) > (keyMax + 48))
   {
     cout << "\n\tVui long nhap lai lua chon!";
-    string error = "Hinh nhu ban da nhap sai lua chon(ki tu hoac so luon hon " + itoa(keymax) + " hoac so be hon 0, vui long nhap dung lua chon!";
+    string error = "Hinh nhu ban da nhap sai lua chon(ki tu hoac so luon hon " + to_string(keyMax) + " hoac so be hon 0, vui long nhap dung lua chon!";
     printError(error);
     cout << "\n\tNhap lua chon: ";
     fflush(stdin);

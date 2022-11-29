@@ -2,6 +2,16 @@
 
 using namespace std;
 
+QLSanPham::QLSanPham()
+{
+  this->dbSP = new List<SanPham>();
+  this->count = 0;
+}
+
+QLSanPham::~QLSanPham()
+{
+  this->dbSP->~List();
+}
 void QLSanPham::docFile(fstream &fileIn)
 {
   fileIn >> this->count;
@@ -29,15 +39,18 @@ void QLSanPham::ghiFile(fstream &fileOut)
 
 void QLSanPham::create()
 {
-  printRes("Vui long chon loai san pham:");
-  string arr[] = {"Ao", "Quan"};
-  printOpt(arr);
+  string arr[] = {
+      "Vui long chon loai san pham:",
+      "Ao",
+      "Quan"};
+  printOpt(arr, 2);
   int key = getKey(2);
   string kiTu = "A";
   if (key == 2)
     kiTu = "Q";
+  cout << kiTu;
   Node<SanPham> *pTemp = this->dbSP->getpHead();
-  int maMax = pTemp->getData().getSTT();
+  int maMax = 0;
   while (pTemp)
   {
     int tempSTT = pTemp->getData().getSTT();
@@ -63,4 +76,87 @@ void QLSanPham::create()
   float tempGiamGia;
   printRes("Nhap giam gia san pham: ");
   cin >> tempGiamGia;
+  string arr1[] = {"Chon size va nhap so luong: ", "S", "M", "L", "XL", "XXL", "Thoat."};
+  bool arrCheck[] = {
+      false,
+      true,
+      true,
+      true,
+      true,
+      true};
+  bool check = true;
+  List<SanPham> *tempList = new List<SanPham>();
+  while (check)
+  {
+    system("cls");
+    printOpt(arr1, 6);
+    int key = getKey(6);
+    if (key == 6)
+      break;
+    string tempSize = arr1[key];
+    if (!arrCheck[key])
+    {
+      printWarning("Ban da co size nay roi!");
+
+      string arr3[] = {"Ban muon?: ", "Thay doi so luong.", "Them vao so luong da co.", "Quay lai"};
+      printOpt(arr3, 3);
+      int key = getKey(2);
+      if (key == 1)
+      {
+        Node<SanPham> *pTemp = tempList->getpHead();
+        while (pTemp)
+        {
+          if (tempSize == pTemp->getData().getSize())
+          {
+            int tempSoLuong;
+            string warning = "So luong hien tai cua size " + tempSize + " la: " + to_string(pTemp->getData().getSoLuong());
+            printWarning(warning);
+            printRes("Nhap so luong: ");
+            cin >> tempSoLuong;
+            SanPham tempSP(tempMa, tempSize, tempTen, tempXuatXu, tempSoLuong, tempGiaNhap, tempGiaBan, tempGiamGia);
+            pTemp->setData(tempSP);
+          }
+          pTemp = pTemp->getpNext();
+        }
+      }
+      if (key == 2)
+      {
+        Node<SanPham> *pTemp = tempList->getpHead();
+        while (pTemp)
+        {
+          if (tempSize == pTemp->getData().getSize())
+          {
+            int tempSoLuong;
+            string warning = "So luong hien tai cua size " + tempSize + " la: " + to_string(pTemp->getData().getSoLuong());
+            printWarning(warning);
+            printRes("Nhap so luong: ");
+            cin >> tempSoLuong;
+            SanPham tempSP(tempMa, tempSize, tempTen, tempXuatXu, pTemp->getData().getSoLuong() + tempSoLuong, tempGiaNhap, tempGiaBan, tempGiamGia);
+            pTemp->setData(tempSP);
+          }
+          pTemp = pTemp->getpNext();
+        }
+      }
+    }
+    else
+    {
+      int tempSoLuong;
+      printRes("Nhap so luong: ");
+      cin >> tempSoLuong;
+      SanPham tempSP(tempMa, tempSize, tempTen, tempXuatXu, tempSoLuong, tempGiaNhap, tempGiaBan, tempGiamGia);
+      tempList->push_back(tempSP);
+      arrCheck[key] = false;
+      this->count++;
+    }
+  }
+  Node<SanPham> *pTemp1 = tempList->getpHead();
+  while (pTemp1)
+  {
+    this->dbSP->push_back(pTemp1->getData());
+    pTemp1 = pTemp1->getpNext();
+  }
+  fstream fileSanPham;
+  fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
+  QLSanPham::ghiFile(fileSanPham);
+  fileSanPham.close();
 }

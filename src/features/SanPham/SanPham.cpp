@@ -5,7 +5,7 @@ using namespace std;
 //@ Init
 
 SanPham::SanPham() {}
-SanPham::SanPham(const Ma &ma, const char &size, const string &ten, const string &xuatXu, const int &soLuong, const ll &giaNhap, const ll &giaBan, const float &giamGia)
+SanPham::SanPham(const Ma &ma, const string &size, const string &ten, const string &xuatXu, const int &soLuong, const ll &giaNhap, const ll &giaBan, const float &giamGia)
 {
   this->ma = ma;
   this->size = size;
@@ -24,7 +24,7 @@ void SanPham::setMa(const Ma &ma)
 {
   this->ma = ma;
 }
-void SanPham::setSize(const char &size)
+void SanPham::setSize(const string &size)
 {
   this->size = size;
 }
@@ -60,13 +60,13 @@ string SanPham::getLoaiSP()
 }
 int SanPham::getSTT()
 {
-  return this->ma.getsoTT();
+  return this->ma.getSoTT();
 }
 Ma SanPham::getMa()
 {
   return this->ma;
 }
-char SanPham::getSize()
+string SanPham::getSize()
 {
   return this->size;
 }
@@ -100,8 +100,7 @@ float SanPham::getGiamGia()
 void SanPham::docFile(fstream &fileIn)
 {
   this->ma.docFile(fileIn);
-  fileIn >> this->size;
-  fileIn.ignore(1);
+  getline(fileIn, this->size, '|');
   getline(fileIn, this->ten, '|');
   getline(fileIn, this->xuatXu, '|');
   fileIn >> this->soLuong;

@@ -10,7 +10,7 @@ const string &Ma::getKiTu()
 {
     return this->kiTu;
 }
-const int &Ma::getsoTT()
+const int &Ma::getSoTT()
 {
     return this->soTT;
 }
@@ -19,7 +19,7 @@ void Ma::setKiTu(const string &kitu)
 {
     this->kiTu = kitu;
 }
-void Ma::setsoTT(const int &soTT)
+void Ma::setSoTT(const int &soTT)
 {
     this->soTT = soTT;
 }

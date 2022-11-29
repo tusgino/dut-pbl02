@@ -8,10 +8,12 @@
 
 class QLSanPham : public QuanLi
 {
-  List<SanPham> *dbSP;
   int count;
 
 public:
+  List<SanPham> *dbSP;
+  QLSanPham();
+  ~QLSanPham();
   void docFile(fstream &);
   void ghiFile(fstream &);
   void create(); // Nhap tu nguoi dung
