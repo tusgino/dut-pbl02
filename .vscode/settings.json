@@ -1,6 +1,10 @@
 {
+<<<<<<< HEAD
   "files.associations": {
     "*.scss": "scss",
     "xstring": "cpp"
   }
+=======
+    "C_Cpp.errorSquiggles": "Enabled"
+>>>>>>> 4e0991020d2a966c27432d462083fef6372b6c16
 }

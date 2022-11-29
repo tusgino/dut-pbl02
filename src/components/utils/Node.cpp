@@ -1,6 +1,6 @@
 
 
-#include "..\..\Class\Node.h"
+#include "..\..\..\class\Node.h"
 
 template <class T>
 Node<T>::Node()
@@ -15,14 +15,6 @@ Node<T>::Node(const T data)
 }
 
 template <class T>
-Node<T> *Node<T>::constructorNode(const T data)
-{
-    Node<T> *pTemp = new Node<T>(data);
-
-    return pTemp;
-}
-
-template <class T>
 Node<T>::~Node()
 {
 }
@@ -31,6 +23,7 @@ T Node<T>::getData()
 {
     return this->data;
 }
+
 template <class T>
 Node<T> *Node<T>::getpNext()
 {
