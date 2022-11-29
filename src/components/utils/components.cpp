@@ -5,6 +5,8 @@
 #include <fstream>
 #include <cstdio>
 
+using namespace std;
+
 void printLineColor(string line, int color_code)
 {
   HANDLE color;
@@ -37,6 +39,12 @@ void printSuccess(string status)
   printLineColor(" SUCCESS ", 37);
   printLineColor(" " + status, 2);
   cout << endl;
+}
+
+void printRes(string request)
+{
+  cout << "\n\t";
+  cout << request;
 }
 
 // get key menu

@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "files.associations": {
     "*.scss": "scss",
     "xstring": "cpp"
@@ -7,4 +8,10 @@
 =======
     "C_Cpp.errorSquiggles": "Enabled"
 >>>>>>> 4e0991020d2a966c27432d462083fef6372b6c16
+=======
+    "C_Cpp.errorSquiggles": "Enabled",
+    "files.associations": {
+        "iosfwd": "cpp"
+    }
+>>>>>>> d17dcaa92179f35d6c73adf5c0000a4561670c04
 }
