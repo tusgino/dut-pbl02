@@ -1,6 +1,10 @@
+#ifndef __Ma_H__
+#define __Ma_H__
+
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <fstream>
 #include "..\src\components\utils\components.cpp"
 using namespace std;
 
@@ -20,4 +24,9 @@ public:
 
     friend ostream &operator<<(ostream &, const Ma &);
     friend istream &operator>>(istream &, Ma &);
+
+    void docFile(fstream &);
+    void ghiFile(fstream &);
 };
+
+#endif

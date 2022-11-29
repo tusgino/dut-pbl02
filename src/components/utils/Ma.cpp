@@ -1,5 +1,7 @@
 #include "..\..\..\Class\Ma.h"
 
+using namespace std;
+
 Ma::Ma(const string kitu, const int soTT) : kiTu(kitu), soTT(soTT){};
 
 Ma::~Ma(){};
@@ -71,3 +73,15 @@ istream &operator>>(istream &i, Ma &ma)
     ma.soTT = stoi(tempSoTT);
     return i;
 };
+
+void Ma::docFile(fstream &fileIn)
+{
+    getline(fileIn, this->kiTu, '|');
+    fileIn >> this->soTT;
+    fileIn.ignore(1);
+}
+
+void Ma::ghiFile(fstream &fileOut)
+{
+    fileOut << this->kiTu << this->soTT << "|";
+}

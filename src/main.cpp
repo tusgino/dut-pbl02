@@ -1,10 +1,15 @@
-#include "components\utils\Ma.cpp"
+#include "features\SanPham\SanPham.cpp"
 
 using namespace std;
 
 int main()
 {
-  Ma ma;
-  cin >> ma;
-  cout << ma;
+  SanPham tempSP;
+  fstream temp;
+  fstream temp1;
+  temp.open("components/data/temp.data", ios_base::in);
+  tempSP.docFile(temp);
+  temp.close();
+  tempSP.Xuat();
+  return 0;
 }
