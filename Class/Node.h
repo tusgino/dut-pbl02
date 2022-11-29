@@ -13,4 +13,5 @@ public:
 
     void setData(const T &);
     void setpNext(Node<T> *);
+    ola
 };
