@@ -58,6 +58,10 @@ string SanPham::getLoaiSP()
     return "Ao";
   return "Quan";
 }
+int SanPham::getSTT()
+{
+  return this->ma.getsoTT();
+}
 Ma SanPham::getMa()
 {
   return this->ma;

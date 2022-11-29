@@ -7,6 +7,8 @@
 
 using namespace std;
 
+const string tabtab = "\n\t\t";
+
 void printLineColor(string line, int color_code)
 {
   HANDLE color;
@@ -47,6 +49,14 @@ void printRes(string request)
   cout << request;
 }
 
+void printOpt(string *arr)
+{
+  for (int i = 0; i < arr->size(); i++)
+  {
+    cout << tabtab << i + 1 << ". " << arr[i];
+  }
+}
+
 // get key menu
 int getKey(int keyMax)
 {
@@ -57,7 +67,8 @@ int getKey(int keyMax)
   while (int(key) < 49 || int(key) > (keyMax + 48))
   {
     cout << "\n\tVui long nhap lai lua chon!";
-    printError("Ban da nhap sai, vui long nhap lai!");
+    string error = "Hinh nhu ban da nhap sai lua chon(ki tu hoac so luon hon " + itoa(keymax) + " hoac so be hon 0, vui long nhap dung lua chon!";
+    printError(error);
     cout << "\n\tNhap lua chon: ";
     fflush(stdin);
     key = getchar();

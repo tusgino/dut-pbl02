@@ -41,6 +41,7 @@ public:
   void setGiaBan(const ll &);
   void setGiamGia(const float &);
   string getLoaiSP();
+  int getSTT();
   Ma getMa();
   char getSize();
   string getTen();

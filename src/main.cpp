@@ -1,6 +1,6 @@
 // #include "features\SanPham\SanPham.cpp"
 // #include "features\NhanVien\NhanVien.cpp"
-#include "features\QuanLi\QLKhachHang.cpp"
+#include "features\QuanLi\QLSanPham.cpp"
 
 using namespace std;
 
@@ -24,13 +24,14 @@ int main()
   temp.open("components/data/ola.dat", ios_base::in);
   // qlkh->docFile(temp);
 
-  QuanLi *p = new QLKhachHang();
-  p->docFile(temp);
-  temp.close();
-  fstream temp1;
-  temp1.open("components/data/ola1.dat", ios_base::out);
-  p->ghiFile(temp1);
-  temp1.close();
+  QuanLi *p = new QLSanPham();
+  p->create();
+  // p->docFile(temp);
+  // temp.close();
+  // fstream temp1;
+  // temp1.open("components/data/ola1.dat", ios_base::out);
+  // p->ghiFile(temp1);
+  // temp1.close();
 
   return 0;
 }
