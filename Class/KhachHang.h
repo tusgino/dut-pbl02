@@ -40,6 +40,6 @@ public:
   const string &getEmail();
   void docFile(fstream &);
   void ghiFile(fstream &);
-}
+};
 
 #endif
