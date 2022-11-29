@@ -1,7 +1,6 @@
 // #include "features\SanPham\SanPham.cpp"
 // #include "features\NhanVien\NhanVien.cpp"
 #include "features\QuanLi\QLKhachHang.cpp"
-#include "..\class\Sample.h"
 
 using namespace std;
 

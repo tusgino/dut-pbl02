@@ -1,18 +1,28 @@
-#include "Sample.h"
+// #include "Sample.h"
+#ifndef __QLKH_H__
+#define __QLKH_H__
 
-class QLKhachHang : public QuanLi{
+#include "..\src\components\utils\List.cpp"
+#include "..\src\components\utils\Node.cpp"
+#include "..\src\features\KhachHang\KhachHang.cpp"
+#include "..\src\features\QuanLi\QuanLi.cpp"
+
+class QLKhachHang : public QuanLi
+{
     List<KhachHang> *dbKH;
     int count;
 
-    public:
+public:
     QLKhachHang();
     ~QLKhachHang();
 
     void docFile(fstream &);
     void ghiFile(fstream &);
-    void create();      // Nhap tu nguoi dung
-    void update();      // Chinh sua
-    void read();        // Xuat ra man hinh
-    void find();        // Tim Kiem
-    void deleteIndex(); // Xoa
+    // void create();      // Nhap tu nguoi dung
+    // void update();      // Chinh sua
+    // void read();        // Xuat ra man hinh
+    // void find();        // Tim Kiem
+    // void deleteIndex(); // Xoa
 };
+
+#endif

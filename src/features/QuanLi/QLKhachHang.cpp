@@ -24,13 +24,14 @@ void QLKhachHang::docFile(fstream &fileIn)
     }
 }
 
-void QLKhachHang::ghiFile(fstream& fileOut){
+void QLKhachHang::ghiFile(fstream &fileOut)
+{
     fileOut << this->count << endl;
     Node<KhachHang> *pTemp = this->dbKH->getpHead();
-    while(pTemp){
+    while (pTemp)
+    {
         pTemp->getData().ghiFile(fileOut);
         fileOut << endl;
         pTemp = pTemp->getpNext();
     }
-    
 }
