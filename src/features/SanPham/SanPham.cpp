@@ -96,7 +96,6 @@ float SanPham::getGiamGia()
 void SanPham::docFile(fstream &fileIn)
 {
   this->ma.docFile(fileIn);
-  // getline(fileIn, this->size, '|');
   fileIn >> this->size;
   fileIn.ignore(1);
   getline(fileIn, this->ten, '|');

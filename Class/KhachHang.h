@@ -1,5 +1,5 @@
-#ifndef __NV_H__
-#define __NV_H__
+#ifndef __KH_H__
+#define __KH_H__
 
 #include <iostream>
 #include <fstream>
@@ -10,41 +10,36 @@
 #include "..\src\components\utils\components.cpp"
 #include "..\src\components\utils\Ma.cpp"
 
-class NhanVien
+class KhachHang
 {
 private:
   Ma ma;
   string ten;
   string soDienThoai;
-  int caLam;
-  int gioiTinh;
   string diaChi;
-  string matKhau;
+  string email;
+  int gioiTinh;
 
 public:
-  // init
-  NhanVien();
-  NhanVien(const Ma &, const string &, const string &, const int &, const int &, const string &, const string &);
-  ~NhanVien();
-  // set, get
+  // Init
+  KhachHang();
+  KhachHang(const Ma &, const string &, const string &, const string &, const string &, const int &);
+  ~KhachHang();
+  // Set, get
   void setMa(const Ma &);
   void setTen(const string &);
   void setSoDienThoai(const string &);
-  void setCaLam(const int &);
+  void setDiaChi(const string &);
   void setGioiTinh(const int &);
-  void setDiaChi(const int &);
-  void setMatKhau(const int &);
-  string getChucVu();
+  void setEmail(const string &);
   Ma getMa();
-  string getTen();
-  string getSoDienThoai();
-  int getcaLam();
-  int getGioiTinh();
-  string getDiaChi();
-  string getMatKhau();
-
+  const string &getTen();
+  const string &getSoDienThoai();
+  const string &getDiaChi();
+  const int &getGioiTinh();
+  const string &getEmail();
   void docFile(fstream &);
   void ghiFile(fstream &);
-};
+}
 
 #endif
