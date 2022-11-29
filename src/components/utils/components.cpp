@@ -42,22 +42,19 @@ void printSuccess(string status)
 // get key menu
 int getKey(int keyMax)
 {
-  int key;
-  char keyy;
+  char key;
   cout << "\n\tNhap lua chon: ";
   fflush(stdin);
-  keyy = getchar();
-  // cin >> key;
-  while (int(keyy) < 49 || int(keyy) > (keyMax + 48))
+  key = getchar();
+  while (int(key) < 49 || int(key) > (keyMax + 48))
   {
     cout << "\n\tVui long nhap lai lua chon!";
     printError("Ban da nhap sai, vui long nhap lai!");
     cout << "\n\tNhap lua chon: ";
-    // cin >> key;
     fflush(stdin);
-    keyy = getchar();
+    key = getchar();
   }
-  return int(keyy) - 48;
+  return int(key) - 48;
 }
 
 void printUI(string fileUrl)
