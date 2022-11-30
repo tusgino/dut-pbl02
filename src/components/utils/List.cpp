@@ -74,4 +74,16 @@ void List<T>::deleteNode(const int &index)
     }
 }
 
+template <class T>
+Node<T> &List<T>::operator[](const int &index){
+    Node<T> *pTemp = this->pHead;
+    
+    for (int i = 0; i < index; i++)
+    {
+        pTemp = pTemp->getpNext();
+    }
+
+    return pTemp;
+}
+
 #endif

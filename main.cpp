@@ -1,6 +1,6 @@
 // #include "features\SanPham\SanPham.cpp"
-#include "src\components\utils\Ma.cpp"
-// #include "src\features\QuanLi\QLSanPham.cpp"
+// #include "src\components\utils\Ma.cpp"
+#include "src\features\QuanLi\QLKhachHang.cpp"
 
 using namespace std;
 
@@ -8,7 +8,15 @@ int main()
 {
   // QLSanPham *p = new QLSanPham();
   // return 0;
-
+  QLKhachHang *p = new QLKhachHang();
+  p->create();
+  // p->read();
+  fstream fileKH;
+  fileKH.open("src/components/data/ola1.dat", ios_base::out);
+  p->ghiFile(fileKH);
+  fileKH.close();
+  cout << 1;
+  return 0;
   // Ma ma("A", 67);
   // cout << string(ma);
 }

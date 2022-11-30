@@ -17,5 +17,6 @@ public:
 
     void push_back(const T &);
     void deleteNode(const int &);
+    Node<T>& operator[](const int&);
 };
 #endif

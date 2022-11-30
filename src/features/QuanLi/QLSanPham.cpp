@@ -153,19 +153,19 @@ void QLSanPham::create()
 
 void QLSanPham::read()
 {
-  // ConsoleTable table{"STT", "Ma San Pham", "Ten San Pham", "Xuat Xu", "Gia Nhap", "Gia Ban", "Giam Gia", "S", "M", "L", "XL", "XXL", "Tong So Luong"};
+  ConsoleTable table{"STT", "Ma San Pham", "Ten San Pham", "Xuat Xu", "Gia Nhap", "Gia Ban", "Giam Gia", "S", "M", "L", "XL", "XXL", "Tong So Luong"};
 
-  // table.setPadding(1);
-  // table.setStyle(0);
-  // Node<SanPham> *pTemp = this->dbSP->getpHead();
-  // bool *arr = new bool[this->findMaMax()];
-  // while (pTemp)
-  // {
+  table.setPadding(1);
+  table.setStyle(0);
+  Node<SanPham> *pTemp = this->dbSP->getpHead();
+  bool *arr = new bool[this->findMaMax()];
+  while (pTemp)
+  {
 
-  //   pTemp = pTemp->getpNext();
-  // }
+    pTemp = pTemp->getpNext();
+  }
 
-  // delete[] arr;
+  delete[] arr;
 }
 
 // components
@@ -182,8 +182,4 @@ int QLSanPham::findMaMax()
     pTemp = pTemp->getpNext();
   }
   return maMax;
-}
-
-void sort()
-{
 }
