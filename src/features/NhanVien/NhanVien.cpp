@@ -39,6 +39,137 @@ void NhanVien::ghiFile(fstream &fileOut)
   fileOut << this->matKhau << "|";
 }
 
+void NhanVien::nhap()
+{
+  cout << "Nhan vien hay Quan li dang nhap du lieu co ma la: " << this->ma << endl;
+  cout << "Nhap ten nhan vien nay: ";
+  fflush(stdin);
+  getline(cin, this->ten);
+  while (true)
+  {
+    cout << "Nhap so dien thoai nhan vien nay: ";
+    fflush(stdin);
+    getline(cin, this->soDienThoai);
+    if (this->soDienThoai.length() == 0)
+    {
+      printError("So dien thoai khong the de trong!");
+    }
+    else
+    {
+      break;
+    }
+  }
+  {
+    string arr[] = {"Nhap gioi tinh", "Nam", "Nu", "Khac"};
+    printOpt(arr, 3);
+  }
+  int key = getKey(3);
+  switch (key)
+  {
+  case 1:
+  case 2:
+  case 3:
+    this->gioiTinh = key;
+    break;
+  default:
+    this->gioiTinh = -1;
+    break;
+  }
+
+  cout << "Nhap dia chi:";
+  fflush(stdin);
+  getline(cin, this->diaChi);
+  if (this->diaChi.length() == 0)
+  {
+    this->diaChi = "(null)";
+  }
+
+  {
+    string arr[] = {"Nhap ca lam: ", "07h00 den 11h30", "13h30 den 18h00", "18h30 den 23h00"};
+    printOpt(arr, 3);
+
+    int key = getKey(3);
+    switch (key)
+    {
+    case 1:
+    case 2:
+    case 3:
+      this->caLam = key;
+      break;
+    default:
+      this->caLam = -1;
+      break;
+    }
+  }
+}
+
+void NhanVien::xuatFullInfo()
+{
+  cout << "+--------------------------------------------------------+\n";
+  cout << "| " << setw(25) << right << "Ma nhan vien: " << this->ma << setw(26) << right << "|\n";
+  cout << "| " << setw(25) << right << "Ho ten nhan vien: " << setw(30) << left << this->ten << "|\n";
+  if (this->ma.getKiTu() == "NV")
+  {
+    cout << "| " << setw(25) << right << "Chuc vu: " << setw(30) << left << "Nhan vien"
+         << "|\n";
+  }
+  else
+  {
+    cout << "| " << setw(25) << right << "Chuc vu: " << setw(30) << left << "Quan li"
+         << "|\n";
+  }
+  cout << "| " << setw(25) << right << "So dien thoai: " << setw(30) << left << this->soDienThoai << "|\n";
+  cout << "| " << setw(25) << right << "Dia chi: " << setw(30) << left << this->diaChi << "|\n";
+  // cout << "| " << setw(25) << right << "Email: " << setw(30) << left << this->email << "|\n";
+  switch (this->caLam)
+  {
+  case 1:
+    cout << "| " << setw(25) << right << "Ca lam: " << setw(30) << left << "07h00 den 11h30"
+         << "|\n";
+
+    break;
+  case 2:
+    cout << "| " << setw(25) << right << "Ca lam: " << setw(30) << left << "13h30 den 18h00"
+         << "|\n";
+
+    break;
+  case 3:
+    cout << "| " << setw(25) << right << "Ca lam: " << setw(30) << left << "18h30 den 23h00"
+         << "|\n";
+
+    break;
+  default:
+    cout << "| " << setw(25) << right << "Ca lam: " << setw(30) << left << "(null)"
+         << "|\n";
+
+    break;
+  }
+  switch (this->gioiTinh)
+  {
+  case 1:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Nam"
+         << "|\n";
+
+    break;
+  case 2:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Nu"
+         << "|\n";
+
+    break;
+  case 3:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Khac"
+         << "|\n";
+
+    break;
+  default:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "(null)"
+         << "|\n";
+
+    break;
+  }
+  cout << "+--------------------------------------------------------+\n";
+}
+
 void NhanVien::setMa(const Ma &ma)
 {
   this->ma = ma;
