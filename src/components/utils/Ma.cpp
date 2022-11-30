@@ -26,7 +26,7 @@ void Ma::setSoTT(const int &soTT)
 
 ostream &operator<<(ostream &o, const Ma &ma)
 {
-    o << ma.kiTu << setfill('0') << setw(3) << ma.soTT;
+    o << ma.kiTu << setfill('0') << setw(4) << ma.soTT << setfill(' ');
 
     return o;
 };
@@ -83,7 +83,7 @@ void Ma::docFile(fstream &fileIn)
 
 void Ma::ghiFile(fstream &fileOut)
 {
-    fileOut << this->kiTu << "|" << this->soTT << "|";
+    fileOut << this->kiTu << "|" << setfill('0') << setw(4) << this->soTT << "|";
 }
 
 Ma::operator std::string()
