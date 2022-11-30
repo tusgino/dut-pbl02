@@ -95,31 +95,12 @@ void QLKhachHang::find()
         cout << "Nhap ten khach hang cang tim";
         fflush(stdin);
         getline(cin, str);
-        for (auto &c : str)
-            c = toupper(c);
-        int strLength = str.length();
-        char strSub[strLength + 1];
-        strcpy(strSub, str.c_str());
-
         Node<KhachHang> *pTemp = this->dbKH->getpHead();
-        while (pTemp)
-            ;
-        {
-            string strTemp = pTemp->getData().getTen();
-            // chuyen string thanh char* va ghi hoa
-            for (auto &c : strTemp)
-                c = toupper(c);
-            int strTempLength = strTemp.length();
-            char strParent[strTempLength + 1];
-            strcpy(strParent, strTemp.c_str());
-            // Tim chuoi strSub trong strParent
-            char *first;
-            first = strstr(strParent, strSub);
-            if (first)
-            {
-                pTemp->getData().xuat();
+        
+        while(pTemp){
+            if(findString(pTemp->getData().getTen(),str) != -1){
+                
             }
-
             pTemp = pTemp->getpNext();
         }
     }
@@ -128,4 +109,9 @@ void QLKhachHang::find()
 int QLKhachHang::findBySDT(const string &sdt)
 {
 
+}
+
+void xuatFile(){
+    fstream fileXuatKH;
+    fileXuatKH.open("/src/components/data/file_KH.DAT");
 }
