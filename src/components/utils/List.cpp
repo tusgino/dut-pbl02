@@ -1,7 +1,7 @@
 #ifndef __LIST__
 #define __LIST__
 
-#include "..\..\..\Class\List.h"
+#include "..\..\..\class\List.h"
 
 template <class T>
 List<T>::List()

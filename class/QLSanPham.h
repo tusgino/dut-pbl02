@@ -18,7 +18,7 @@ public:
   void ghiFile(fstream &);
   void create(); // Nhap tu nguoi dung
   // void update();      // Chinh sua
-  // void read();        // Xuat ra man hinh
+  void read(); // Xuat ra man hinh
   // void find();        // Tim Kiem
   // void deleteIndex(); // Xoa
 };

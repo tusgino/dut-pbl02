@@ -1,4 +1,4 @@
-#include "../../../Class/Menu.h"
+#include "../../../class/Menu.h"
 #include "AdminMenu.cpp"
 #include "NVMenu.cpp"
 Menu::Menu()

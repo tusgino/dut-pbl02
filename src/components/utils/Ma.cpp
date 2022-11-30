@@ -1,4 +1,4 @@
-#include "..\..\..\Class\Ma.h"
+#include "..\..\..\class\Ma.h"
 
 using namespace std;
 

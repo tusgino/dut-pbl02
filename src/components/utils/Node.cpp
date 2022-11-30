@@ -1,6 +1,4 @@
-
-
-#include "..\..\..\Class\Node.h"
+#include "..\..\..\class\Node.h"
 
 template <class T>
 Node<T>::Node()

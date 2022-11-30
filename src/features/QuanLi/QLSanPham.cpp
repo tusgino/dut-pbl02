@@ -48,7 +48,6 @@ void QLSanPham::create()
   string kiTu = "A";
   if (key == 2)
     kiTu = "Q";
-  cout << kiTu;
   Node<SanPham> *pTemp = this->dbSP->getpHead();
   int maMax = 0;
   while (pTemp)
@@ -96,8 +95,7 @@ void QLSanPham::create()
     string tempSize = arr1[key];
     if (!arrCheck[key])
     {
-      printWarning("Ban da co size nay roi!");
-
+      printWarning("Ban da co size nay roi!"); 
       string arr3[] = {"Ban muon?: ", "Thay doi so luong.", "Them vao so luong da co.", "Quay lai"};
       printOpt(arr3, 3);
       int key = getKey(2);
@@ -159,4 +157,9 @@ void QLSanPham::create()
   fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
   QLSanPham::ghiFile(fileSanPham);
   fileSanPham.close();
+}
+
+void QLSanPham::read()
+{
+  
 }

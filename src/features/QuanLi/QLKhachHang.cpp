@@ -69,7 +69,7 @@ void QLKhachHang::update()
 
 void QLKhachHang::find()
 {
-    
+
     {
         string _sdt;
         cout << "Nhap so dien thoai can tim: ";
@@ -92,7 +92,9 @@ void QLKhachHang::find()
 
     {
         string str;
-        cout << "Nhap ten khach hang cang tim"; fflush(stdin); getline(cin, str);
+        cout << "Nhap ten khach hang cang tim";
+        fflush(stdin);
+        getline(cin, str);
         for (auto &c : str)
             c = toupper(c);
         int strLength = str.length();
@@ -100,7 +102,8 @@ void QLKhachHang::find()
         strcpy(strSub, str.c_str());
 
         Node<KhachHang> *pTemp = this->dbKH->getpHead();
-        while(pTemp);
+        while (pTemp)
+            ;
         {
             string strTemp = pTemp->getData().getTen();
             // chuyen string thanh char* va ghi hoa

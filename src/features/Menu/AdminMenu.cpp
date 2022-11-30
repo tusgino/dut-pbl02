@@ -1,4 +1,4 @@
-#include "../../../Class/Menu.h"
+#include "../../../class/Menu.h"
 
 AdminMenu::AdminMenu()
 {
