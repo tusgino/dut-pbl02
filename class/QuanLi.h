@@ -14,6 +14,7 @@ public:
     virtual void read();        // Xuat ra man hinh
     virtual void find();        // Tim Kiem
     virtual void deleteIndex(); // Xoa
+    virtual void sortMa();
 };
 
 #endif

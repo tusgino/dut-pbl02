@@ -38,23 +38,36 @@ void QLKhachHang::ghiFile(fstream &fileOut)
 
 void QLKhachHang::create()
 {
-    KhachHang _KHAdd;
-    int soTT = this->dbKH->getpHead()->getData().getMa().getSoTT();
-    // Tìm soTT của MaKH lớn nhất để sinh mã
+    string _sdt;
+    cout << "Nhap so dien thoai can tim: ";
+    fflush(stdin);
+    getline(cin, _sdt);
+    int index = QLKhachHang::findBySDT(_sdt);
+    if (index == -1)
     {
-        Node<KhachHang> *pTemp = this->dbKH->getpHead();
-        while (pTemp)
+        KhachHang _KHAdd;
+        int soTT = 0;
+        // Tìm soTT của MaKH lớn nhất để sinh mã
         {
-            soTT = (pTemp->getData().getMa().getSoTT() > soTT) ? pTemp->getData().getMa().getSoTT() : soTT;
-            pTemp = pTemp->getpNext();
+            Node<KhachHang> *pTemp = this->dbKH->getpHead();
+            while (pTemp)
+            {
+                soTT = (pTemp->getData().getMa().getSoTT() > soTT) ? pTemp->getData().getMa().getSoTT() : soTT;
+                pTemp = pTemp->getpNext();
+            }
         }
-    }
-    Ma tempMa("KH", soTT + 1);
-    _KHAdd.setMa(tempMa);
-    _KHAdd.nhap(); // Nhập từ phím
+        Ma tempMa("KH", soTT + 1);
+        _KHAdd.setMa(tempMa);
+        _KHAdd.setSoDienThoai(_sdt);
+        _KHAdd.nhap(); // Nhập từ phím
 
-    this->dbKH->push_back(_KHAdd);
-    this->count++;
+        this->dbKH->push_back(_KHAdd);
+        this->count++;
+    }
+    else
+    {
+        printError("So dien thoai nay da ton tai");
+    }
 }
 
 void QLKhachHang::update()
@@ -299,4 +312,25 @@ void xuatFile()
 {
     fstream fileXuatKH;
     fileXuatKH.open("/src/components/data/file_KH.DAT");
+}
+
+void QLKhachHang::sortMa()
+{
+    Node<KhachHang> *pBefore = this->dbKH->getpHead();
+    Node<KhachHang> *pAfter = pBefore->getpNext();
+    while (pBefore)
+    {
+        while (pAfter)
+        {
+            if (pAfter->getData().getMa() >= pBefore->getData().getMa())
+            {
+                KhachHang pTemp = pBefore->getData();
+                pBefore->setData(pAfter->getData());
+                pAfter->setData(pTemp);
+            }
+            pAfter = pAfter->getpNext();
+        }
+        pBefore = pBefore->getpNext();
+    }
+    printSuccess("Da sap xep thanh cong!");
 }

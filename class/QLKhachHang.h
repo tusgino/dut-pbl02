@@ -24,6 +24,7 @@ public:
     void find();        // Tim Kiem
     // void deleteIndex(); // Xoa
     int findBySDT(const string& );
+    void sortMa();
 };
 
 #endif

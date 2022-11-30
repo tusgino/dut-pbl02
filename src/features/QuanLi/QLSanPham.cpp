@@ -153,7 +153,7 @@ void QLSanPham::create()
 
 void QLSanPham::read()
 {
-  ConsoleTable table("STT", "Ma San Pham", "Ten San Pham", "Xuat Xu", "Gia Nhap", "Gia Ban", "Giam Gia", "S", "M", "L", "XL", "XXL", "Tong So Luong");
+  ConsoleTable table{"STT", "Ma San Pham", "Ten San Pham", "Xuat Xu", "Gia Nhap", "Gia Ban", "Giam Gia", "S", "M", "L", "XL", "XXL", "Tong So Luong"};
 
   table.setPadding(1);
   table.setStyle(0);
@@ -184,4 +184,4 @@ int QLSanPham::findMaMax()
   return maMax;
 }
 
-void sort()
+void sortMa(){}

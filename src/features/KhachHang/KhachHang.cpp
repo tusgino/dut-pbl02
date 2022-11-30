@@ -39,9 +39,9 @@ void KhachHang::nhap()
   cout << "Nhap ten khach hang: ";
   fflush(stdin);
   getline(cin, this->ten);
-  cout << "Nhap so dien thoai: ";
-  fflush(stdin);
-  getline(cin, this->soDienThoai);
+  cout << "Nhap so dien thoai: " << this->soDienThoai;
+  // fflush(stdin);
+  // getline(cin, this->soDienThoai);
   cout << "Nhap dia chi: ";
   fflush(stdin);
   getline(cin, this->diaChi);

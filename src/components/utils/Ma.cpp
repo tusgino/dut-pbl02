@@ -83,7 +83,7 @@ void Ma::docFile(fstream &fileIn)
 
 void Ma::ghiFile(fstream &fileOut)
 {
-    fileOut << this->kiTu << this->soTT << "|";
+    fileOut << this->kiTu << "|" << this->soTT << "|";
 }
 
 Ma::operator std::string()
@@ -109,7 +109,7 @@ Ma::operator std::string()
 
 const bool Ma::operator>=(const Ma &ma)
 {
-    if (int(this->kiTu) == int(ma.kiTu))
+    if (this->kiTu == ma.kiTu)
         return this->soTT >= ma.soTT;
-    return int(this - kiTu) > int(ma.kiTu);
+    return this->kiTu.compare(ma.kiTu);
 }

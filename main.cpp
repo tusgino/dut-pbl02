@@ -10,7 +10,12 @@ int main()
   // return 0;
   QLKhachHang *p = new QLKhachHang();
   p->create();
-  p->read();
+  // p->read();
+  fstream fileKH;
+  fileKH.open("src/components/data/ola1.dat", ios_base::out);
+  p->ghiFile(fileKH);
+  fileKH.close();
+  cout << 1;
   return 0;
   // Ma ma("A", 67);
   // cout << string(ma);
