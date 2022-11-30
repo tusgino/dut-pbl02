@@ -96,15 +96,17 @@ void QLKhachHang::find()
         fflush(stdin);
         getline(cin, str);
         Node<KhachHang> *pTemp = this->dbKH->getpHead();
-          ConsoleTable table{"Ma khach hang", "Ten khach hang", "Dia chi", "So dien thoai"};
 
-          table.setPadding(2);
-          table.setStyle(0);
-        while(pTemp){
-            if(findString(pTemp->getData().getTen(),str) != -1){
-                    string tempMa;
-                    
-                  table += {"Germany", "Berlin", "82,800,000", "357,168 km2", "Euro"};
+        ConsoleTable table{"Ma khach hang", "Ten khach hang", "Dia chi", "So dien thoai"};
+
+        table.setPadding(2);
+        table.setStyle(0);
+        while (pTemp)
+        {
+            if (findString(pTemp->getData().getTen(), str) != -1)
+            {
+
+                table += {string(pTemp->getData().getMa()), pTemp->getData().getTen(), pTemp->getData().getDiaChi(), pTemp->getData().getDiaChi()};
             }
             pTemp = pTemp->getpNext();
         }
@@ -113,10 +115,10 @@ void QLKhachHang::find()
 
 int QLKhachHang::findBySDT(const string &sdt)
 {
-
 }
 
-void xuatFile(){
+void xuatFile()
+{
     fstream fileXuatKH;
     fileXuatKH.open("/src/components/data/file_KH.DAT");
 }
