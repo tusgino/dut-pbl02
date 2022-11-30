@@ -27,6 +27,11 @@ Node<T> *Node<T>::getpNext()
     return this->pNext;
 }
 
+// template<class T>
+// Node<T> *Node<T>::getpPrev(){
+//     return this->pPrev;
+// }
+
 template <class T>
 void Node<T>::setData(const T &data)
 {
@@ -38,3 +43,8 @@ void Node<T>::setpNext(Node<T> *pNext)
 {
     this->pNext = pNext;
 }
+
+// template <class T>
+// void Node<T>::setpPrev(Node<T> *pPrev){
+//     this->pPrev = pPrev;
+// }
