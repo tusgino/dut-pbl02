@@ -27,7 +27,6 @@ void Ma::setSoTT(const int &soTT)
 ostream &operator<<(ostream &o, const Ma &ma)
 {
     o << ma.kiTu << setfill('0') << setw(4) << ma.soTT << setfill(' ');
-
     return o;
 };
 istream &operator>>(istream &i, Ma &ma)
@@ -109,7 +108,13 @@ Ma::operator std::string()
 
 const bool Ma::operator>=(const Ma &ma)
 {
-    if (this->kiTu == ma.kiTu)
-        return this->soTT >= ma.soTT;
-    return this->kiTu.compare(ma.kiTu);
+    int comp = this->kiTu.compare(ma.kiTu);
+    if (comp == 0)
+    {
+        return (this->soTT >= ma.soTT);
+    }
+    else if (comp < 0)
+        return false;
+    else
+        return true;
 }

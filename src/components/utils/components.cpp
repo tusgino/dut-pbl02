@@ -101,6 +101,7 @@ void printUI(string fileUrl)
 
 int findString(string parent, string sub)
 {
+  // cout << parent << " " << sub << endl;
   for (auto &c : parent)
     c = toupper(c);
   for (auto &c : sub)
@@ -111,6 +112,7 @@ int findString(string parent, string sub)
     if (parent[found + sub.length()] == ' ' || found + sub.length() == parent.length())
       return found;
   }
+  // cout << parent.length() << " " << sub.length() << " " << found << endl;
   return -1;
 }
 

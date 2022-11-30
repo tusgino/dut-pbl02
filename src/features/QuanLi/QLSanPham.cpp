@@ -183,5 +183,3 @@ int QLSanPham::findMaMax()
   }
   return maMax;
 }
-
-void sortMa(){}
