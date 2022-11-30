@@ -64,7 +64,7 @@ void QLSanPham::create()
   ll tempGiaBan;
   printRes("Nhap gia ban san pham: ");
   cin >> tempGiaBan;
-  float tempGiamGia;
+  int tempGiamGia;
   printRes("Nhap giam gia san pham: ");
   cin >> tempGiamGia;
   string arr1[] = {"Chon size va nhap so luong: ", "S", "M", "L", "XL", "XXL", "Thoat."};
@@ -158,14 +158,78 @@ void QLSanPham::read()
   table.setPadding(1);
   table.setStyle(0);
   Node<SanPham> *pTemp = this->dbSP->getpHead();
-  bool *arr = new bool[this->findMaMax()];
+  Node<SanPham> *pTempBF = this->dbSP->getpHead();
+  QLSanPham::sortMa();
+  Ma tempMa = pTemp->getData().getMa();
+  int *arrSize = new int[5];
+  for (int i = 0; i <= 5; i++)
+  {
+    arrSize[i] = 0;
+  }
+  int cnt = 0;
   while (pTemp)
   {
-
+    if (pTemp->getData().getMa() != tempMa)
+    {
+      table += {
+          to_string(++cnt),
+          pTempBF->getData().getMa(),
+          pTempBF->getData().getTen(),
+          pTempBF->getData().getXuatXu(),
+          to_string(pTempBF->getData().getGiaNhap()),
+          to_string(pTempBF->getData().getGiaBan()),
+          to_string(pTempBF->getData().getGiamGia()),
+          to_string(arrSize[0]),
+          to_string(arrSize[1]),
+          to_string(arrSize[2]),
+          to_string(arrSize[3]),
+          to_string(arrSize[4]),
+          to_string(arrSize[0] + arrSize[1] + arrSize[2] + arrSize[3] + arrSize[4])};
+      tempMa = pTemp->getData().getMa();
+      for (int i = 0; i < 5; i++)
+      {
+        arrSize[i] = 0;
+      }
+    }
+    if (pTemp->getData().getSize() == "S")
+    {
+      arrSize[0] = pTemp->getData().getSoLuong();
+    }
+    if (pTemp->getData().getSize() == "M")
+    {
+      arrSize[1] = pTemp->getData().getSoLuong();
+    }
+    if (pTemp->getData().getSize() == "L")
+    {
+      arrSize[2] = pTemp->getData().getSoLuong();
+    }
+    if (pTemp->getData().getSize() == "XL")
+    {
+      arrSize[3] = pTemp->getData().getSoLuong();
+    }
+    if (pTemp->getData().getSize() == "XXL")
+    {
+      arrSize[4] = pTemp->getData().getSoLuong();
+    }
+    pTempBF = pTemp;
     pTemp = pTemp->getpNext();
   }
-
-  delete[] arr;
+  table += {
+      to_string(++cnt),
+      pTempBF->getData().getMa(),
+      pTempBF->getData().getTen(),
+      pTempBF->getData().getXuatXu(),
+      to_string(pTempBF->getData().getGiaNhap()),
+      to_string(pTempBF->getData().getGiaBan()),
+      to_string(pTempBF->getData().getGiamGia()),
+      to_string(arrSize[0]),
+      to_string(arrSize[1]),
+      to_string(arrSize[2]),
+      to_string(arrSize[3]),
+      to_string(arrSize[4]),
+      to_string(arrSize[0] + arrSize[1] + arrSize[2] + arrSize[3] + arrSize[4])};
+  delete[] arrSize;
+  cout << table;
 }
 
 // components
@@ -182,4 +246,25 @@ int QLSanPham::findMaMax()
     pTemp = pTemp->getpNext();
   }
   return maMax;
+}
+
+void QLSanPham::sortMa()
+{
+  Node<SanPham> *pBefore = this->dbSP->getpHead();
+  Node<SanPham> *pAfter = pBefore->getpNext();
+  while (pBefore)
+  {
+    pAfter = pBefore->getpNext();
+    while (pAfter)
+    {
+      if (pBefore->getData().getMa() >= pAfter->getData().getMa())
+      {
+        SanPham pTemp = pBefore->getData();
+        pBefore->setData(pAfter->getData());
+        pAfter->setData(pTemp);
+      }
+      pAfter = pAfter->getpNext();
+    }
+    pBefore = pBefore->getpNext();
+  }
 }

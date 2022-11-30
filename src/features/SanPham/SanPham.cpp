@@ -5,7 +5,7 @@ using namespace std;
 //@ Init
 
 SanPham::SanPham() {}
-SanPham::SanPham(const Ma &ma, const string &size, const string &ten, const string &xuatXu, const int &soLuong, const ll &giaNhap, const ll &giaBan, const float &giamGia)
+SanPham::SanPham(const Ma &ma, const string &size, const string &ten, const string &xuatXu, const int &soLuong, const ll &giaNhap, const ll &giaBan, const int &giamGia)
 {
   this->ma = ma;
   this->size = size;
@@ -48,7 +48,7 @@ void SanPham::setGiaBan(const ll &giaBan)
 {
   this->giaBan = giaBan;
 }
-void SanPham::setGiamGia(const float &giamGia)
+void SanPham::setGiamGia(const int &giamGia)
 {
   this->giamGia = giamGia;
 }
@@ -90,7 +90,7 @@ ll SanPham::getGiaBan()
 {
   return this->giaBan;
 }
-float SanPham::getGiamGia()
+int SanPham::getGiamGia()
 {
   return this->giamGia;
 }

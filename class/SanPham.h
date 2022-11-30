@@ -22,14 +22,14 @@ private:
   int soLuong;
   ll giaNhap;
   ll giaBan;
-  float giamGia;
+  int giamGia;
   string xuatXu;
   string size;
 
 public:
   // Init
   SanPham();
-  SanPham(const Ma &, const string &, const string &, const string &, const int &, const ll &, const ll &, const float &);
+  SanPham(const Ma &, const string &, const string &, const string &, const int &, const ll &, const ll &, const int &);
   ~SanPham();
   // Set, Get
   void setMa(const Ma &);
@@ -39,7 +39,7 @@ public:
   void setSoLuong(const ll &);
   void setGiaNhap(const ll &);
   void setGiaBan(const ll &);
-  void setGiamGia(const float &);
+  void setGiamGia(const int &);
   string getLoaiSP();
   int getSTT();
   Ma getMa();
@@ -49,7 +49,7 @@ public:
   int getSoLuong();
   ll getGiaNhap();
   ll getGiaBan();
-  float getGiamGia();
+  int getGiamGia();
   // Utils
   void docFile(fstream &);
   void ghiFile(fstream &);
