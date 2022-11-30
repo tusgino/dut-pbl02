@@ -77,7 +77,7 @@ void Ma::docFile(fstream &fileIn)
 {
     getline(fileIn, this->kiTu, '|');
     fileIn >> this->soTT;
-    fileIn.ignore(2);
+    fileIn.ignore(1);
 }
 
 void Ma::ghiFile(fstream &fileOut)
@@ -117,4 +117,13 @@ const bool Ma::operator>=(const Ma &ma)
         return false;
     else
         return true;
+}
+const bool Ma::operator!=(const Ma &ma)
+{
+    int comp = this->kiTu.compare(ma.kiTu);
+    if (comp == 0 && (this->soTT == ma.soTT))
+    {
+        return false;
+    }
+    return true;
 }

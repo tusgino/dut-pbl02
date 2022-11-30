@@ -21,7 +21,7 @@ public:
   void read(); // Xuat ra man hinh
   // void find();        // Tim Kiem
   // void deleteIndex(); // Xoa
-  
+
   // components
   void sortMa();
   int findMaMax();
