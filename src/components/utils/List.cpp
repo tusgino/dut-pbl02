@@ -53,7 +53,8 @@ int List<T>::getSize()
 template <class T>
 void List<T>::deleteNode(const int &index)
 {
-
+    if (index == -1)
+        return;
     if (index == 0)
     {
         this->pHead = this->pHead->getpNext();
@@ -75,9 +76,10 @@ void List<T>::deleteNode(const int &index)
 }
 
 template <class T>
-Node<T> &List<T>::operator[](const int &index){
+Node<T> &List<T>::operator[](const int &index)
+{
     Node<T> *pTemp = this->pHead;
-    
+
     for (int i = 0; i < index; i++)
     {
         pTemp = pTemp->getpNext();

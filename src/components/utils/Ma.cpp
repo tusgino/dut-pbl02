@@ -127,3 +127,13 @@ const bool Ma::operator!=(const Ma &ma)
     }
     return true;
 }
+
+const bool Ma::operator==(const Ma &ma)
+{
+    int comp = this->kiTu.compare(ma.kiTu);
+    if (comp == 0 && (this->soTT == ma.soTT))
+    {
+        return true;
+    }
+    return false;
+}

@@ -69,7 +69,24 @@ void QLKhachHang::create()
         printError("So dien thoai nay da ton tai");
     }
 }
+void QLKhachHang::read()
+{
+    ConsoleTable table{"STT", "Ma khach hang", "Ten khach hang", "Dia chi", "So dien thoai"};
+    Node<KhachHang> *pTemp = this->dbKH->getpHead();
+    table.setPadding(2);
+    table.setStyle(3);
+    int cnt = 0;
+    while (pTemp)
+    {
 
+        // pTemp->getData().xuatFullInfo();
+
+        table += {to_string(++cnt), string(pTemp->getData().getMa()), pTemp->getData().getTen(), pTemp->getData().getDiaChi(), pTemp->getData().getSoDienThoai()};
+
+        pTemp = pTemp->getpNext();
+    }
+    std::cout << table;
+}
 void QLKhachHang::update()
 {
     string _sdt;
@@ -89,7 +106,6 @@ void QLKhachHang::update()
         {
             pTemp = pTemp->getpNext();
         }
-
         while (true)
         {
             pTemp->getData().xuatFullInfo();
@@ -100,10 +116,10 @@ void QLKhachHang::update()
                                 "Gioi Tinh",
                                 "So dien thoai",
                                 "Dia chi",
-                                "Email"};
-                printOpt(arr, 5);
+                                "Email", "Thoat chuong trinh"};
+                printOpt(arr, 6);
             }
-            int key = getKey(5);
+            int key = getKey(6);
             switch (key)
             {
             case 1:
@@ -132,29 +148,43 @@ void QLKhachHang::update()
                     string arr[] = {"Nhap gioi tinh moi",
                                     "Nam",
                                     "Nu",
-                                    "Khac"};
+                                    "Khac", "Quay lai"};
                     printOpt(arr, 3);
                 }
                 int key = getKey(3);
-                while (true)
-                    switch (key)
-                    {
-                    case 1:
-                    case 2:
-                    case 3:
-                    {
-                        KhachHang _KH_repair = pTemp->getData();
-                        _KH_repair.setGioiTinh(key);
 
-                        pTemp->setData(_KH_repair);
-                    }
+                switch (key)
+                {
+                case 1:
+                {
+                    KhachHang _KH_repair = pTemp->getData();
+                    _KH_repair.setGioiTinh(key);
+
+                    pTemp->setData(_KH_repair);
+                }
+                break;
+                case 2:
+                {
+                    KhachHang _KH_repair = pTemp->getData();
+                    _KH_repair.setGioiTinh(key);
+
+                    pTemp->setData(_KH_repair);
+                }
+                break;
+                case 3:
+                {
+                    KhachHang _KH_repair = pTemp->getData();
+                    _KH_repair.setGioiTinh(key);
+
+                    pTemp->setData(_KH_repair);
+                }
+                break;
+                case 4:
                     break;
-                    case 0:
-                        break;
-                    default:
-                        printError("Ban nhap sai yeu cau. Vui long thu lai");
-                        break;
-                    }
+                default:
+                    printError("Ban nhap sai yeu cau. Vui long thu lai");
+                    break;
+                }
             }
             break;
             case 3:
@@ -195,6 +225,7 @@ void QLKhachHang::update()
 
                 pTemp->setData(_KH_repair);
             }
+            break;
             case 5:
             {
                 string tempEmail;
@@ -214,7 +245,7 @@ void QLKhachHang::update()
                 pTemp->setData(_KH_repair);
             }
             break;
-            case 0:
+            case 6:
                 return;
             default:
                 printError("Ban nhap sai yeu cau. Vui long thu lai");
@@ -224,7 +255,6 @@ void QLKhachHang::update()
         }
     }
 }
-
 void QLKhachHang::find()
 {
     while (true)
@@ -262,7 +292,8 @@ void QLKhachHang::find()
         case 2:
         {
             string str;
-            cout << "Nhap ten khach hang cang tim";
+            cout << "Nhap ten khach hang cang tim: ";
+            cin.ignore(1);
             fflush(stdin);
             getline(cin, str);
             Node<KhachHang> *pTemp = this->dbKH->getpHead();
@@ -275,11 +306,13 @@ void QLKhachHang::find()
             {
                 if (findString(pTemp->getData().getTen(), str) != -1)
                 {
+                    // pTemp->getData().xuatFullInfo();
 
-                    table += {string(pTemp->getData().getMa()), pTemp->getData().getTen(), pTemp->getData().getDiaChi(), pTemp->getData().getDiaChi()};
+                    table += {string(pTemp->getData().getMa()), pTemp->getData().getTen(), pTemp->getData().getDiaChi(), pTemp->getData().getSoDienThoai()};
                 }
                 pTemp = pTemp->getpNext();
             }
+            std::cout << table;
         }
         break;
         case 0:
@@ -334,4 +367,29 @@ void QLKhachHang::sortMa()
         pBefore = pBefore->getpNext();
     }
     printSuccess("Da sap xep thanh cong!");
+}
+
+void QLKhachHang::deleteIndex()
+{
+    string _sdt;
+    cout << "Nhap so dien thoai can tim: ";
+    fflush(stdin);
+    getline(cin, _sdt);
+
+    int index = QLKhachHang::findBySDT(_sdt);
+    if (index == -1)
+    {
+        printError("Khong tim thay KHACH HANG da dang ki so dien thoai nay");
+    }
+    else
+    {
+        if (false)
+        {
+        }
+        else
+        {
+            this->dbKH->deleteNode(index);
+            printSuccess("Da xoa thanh cong!");
+        }
+    }
 }

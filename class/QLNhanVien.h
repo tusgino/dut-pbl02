@@ -4,17 +4,17 @@
 
 #include "..\src\components\utils\List.cpp"
 #include "..\src\components\utils\Node.cpp"
-#include "..\src\features\KhachHang\KhachHang.cpp"
+#include "..\src\features\NhanVien\NhanVien.cpp"
 #include "..\src\features\QuanLi\QuanLi.cpp"
 
-class QLKhachHang : public QuanLi
+class QLNhanVien : public QuanLi
 {
-    List<KhachHang> *dbKH;
+    List<NhanVien> *dbNV;
     int count;
 
 public:
-    QLKhachHang();
-    ~QLKhachHang();
+    QLNhanVien();
+    ~QLNhanVien();
 
     void docFile(fstream &);
     void ghiFile(fstream &);
@@ -23,7 +23,7 @@ public:
     void read();        // Xuat ra man hinh
     void find();        // Tim Kiem
     void deleteIndex(); // Xoa
-    int findBySDT(const string& );
+    int findBySDT(const string &);
     void sortMa();
 };
 
