@@ -27,7 +27,6 @@ void Ma::setSoTT(const int &soTT)
 ostream &operator<<(ostream &o, const Ma &ma)
 {
     o << ma.kiTu << setfill('0') << setw(4) << ma.soTT << setfill(' ');
-
     return o;
 };
 istream &operator>>(istream &i, Ma &ma)
@@ -78,7 +77,7 @@ void Ma::docFile(fstream &fileIn)
 {
     getline(fileIn, this->kiTu, '|');
     fileIn >> this->soTT;
-    fileIn.ignore(1);
+    fileIn.ignore(2);
 }
 
 void Ma::ghiFile(fstream &fileOut)

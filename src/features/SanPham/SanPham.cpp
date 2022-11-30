@@ -110,7 +110,7 @@ void SanPham::docFile(fstream &fileIn)
   fileIn >> giaBan;
   fileIn.ignore(1);
   fileIn >> giamGia;
-  fileIn.ignore(1);
+  fileIn.ignore(2);
 }
 
 void SanPham::ghiFile(fstream &fileOut)

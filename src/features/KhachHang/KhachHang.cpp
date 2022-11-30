@@ -22,7 +22,7 @@ void KhachHang::docFile(fstream &fileIn)
   getline(fileIn, this->diaChi, '|');
   getline(fileIn, this->email, '|');
   fileIn >> this->gioiTinh;
-  fileIn.ignore(1);
+  fileIn.ignore(2);
 }
 void KhachHang::ghiFile(fstream &fileOut)
 {
@@ -51,14 +51,15 @@ void KhachHang::nhap()
   cout << "Nhap gioi tinh: ";
   cin >> this->gioiTinh;
 }
-void KhachHang::xuat(){
-  
+void KhachHang::xuat()
+{
 }
-void KhachHang::chinhSua(){
-
+void KhachHang::chinhSua()
+{
 }
 
-void KhachHang::xuatFullInfo(){
+void KhachHang::xuatFullInfo()
+{
   cout << this->ma << "|";
   cout << this->ten << "|";
   cout << this->soDienThoai << "|";

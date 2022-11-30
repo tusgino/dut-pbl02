@@ -320,9 +320,10 @@ void QLKhachHang::sortMa()
     Node<KhachHang> *pAfter = pBefore->getpNext();
     while (pBefore)
     {
+        pAfter = pBefore->getpNext();
         while (pAfter)
         {
-            if (pAfter->getData().getMa() >= pBefore->getData().getMa())
+            if (pBefore->getData().getMa() >= pAfter->getData().getMa())
             {
                 KhachHang pTemp = pBefore->getData();
                 pBefore->setData(pAfter->getData());
