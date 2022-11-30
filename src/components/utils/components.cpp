@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <fstream>
 #include <cstdio>
+#include "ConsoleTable.cpp"
 
 using namespace std;
 
