@@ -48,15 +48,7 @@ void QLSanPham::create()
   string kiTu = "A";
   if (key == 2)
     kiTu = "Q";
-  Node<SanPham> *pTemp = this->dbSP->getpHead();
-  int maMax = 0;
-  while (pTemp)
-  {
-    int tempSTT = pTemp->getData().getSTT();
-    if (maMax < tempSTT)
-      maMax = tempSTT;
-    pTemp = pTemp->getpNext();
-  }
+  int maMax = this->findMaMax();
   Ma tempMa(kiTu, maMax + 1);
   printRes("Nhap ten san pham: ");
   string tempTen;
@@ -95,7 +87,7 @@ void QLSanPham::create()
     string tempSize = arr1[key];
     if (!arrCheck[key])
     {
-      printWarning("Ban da co size nay roi!"); 
+      printWarning("Ban da co size nay roi!");
       string arr3[] = {"Ban muon?: ", "Thay doi so luong.", "Them vao so luong da co.", "Quay lai"};
       printOpt(arr3, 3);
       int key = getKey(2);
@@ -161,5 +153,35 @@ void QLSanPham::create()
 
 void QLSanPham::read()
 {
-  
+  ConsoleTable table("STT", "Ma San Pham", "Ten San Pham", "Xuat Xu", "Gia Nhap", "Gia Ban", "Giam Gia", "S", "M", "L", "XL", "XXL", "Tong So Luong");
+
+  table.setPadding(1);
+  table.setStyle(0);
+  Node<SanPham> *pTemp = this->dbSP->getpHead();
+  bool *arr = new bool[this->findMaMax()];
+  while (pTemp)
+  {
+
+    pTemp = pTemp->getpNext();
+  }
+
+  delete[] arr;
 }
+
+// components
+
+int QLSanPham::findMaMax()
+{
+  Node<SanPham> *pTemp = this->dbSP->getpHead();
+  int maMax = 0;
+  while (pTemp)
+  {
+    int tempSTT = pTemp->getData().getSTT();
+    if (maMax < tempSTT)
+      maMax = tempSTT;
+    pTemp = pTemp->getpNext();
+  }
+  return maMax;
+}
+
+void sort()
