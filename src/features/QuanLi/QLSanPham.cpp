@@ -157,8 +157,6 @@ void QLSanPham::read()
 
   table.setPadding(1);
   table.setStyle(0);
-  Node<SanPham> *pTemp = this->dbSP->getpHead();
-  Node<SanPham> *pTempBF = this->dbSP->getpHead();
   QLSanPham::sortMa();
   Ma tempMa = pTemp->getData().getMa();
   int *arrSize = new int[5];
@@ -167,69 +165,64 @@ void QLSanPham::read()
     arrSize[i] = 0;
   }
   int cnt = 0;
-  while (pTemp)
+  Node<SanPham> *pTempBefore = this->dbSP->getpHead();
+  Node<SanPham> *pTempAfter = NULL;
+  while (pTempBefore)
   {
-    if (pTemp->getData().getMa() != tempMa)
+    pTempAfter = pTempBefore->getpNext();
+    if (pTempBefore->getData().getSize() == "S")
+    {
+      arrSize[0] = pTempBefore->getData().getSoLuong();
+    }
+    if (pTempBefore->getData().getSize() == "M")
+    {
+      arrSize[1] = pTempBefore->getData().getSoLuong();
+    }
+    if (pTempBefore->getData().getSize() == "L")
+    {
+      arrSize[2] = pTempBefore->getData().getSoLuong();
+    }
+    if (pTempBefore->getData().getSize() == "XL")
+    {
+      arrSize[3] = pTempBefore->getData().getSoLuong();
+    }
+    if (pTempBefore->getData().getSize() == "XXL")
+    {
+      arrSize[4] = pTempBefore->getData().getSoLuong();
+    }
+    if (!pTempAfter || pTempAfter->getData().getMa() != tempMa)
     {
       table += {
           to_string(++cnt),
-          pTempBF->getData().getMa(),
-          pTempBF->getData().getTen(),
-          pTempBF->getData().getXuatXu(),
-          to_string(pTempBF->getData().getGiaNhap()),
-          to_string(pTempBF->getData().getGiaBan()),
-          to_string(pTempBF->getData().getGiamGia()),
+          pTempBefore->getData().getMa(),
+          pTempBefore->getData().getTen(),
+          pTempBefore->getData().getXuatXu(),
+          to_string(pTempBefore->getData().getGiaNhap()),
+          to_string(pTempBefore->getData().getGiaBan()),
+          to_string(pTempBefore->getData().getGiamGia()),
           to_string(arrSize[0]),
           to_string(arrSize[1]),
           to_string(arrSize[2]),
           to_string(arrSize[3]),
           to_string(arrSize[4]),
           to_string(arrSize[0] + arrSize[1] + arrSize[2] + arrSize[3] + arrSize[4])};
-      tempMa = pTemp->getData().getMa();
+      if (pTempAfter)
+        tempMa = pTempAfter->getData().getMa();
       for (int i = 0; i < 5; i++)
       {
         arrSize[i] = 0;
       }
     }
-    if (pTemp->getData().getSize() == "S")
-    {
-      arrSize[0] = pTemp->getData().getSoLuong();
-    }
-    if (pTemp->getData().getSize() == "M")
-    {
-      arrSize[1] = pTemp->getData().getSoLuong();
-    }
-    if (pTemp->getData().getSize() == "L")
-    {
-      arrSize[2] = pTemp->getData().getSoLuong();
-    }
-    if (pTemp->getData().getSize() == "XL")
-    {
-      arrSize[3] = pTemp->getData().getSoLuong();
-    }
-    if (pTemp->getData().getSize() == "XXL")
-    {
-      arrSize[4] = pTemp->getData().getSoLuong();
-    }
-    pTempBF = pTemp;
-    pTemp = pTemp->getpNext();
+    pTempBefore = pTempBefore->getpNext();
   }
-  table += {
-      to_string(++cnt),
-      pTempBF->getData().getMa(),
-      pTempBF->getData().getTen(),
-      pTempBF->getData().getXuatXu(),
-      to_string(pTempBF->getData().getGiaNhap()),
-      to_string(pTempBF->getData().getGiaBan()),
-      to_string(pTempBF->getData().getGiamGia()),
-      to_string(arrSize[0]),
-      to_string(arrSize[1]),
-      to_string(arrSize[2]),
-      to_string(arrSize[3]),
-      to_string(arrSize[4]),
-      to_string(arrSize[0] + arrSize[1] + arrSize[2] + arrSize[3] + arrSize[4])};
+
   delete[] arrSize;
   cout << table;
+}
+
+void QLSanPham::deleteIndex()
+{
+  
 }
 
 // components

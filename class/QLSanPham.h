@@ -20,7 +20,8 @@ public:
   // void update();      // Chinh sua
   void read(); // Xuat ra man hinh
   // void find();        // Tim Kiem
-  // void deleteIndex(); // Xoa
+  void deleteIndex(); // Xoa
+  void Delete();
 
   // components
   void sortMa();
