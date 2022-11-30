@@ -9,8 +9,8 @@ int main()
   // QLSanPham *p = new QLSanPham();
   // return 0;
 
-  Ma ma("A", 67);
-  cout << string(ma);
+  // Ma ma("A", 67);
+  // cout << string(ma);
 }
 
 // #include <iostream>

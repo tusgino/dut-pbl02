@@ -25,7 +25,7 @@ public:
     friend ostream &operator<<(ostream &, const Ma &);
     friend istream &operator>>(istream &, Ma &);
 
-    const bool &operator>=(const Ma &);
+    const bool operator>=(const Ma &);
     operator string();
     void docFile(fstream &);
     void ghiFile(fstream &);
