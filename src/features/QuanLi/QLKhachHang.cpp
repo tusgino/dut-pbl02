@@ -108,7 +108,7 @@ void QLKhachHang::update()
         }
         while (true)
         {
-            cout << "THONG TIN CUA NHAN VIEN: " << endl;
+            cout << "THONG TIN CUA KHACH HANG: " << endl;
             pTemp->getData().xuatFullInfo();
 
             {
