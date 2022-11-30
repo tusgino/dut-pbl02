@@ -39,13 +39,13 @@ void QLKhachHang::ghiFile(fstream &fileOut)
 void QLKhachHang::create()
 {
     KhachHang _KHAdd;
-    int soTT = this->dbKH->getpHead()->getData().getMa().getsoTT();
+    int soTT = this->dbKH->getpHead()->getData().getMa().getSoTT();
     // Tìm soTT của MaKH lớn nhất để sinh mã
     {
         Node<KhachHang> *pTemp = this->dbKH->getpHead();
         while (pTemp)
         {
-            soTT = (pTemp->getData().getMa().getsoTT() > soTT) ? pTemp->getData().getMa().getsoTT() : soTT;
+            soTT = (pTemp->getData().getMa().getSoTT() > soTT) ? pTemp->getData().getMa().getSoTT() : soTT;
             pTemp = pTemp->getpNext();
         }
     }
@@ -127,8 +127,5 @@ void QLKhachHang::find()
 
 int QLKhachHang::findBySDT(const string &sdt)
 {
-}
 
-void QLKhachHang::findByHoTen(const string &hoten)
-{
 }
