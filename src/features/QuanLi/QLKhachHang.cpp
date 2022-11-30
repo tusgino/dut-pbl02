@@ -31,7 +31,6 @@ void QLKhachHang::ghiFile(fstream &fileOut)
     while (pTemp)
     {
         pTemp->getData().ghiFile(fileOut);
-        fileOut << endl;
         pTemp = pTemp->getpNext();
     }
 }

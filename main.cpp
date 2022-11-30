@@ -9,9 +9,10 @@ int main()
   // QLSanPham *p = new QLSanPham();
   // return 0;
   QLKhachHang *p = new QLKhachHang();
-  p->create();
-  // p->read();
   fstream fileKH;
+  fileKH.open("src/components/data/ola.dat",ios_base::in);
+      p->create();
+  // p->read();
   fileKH.open("src/components/data/ola1.dat", ios_base::out);
   p->ghiFile(fileKH);
   fileKH.close();
