@@ -108,6 +108,7 @@ void QLKhachHang::update()
         }
         while (true)
         {
+            cout << "THONG TIN CUA NHAN VIEN: " << endl;
             pTemp->getData().xuatFullInfo();
 
             {
@@ -139,6 +140,7 @@ void QLKhachHang::update()
                     _KH_repair.setTen(tempTen);
 
                     pTemp->setData(_KH_repair);
+                    printSuccess("Da doi thong tin thanh cong!");
                 }
             }
             break;
@@ -156,27 +158,14 @@ void QLKhachHang::update()
                 switch (key)
                 {
                 case 1:
-                {
-                    KhachHang _KH_repair = pTemp->getData();
-                    _KH_repair.setGioiTinh(key);
-
-                    pTemp->setData(_KH_repair);
-                }
-                break;
                 case 2:
-                {
-                    KhachHang _KH_repair = pTemp->getData();
-                    _KH_repair.setGioiTinh(key);
-
-                    pTemp->setData(_KH_repair);
-                }
-                break;
                 case 3:
                 {
                     KhachHang _KH_repair = pTemp->getData();
                     _KH_repair.setGioiTinh(key);
 
                     pTemp->setData(_KH_repair);
+                    printSuccess("Da doi thong tin thanh cong!");
                 }
                 break;
                 case 4:
@@ -204,6 +193,7 @@ void QLKhachHang::update()
                     _KH_repair.setSoDienThoai(tempSDT);
 
                     pTemp->setData(_KH_repair);
+                    printSuccess("Da doi thong tin thanh cong!");
                 }
             }
             break;
@@ -221,9 +211,10 @@ void QLKhachHang::update()
                 }
 
                 KhachHang _KH_repair = pTemp->getData();
-                _KH_repair.setEmail(tempDiaChi);
+                _KH_repair.setDiaChi(tempDiaChi);
 
                 pTemp->setData(_KH_repair);
+                printSuccess("Da doi thong tin thanh cong!");
             }
             break;
             case 5:
@@ -243,6 +234,7 @@ void QLKhachHang::update()
                 _KH_repair.setEmail(tempEmail);
 
                 pTemp->setData(_KH_repair);
+                printSuccess("Da doi thong tin thanh cong!");
             }
             break;
             case 6:

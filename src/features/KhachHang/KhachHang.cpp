@@ -60,12 +60,36 @@ void KhachHang::chinhSua()
 
 void KhachHang::xuatFullInfo()
 {
-  cout << this->ma << "|";
-  cout << this->ten << "|";
-  cout << this->soDienThoai << "|";
-  cout << this->diaChi << "|";
-  cout << this->email << "|";
-  cout << this->gioiTinh << "|";
+  cout << "+--------------------------------------------------------+\n";
+  cout << "| " << setw(25) << right << "Ma khach hang: " << this->ma << setw(26) << right << "|\n";
+  cout << "| " << setw(25) << right << "Ho ten khach hang: " << setw(30) << left << this->ten << "|\n";
+  cout << "| " << setw(25) << right << "So dien thoai: " << setw(30) << left << this->soDienThoai << "|\n";
+  cout << "| " << setw(25) << right << "Dia chi: " << setw(30) << left << this->diaChi << "|\n";
+  cout << "| " << setw(25) << right << "Email: " << setw(30) << left << this->email << "|\n";
+  switch (this->gioiTinh)
+  {
+  case 1:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Nam"
+         << "|\n";
+
+    break;
+  case 2:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Nu"
+         << "|\n";
+
+    break;
+  case 3:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Khac"
+         << "|\n";
+
+    break;
+  default:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "(null)"
+         << "|\n";
+
+    break;
+  }
+  cout << "+--------------------------------------------------------+\n";
 }
 void KhachHang::setMa(const Ma &ma)
 {

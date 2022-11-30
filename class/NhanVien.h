@@ -45,6 +45,7 @@ public:
 
   void docFile(fstream &);
   void ghiFile(fstream &);
+  void nhap();
 };
 
 #endif
