@@ -103,6 +103,73 @@ void NhanVien::nhap()
   }
 }
 
+void NhanVien::xuatFullInfo()
+{
+  cout << "+--------------------------------------------------------+\n";
+  cout << "| " << setw(25) << right << "Ma nhan vien: " << this->ma << setw(26) << right << "|\n";
+  cout << "| " << setw(25) << right << "Ho ten nhan vien: " << setw(30) << left << this->ten << "|\n";
+  if (this->ma.getKiTu() == "NV")
+  {
+    cout << "| " << setw(25) << right << "Chuc vu: " << setw(30) << left << "Nhan vien"
+         << "|\n";
+  }
+  else
+  {
+    cout << "| " << setw(25) << right << "Chuc vu: " << setw(30) << left << "Quan li"
+         << "|\n";
+  }
+  cout << "| " << setw(25) << right << "So dien thoai: " << setw(30) << left << this->soDienThoai << "|\n";
+  cout << "| " << setw(25) << right << "Dia chi: " << setw(30) << left << this->diaChi << "|\n";
+  // cout << "| " << setw(25) << right << "Email: " << setw(30) << left << this->email << "|\n";
+  switch (this->caLam)
+  {
+  case 1:
+    cout << "| " << setw(25) << right << "Ca lam: " << setw(30) << left << "07h00 den 11h30"
+         << "|\n";
+
+    break;
+  case 2:
+    cout << "| " << setw(25) << right << "Ca lam: " << setw(30) << left << "13h30 den 18h00"
+         << "|\n";
+
+    break;
+  case 3:
+    cout << "| " << setw(25) << right << "Ca lam: " << setw(30) << left << "18h30 den 23h00"
+         << "|\n";
+
+    break;
+  default:
+    cout << "| " << setw(25) << right << "Ca lam: " << setw(30) << left << "(null)"
+         << "|\n";
+
+    break;
+  }
+  switch (this->gioiTinh)
+  {
+  case 1:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Nam"
+         << "|\n";
+
+    break;
+  case 2:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Nu"
+         << "|\n";
+
+    break;
+  case 3:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Khac"
+         << "|\n";
+
+    break;
+  default:
+    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "(null)"
+         << "|\n";
+
+    break;
+  }
+  cout << "+--------------------------------------------------------+\n";
+}
+
 void NhanVien::setMa(const Ma &ma)
 {
   this->ma = ma;

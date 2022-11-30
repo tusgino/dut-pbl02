@@ -38,42 +38,90 @@ void QLNhanVien::ghiFile(fstream &fileOut)
 
 void QLNhanVien::create()
 {
+    while (true)
     {
-        string arr[] = {"Nhap chuc vu cua nhan vien muon them", "Quan li", "Nhan vien", "Quay lai"};
-        printOpt(arr, 2);
-    }
-    int key = getKey(2);
-    switch (key)
-    {
-    case 1:
-    {
-        NhanVien _NVAdd;
-        int soTT = 0;
         {
-            Node<NhanVien> *pTemp = this->dbNV->getpHead();
-            while (pTemp)
-            {
-                soTT = (pTemp->getData().getMa().getSoTT() > soTT) ? pTemp->getData().getMa().getSoTT() : soTT;
-                pTemp = pTemp->getpNext();
-            }
+            string arr[] = {"Nhap chuc vu cua nhan vien muon them", "Quan li", "Nhan vien", "Quay lai"};
+            printOpt(arr, 2);
         }
-        Ma tempMa("NV", soTT + 1);
-        _NVAdd.setMa(tempMa);
-        _NVAdd.nhap();
+        int key = getKey(2);
+        switch (key)
+        {
+        case 1:
+        {
+            NhanVien _NVAdd;
+            int soTT = 0;
+            {
+                Node<NhanVien> *pTemp = this->dbNV->getpHead();
+                while (pTemp)
+                {
+                    soTT = (pTemp->getData().getMa().getKiTu() == "NV" && pTemp->getData().getMa().getSoTT() > soTT) ? pTemp->getData().getMa().getSoTT() : soTT;
+                    pTemp = pTemp->getpNext();
+                }
+            }
+            Ma tempMa("NV", soTT + 1);
+            _NVAdd.setMa(tempMa);
+            _NVAdd.nhap();
 
-        this->dbNV->push_back(_NVAdd);
-        this->count++;
-    }
-    break;
-    case 2:
-    {
-    }
-    break;
-    case 3:
-    {
-    }
-    break;
-    default:
+            this->dbNV->push_back(_NVAdd);
+            this->count++;
+            printSuccess("Ban da them thanh cong mot nhan vien!");
+        }
         break;
+        case 2:
+        {
+            NhanVien _NVAdd;
+            int soTT = 0;
+            {
+                Node<NhanVien> *pTemp = this->dbNV->getpHead();
+                while (pTemp)
+                {
+                    soTT = (pTemp->getData().getMa().getKiTu() == "QL" && pTemp->getData().getMa().getSoTT() > soTT) ? pTemp->getData().getMa().getSoTT() : soTT;
+                    pTemp = pTemp->getpNext();
+                }
+            }
+            Ma tempMa("QL", soTT + 1);
+            _NVAdd.setMa(tempMa);
+            _NVAdd.nhap();
+
+            this->dbNV->push_back(_NVAdd);
+            this->count++;
+            printSuccess("Ban da them thanh cong mot quan li!");
+        }
+        break;
+        case 3:
+        {
+            return;
+        }
+        break;
+        default:
+            break;
+        }
     }
+}
+
+void QLNhanVien::update()
+{
+    
+    {
+        string arr[] = {"Nhap lua chon cua ban"};
+    }
+}
+
+void QLNhanVien::read(){
+    ConsoleTable table{"STT", "Ma nhan vien", "Ten nhan vien", "Dia chi", "So dien thoai"};
+    Node<NhanVien> *pTemp = this->dbNV->getpHead();
+    table.setPadding(2);
+    table.setStyle(0);
+    int cnt = 0;
+    while (pTemp)
+    {
+
+        // pTemp->getData().xuatFullInfo();
+
+        table += {to_string(++cnt), string(pTemp->getData().getMa()), pTemp->getData().getTen(), pTemp->getData().getDiaChi(), pTemp->getData().getSoDienThoai()};
+
+        pTemp = pTemp->getpNext();
+    }
+    std::cout << table;
 }

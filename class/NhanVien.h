@@ -46,6 +46,7 @@ public:
   void docFile(fstream &);
   void ghiFile(fstream &);
   void nhap();
+  void xuatFullInfo();
 };
 
 #endif
