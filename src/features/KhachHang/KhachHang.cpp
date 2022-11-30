@@ -57,6 +57,15 @@ void KhachHang::xuat(){
 void KhachHang::chinhSua(){
 
 }
+
+void KhachHang::xuatFullInfo(){
+  cout << this->ma << "|";
+  cout << this->ten << "|";
+  cout << this->soDienThoai << "|";
+  cout << this->diaChi << "|";
+  cout << this->email << "|";
+  cout << this->gioiTinh << "|";
+}
 void KhachHang::setMa(const Ma &ma)
 {
   this->ma = ma;

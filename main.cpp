@@ -1,6 +1,6 @@
 // #include "features\SanPham\SanPham.cpp"
-#include "src\components\utils\Ma.cpp"
-// #include "src\features\QuanLi\QLSanPham.cpp"
+// #include "src\components\utils\Ma.cpp"
+#include "src\features\QuanLi\QLKhachHang.cpp"
 
 using namespace std;
 
@@ -8,9 +8,12 @@ int main()
 {
   // QLSanPham *p = new QLSanPham();
   // return 0;
-
-  Ma ma("A", 67);
-  cout << string(ma);
+  QLKhachHang *p = new QLKhachHang();
+  p->create();
+  p->read();
+  return 0;
+  // Ma ma("A", 67);
+  // cout << string(ma);
 }
 
 // #include <iostream>
