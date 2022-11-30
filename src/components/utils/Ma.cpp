@@ -86,14 +86,17 @@ void Ma::ghiFile(fstream &fileOut)
     fileOut << this->kiTu << this->soTT << "|";
 }
 
-Ma::operator std::string(){
+Ma::operator std::string()
+{
     string res;
     res += this->kiTu;
-    string temp; int tempSoTT = this->soTT;
+    string temp;
+    int tempSoTT = this->soTT;
     int cnt = 0;
-    while(tempSoTT > 0){
+    while (tempSoTT > 0)
+    {
         cnt++;
-        tempSoTT /=10;
+        tempSoTT /= 10;
     }
     for (int i = 0; i < 4 - cnt; i++)
     {
@@ -102,5 +105,11 @@ Ma::operator std::string(){
     res += to_string(this->soTT);
 
     return res;
-    
+}
+
+const bool Ma::operator>=(const Ma &ma)
+{
+    if (int(this->kiTu) == int(ma.kiTu))
+        return this->soTT >= ma.soTT;
+    return int(this - kiTu) > int(ma.kiTu);
 }

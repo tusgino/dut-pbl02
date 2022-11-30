@@ -114,4 +114,17 @@ int findString(string parent, string sub)
   return -1;
 }
 
+bool checkSDT(string soDienThoai)
+{
+  if (soDienThoai.length() != 10 || soDienThoai.at(0) != 0)
+    return false;
+  for (int i = 0; i < soDienThoai.length(); i++)
+  {
+    char c = soDienThoai.at(i);
+    if ((int(c) - 48) < 0 || (int(c) - 48) > 9)
+      return false;
+  }
+  return true;
+}
+
 #endif

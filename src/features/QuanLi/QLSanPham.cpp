@@ -48,15 +48,7 @@ void QLSanPham::create()
   string kiTu = "A";
   if (key == 2)
     kiTu = "Q";
-  Node<SanPham> *pTemp = this->dbSP->getpHead();
-  int maMax = 0;
-  while (pTemp)
-  {
-    int tempSTT = pTemp->getData().getSTT();
-    if (maMax < tempSTT)
-      maMax = tempSTT;
-    pTemp = pTemp->getpNext();
-  }
+  int maMax = this->findMaMax();
   Ma tempMa(kiTu, maMax + 1);
   printRes("Nhap ten san pham: ");
   string tempTen;
@@ -166,9 +158,30 @@ void QLSanPham::read()
   table.setPadding(1);
   table.setStyle(0);
   Node<SanPham> *pTemp = this->dbSP->getpHead();
+  bool *arr = new bool[this->findMaMax()];
   while (pTemp)
   {
 
     pTemp = pTemp->getpNext();
   }
+
+  delete[] arr;
 }
+
+// components
+
+int QLSanPham::findMaMax()
+{
+  Node<SanPham> *pTemp = this->dbSP->getpHead();
+  int maMax = 0;
+  while (pTemp)
+  {
+    int tempSTT = pTemp->getData().getSTT();
+    if (maMax < tempSTT)
+      maMax = tempSTT;
+    pTemp = pTemp->getpNext();
+  }
+  return maMax;
+}
+
+void sort()
