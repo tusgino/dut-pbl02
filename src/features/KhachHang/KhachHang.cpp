@@ -52,7 +52,7 @@ void KhachHang::nhap()
   cin >> this->gioiTinh;
 }
 void KhachHang::xuat(){
-
+  
 }
 void KhachHang::chinhSua(){
 

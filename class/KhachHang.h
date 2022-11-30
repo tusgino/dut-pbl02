@@ -40,6 +40,10 @@ public:
   const string &getEmail();
   void docFile(fstream &);
   void ghiFile(fstream &);
+  void nhap();
+  void xuat();
+  void xuatFullInfo();
+  void chinhSua();
 };
 
 #endif

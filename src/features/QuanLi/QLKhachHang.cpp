@@ -39,13 +39,13 @@ void QLKhachHang::ghiFile(fstream &fileOut)
 void QLKhachHang::create()
 {
     KhachHang _KHAdd;
-    int soTT = this->dbKH->getpHead()->getData().getMa().getsoTT();
+    int soTT = this->dbKH->getpHead()->getData().getMa().getSoTT();
     // Tìm soTT của MaKH lớn nhất để sinh mã
     {
         Node<KhachHang> *pTemp = this->dbKH->getpHead();
         while (pTemp)
         {
-            soTT = (pTemp->getData().getMa().getsoTT() > soTT) ? pTemp->getData().getMa().getsoTT() : soTT;
+            soTT = (pTemp->getData().getMa().getSoTT() > soTT) ? pTemp->getData().getMa().getSoTT() : soTT;
             pTemp = pTemp->getpNext();
         }
     }
@@ -95,31 +95,17 @@ void QLKhachHang::find()
         cout << "Nhap ten khach hang cang tim";
         fflush(stdin);
         getline(cin, str);
-        for (auto &c : str)
-            c = toupper(c);
-        int strLength = str.length();
-        char strSub[strLength + 1];
-        strcpy(strSub, str.c_str());
-
         Node<KhachHang> *pTemp = this->dbKH->getpHead();
-        while (pTemp)
-            ;
-        {
-            string strTemp = pTemp->getData().getTen();
-            // chuyen string thanh char* va ghi hoa
-            for (auto &c : strTemp)
-                c = toupper(c);
-            int strTempLength = strTemp.length();
-            char strParent[strTempLength + 1];
-            strcpy(strParent, strTemp.c_str());
-            // Tim chuoi strSub trong strParent
-            char *first;
-            first = strstr(strParent, strSub);
-            if (first)
-            {
-                pTemp->getData().xuat();
-            }
+          ConsoleTable table{"Ma khach hang", "Ten khach hang", "Dia chi", "So dien thoai"};
 
+          table.setPadding(2);
+          table.setStyle(0);
+        while(pTemp){
+            if(findString(pTemp->getData().getTen(),str) != -1){
+                    string tempMa;
+                    
+                  table += {"Germany", "Berlin", "82,800,000", "357,168 km2", "Euro"};
+            }
             pTemp = pTemp->getpNext();
         }
     }
@@ -127,8 +113,10 @@ void QLKhachHang::find()
 
 int QLKhachHang::findBySDT(const string &sdt)
 {
+
 }
 
-void QLKhachHang::findByHoTen(const string &hoten)
-{
+void xuatFile(){
+    fstream fileXuatKH;
+    fileXuatKH.open("/src/components/data/file_KH.DAT");
 }
