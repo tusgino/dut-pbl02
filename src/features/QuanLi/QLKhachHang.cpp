@@ -96,10 +96,15 @@ void QLKhachHang::find()
         fflush(stdin);
         getline(cin, str);
         Node<KhachHang> *pTemp = this->dbKH->getpHead();
-        
+          ConsoleTable table{"Ma khach hang", "Ten khach hang", "Dia chi", "So dien thoai"};
+
+          table.setPadding(2);
+          table.setStyle(0);
         while(pTemp){
             if(findString(pTemp->getData().getTen(),str) != -1){
-                
+                    string tempMa;
+                    
+                  table += {"Germany", "Berlin", "82,800,000", "357,168 km2", "Euro"};
             }
             pTemp = pTemp->getpNext();
         }
