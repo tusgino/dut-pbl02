@@ -1,11 +1,9 @@
 // #include "Sample.h"
-#ifndef __QLKH_H__
-#define __QLKH_H__
-
-#include "..\src\components\utils\List.cpp"
-#include "..\src\components\utils\Node.cpp"
-#include "..\src\features\NhanVien\NhanVien.cpp"
-#include "..\src\features\QuanLi\QuanLi.cpp"
+#ifndef __QLNV_H__
+#define __QLNV_H__
+#include "NhanVien.h"
+// #include "..\src\features\QuanLi\QuanLi.cpp"
+#include "QuanLi.h"
 
 class QLNhanVien : public QuanLi
 {

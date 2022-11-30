@@ -5,10 +5,8 @@
 #include <fstream>
 #include <string.h>
 #include <iomanip>
-// #include "..\src\components\utils\List.cpp"
-// #include "..\src\components\utils\Node.cpp"
-#include "..\src\components\utils\components.cpp"
-#include "..\src\components\utils\Ma.cpp"
+
+#include "Ma.h"
 
 class NhanVien
 {

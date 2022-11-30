@@ -1,17 +1,16 @@
-#ifndef __QLKH_H__
-#define __QLKH_H__
+#ifndef __QLSP_H__
+#define __QLSP_H__
 
-#include "..\src\components\utils\List.cpp"
-#include "..\src\components\utils\Node.cpp"
-#include "..\src\features\SanPham\SanPham.cpp"
-#include "..\src\features\QuanLi\QuanLi.cpp"
+#include "SanPham.h"
+// #include "..\src\features\QuanLi\QuanLi.cpp"
+#include "QuanLi.h"
 
 class QLSanPham : public QuanLi
 {
   int count;
+  List<SanPham> *dbSP;
 
 public:
-  List<SanPham> *dbSP;
   QLSanPham();
   ~QLSanPham();
 

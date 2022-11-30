@@ -5,6 +5,8 @@
 #include <fstream>
 #include <cstdio>
 #include "ConsoleTable.cpp"
+#include "List.cpp"
+#include "Node.cpp"
 
 using namespace std;
 

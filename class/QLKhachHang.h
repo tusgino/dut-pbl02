@@ -2,10 +2,9 @@
 #ifndef __QLKH_H__
 #define __QLKH_H__
 
-#include "..\src\components\utils\List.cpp"
-#include "..\src\components\utils\Node.cpp"
-#include "..\src\features\KhachHang\KhachHang.cpp"
-#include "..\src\features\QuanLi\QuanLi.cpp"
+#include "KhachHang.h"
+// #include "..\src\features\QuanLi\QuanLi.cpp"
+#include "QuanLi.h"
 
 class QLKhachHang : public QuanLi
 {
@@ -23,7 +22,7 @@ public:
     void read();        // Xuat ra man hinh
     void find();        // Tim Kiem
     void deleteIndex(); // Xoa
-    int findBySDT(const string& );
+    int findBySDT(const string &);
     void sortMa();
 };
 

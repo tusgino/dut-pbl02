@@ -6,7 +6,7 @@ QLNhanVien::QLNhanVien()
     this->count = 0;
 }
 
-QLNhanVien::QLNhanVien()
+QLNhanVien::~QLNhanVien()
 {
     this->dbNV->~List();
 }
