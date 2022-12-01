@@ -365,6 +365,7 @@ void QLSanPham::update()
                     if (pTemp->getData().getMa() == tempMa && pTemp->getData().getSize() == tempSize)
                     {
                       tenSP = pTemp->getData().getTen();
+                      
                       tempSP->setMa(pTemp->getData().getMa());
                       tempSP->setSize(pTemp->getData().getSize());
                       tempSP->setTen(pTemp->getData().getTen());

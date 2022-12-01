@@ -428,6 +428,7 @@ void QLNhanVien::find()
                 if (pTemp->getData().getSoDienThoai() == _sdt)
                 {
                     pTemp->getData().xuatFullInfo();
+                    pauseScreen();
                     return;
                 }
                 pTemp = pTemp->getpNext();
@@ -446,7 +447,7 @@ void QLNhanVien::find()
             Node<NhanVien> *pTemp = this->dbNV->getpHead();
 
             ConsoleTable table{"STT", "Ma nhan vien", "Ten nhan vien", "Dia chi", "So dien thoai"};
-            int cnt = 0l;
+            int cnt = 0;
             table.setPadding(2);
             table.setStyle(0);
             while (pTemp)
@@ -491,8 +492,35 @@ void QLNhanVien::deleteIndex()
         }
         else
         {
-            this->dbNV->deleteNode(index);
-            printSuccess("Da xoa thanh cong!");
+            Node<NhanVien> *pTemp = this->dbNV->getpHead();
+            while (true)
+            {
+
+                if (pTemp->getData().getSoDienThoai() == _sdt)
+                {
+                    break;
+                }
+                pTemp = pTemp->getpNext();
+            }
+            printWarning("Ban se xoa nhan vien nay!");
+            cout << endl << endl;
+
+            pTemp->getData().xuatFullInfo();
+
+            printRes("Ban co chac chan khong?(y/n): ");
+            char c;
+            fflush(stdin);
+            c = getchar();
+            
+            if (c == 'y' || c == 'Y')
+            {
+                this->dbNV->deleteNode(index);
+                printSuccess("Da xoa thanh cong!");
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

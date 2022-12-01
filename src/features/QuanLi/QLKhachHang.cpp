@@ -380,8 +380,35 @@ void QLKhachHang::deleteIndex()
         }
         else
         {
-            this->dbKH->deleteNode(index);
-            printSuccess("Da xoa thanh cong!");
+            Node<KhachHang> *pTemp = this->dbKH->getpHead();
+            while (true)
+            {
+
+                if (pTemp->getData().getSoDienThoai() == _sdt)
+                {
+                    break;
+                }
+                pTemp = pTemp->getpNext();
+            }
+            printWarning("Ban se xoa khach hang nay!");
+            cout << endl << endl;
+
+            pTemp->getData().xuatFullInfo();
+
+            printRes("Ban co chac chan khong?(y/n): ");
+            char c;
+            fflush(stdin);
+            c = getchar();
+
+            if (c == 'y' || c == 'Y')
+            {
+                this->dbKH->deleteNode(index);
+                printSuccess("Da xoa thanh cong!");
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

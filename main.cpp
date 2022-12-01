@@ -24,10 +24,11 @@ int main()
   fstream fileKH;
   fileKH.open("src/components/data/ola.dat", ios_base::in);
   p->docFile(fileKH);
-  fileKH.close();
+  // fileKH.close();
   // // p->create();
   p->read();
   p->deleteIndex();
+  p->read();
   // // p->find();
   // // fileKH.open("src/components/data/ola1.dat", ios_base::out);
   // // p->ghiFile(fileKH);
