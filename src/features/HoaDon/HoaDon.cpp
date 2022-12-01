@@ -52,6 +52,11 @@ const Ma &HoaDon::getMaHD()
 {
   return this->maHD;
 }
+
+const int &HoaDon::getSTT()
+{
+  return this->maHD.getSoTT();
+}
 const Ma &HoaDon::getMaNV()
 {
   return this->maNV;

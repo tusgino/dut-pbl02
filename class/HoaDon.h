@@ -34,6 +34,7 @@ public:
   void setListSP(List<SanPham> *);
   //-
   const Ma &getMaHD();
+  const int &getSTT();
   const Ma &getMaNV();
   const Ma &getMaKH();
   const int &getSoLuong();
@@ -44,7 +45,11 @@ public:
   // Utils
   void docFile(fstream &);
   void ghiFile(fstream &);
+<<<<<<< HEAD
   void xuat();
+=======
+  void Xuat();
+>>>>>>> 7721033b971baaa719b0d1bb5f4773ee1c571dd9
 };
 
 #endif

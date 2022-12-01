@@ -4,6 +4,7 @@ using namespace std;
 
 int main()
 {
+<<<<<<< HEAD
   QLSanPham *pSP = new QLSanPham();
   QLNhanVien *pNV = new QLNhanVien();
   // QLKhachHang *pKH = new QLKhachHang();
@@ -22,10 +23,26 @@ int main()
   p->docFile(fileNV);
   // p->read();
   // p->find();
+=======
+  QLHoaDon *pHD = new QLHoaDon();
+>>>>>>> 7721033b971baaa719b0d1bb5f4773ee1c571dd9
 
-  // // fileSP.open("src/components/data/SanPham1.DAT", ios_base::out);
-  // // p->ghiFile(fileSP);
+  fstream fileHD;
+  fileHD.open("src/components/data/HoaDon.DAT", ios_base::in);
+  pHD->docFile(fileHD);
+  fileHD.close();
+  fileHD.open("src/components/data/HoaDon1.DAT", ios_base::out);
+  pHD->ghiFile(fileHD);
+  fileHD.close();
+
+  // // QLSanPham *pSP = new QLSanPham();
+  // // QLNhanVien *pNV = new QLNhanVien();
+  // // QLKhachHang *pKH = new QLKhachHang();
+  // // fstream fileSP;
+  // // fileSP.open("src/components/data/SanPham.DAT", ios_base::in);
+  // // pSP->docFile(fileSP);
   // // fileSP.close();
+<<<<<<< HEAD
   // return 0;
   // QLKhachHang *p = new QLKhachHang();
   // fstream fileKH;
@@ -48,8 +65,40 @@ int main()
   // // p->ghiFile(fileKH);
   // // fileKH.close();
   // // cout << 1;
+=======
+  // // // p->find();
+  // // // p->deleteIndex();
+  // // pSP->update();
+  // pSP->read();
+  // // pSP->read();
+>>>>>>> 7721033b971baaa719b0d1bb5f4773ee1c571dd9
 
-  return 0;
+  // // // fileSP.open("src/components/data/SanPham1.DAT", ios_base::out);
+  // // // p->ghiFile(fileSP);
+  // // // fileSP.close();
+  // // return 0;
+  // QLKhachHang *p = new QLKhachHang();
+  // fstream fileKH;
+  // fileKH.open("src/components/data/ola.dat", ios_base::in);
+  // p->docFile(fileKH);
+  // // fileKH.close();
+  // // // p->create();
+  // p->read();
+  // p->deleteIndex();
+  // p->read();
+  // // // p->find();
+  // // // fileKH.open("src/components/data/ola1.dat", ios_base::out);
+  // // // p->ghiFile(fileKH);
+  // // // fileKH.close();
+  // // // p->sortMa();
+  // // // // p->create();
+  // // // // p->read();
+  // // // fileKH.open("src/components/data/ola1.dat", ios_base::out);
+  // // // p->ghiFile(fileKH);
+  // // // fileKH.close();
+  // // // cout << 1;
+
+  // return 0;
   // // Ma ma("A", 67);
   // // cout << string(ma);
 }
