@@ -34,6 +34,7 @@ public:
   void setListSP(List<SanPham> *);
   //-
   const Ma &getMaHD();
+  const int &getSTT();
   const Ma &getMaNV();
   const Ma &getMaKH();
   const int &getSoLuong();
@@ -42,9 +43,9 @@ public:
   List<SanPham> *getListSP();
 
   // Utils
-  docFile(fstream &);
-  ghiFile(fstream &);
-  Xuat();
-}
+  void docFile(fstream &);
+  void ghiFile(fstream &);
+  void Xuat();
+};
 
 #endif

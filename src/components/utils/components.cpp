@@ -131,4 +131,10 @@ bool checkSDT(string soDienThoai)
   return true;
 }
 
+void pauseScreen(){
+  fflush(stdin);
+  char c;
+  c = getchar();
+}
+
 #endif

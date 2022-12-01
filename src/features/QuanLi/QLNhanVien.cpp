@@ -42,9 +42,9 @@ void QLNhanVien::create()
     {
         {
             string arr[] = {"Nhap chuc vu cua nhan vien muon them", "Quan li", "Nhan vien", "Quay lai"};
-            printOpt(arr, 2);
+            printOpt(arr, 3);
         }
-        int key = getKey(2);
+        int key = getKey(3);
         switch (key)
         {
         case 1:
@@ -104,7 +104,244 @@ void QLNhanVien::update()
 {
 
     {
-        string arr[] = {"Nhap lua chon cua ban"};
+        string temp;
+        printRes("Nhap ma hoac so dien thoai cua nhan vien muon thay doi thong tin");
+        fflush(stdin);
+        getline(cin, temp);
+        bool checkMa = false, checkSDT = false;
+        Node<NhanVien> *pTemp = this->dbNV->getpHead();
+        while (pTemp)
+        {
+            if (string(pTemp->getData().getMa()) == temp)
+            {
+                checkMa == true;
+                break;
+            }
+            pTemp = pTemp->getpNext();
+        }
+        pTemp = this->dbNV->getpHead();
+        while (pTemp)
+        {
+            if ((pTemp->getData().getSoDienThoai()) == temp)
+            {
+                checkSDT == true;
+                break;
+            }
+            pTemp = pTemp->getpNext();
+        }
+
+        if (checkMa == true || checkSDT == false)
+        {
+            cout << "Da tim thay nhan vien co ma nay\n";
+        }
+        else if (checkMa == true || checkSDT == false)
+        {
+            cout << "Da tim thay nhan vien co so dien thoai nay";
+        }
+        while (true)
+        {
+            pTemp->getData().xuatFullInfo();
+
+            {
+                string arr[] = {"Nhap thong tin can chinh sua", "Ten nhan vien", "Chuc vu", "So dien thoai", "Dia chi", "Ca lam", "Gioi tinh", "Quay lai"};
+
+                printOpt(arr, 7);
+            }
+
+            int key = getKey(7);
+            switch (key)
+            {
+            case 1:
+            {
+                NhanVien _NVRepair;
+                _NVRepair = pTemp->getData();
+                cout << "Nhap ten nhan vien nay: ";
+                string temp;
+                fflush(stdin);
+                getline(cin, temp);
+                if (temp.length() == 0)
+                {
+                    printError("Ten nhan vien ko the de trong");
+                }
+                else
+                {
+                    _NVRepair.setTen(temp);
+                    pTemp->setData(_NVRepair);
+
+                    printSuccess("Ban da thay doi ten thanh cong cua nhan vien nay");
+                }
+            }
+            break;
+            case 2:
+            {
+                NhanVien _NVRepair;
+                _NVRepair = pTemp->getData();
+                if (_NVRepair.getMa().getKiTu() == "NV")
+                {
+                    Ma _maTemp("QL", pTemp->getData().getMa().getSoTT());
+                    // _NVRepair.setMa(_maTemp);
+                    Node<NhanVien> *pFind = this->dbNV->getpHead();
+                    bool checkMa = true;
+                    while (pFind)
+                    {
+                        if (pFind->getData().getMa() == _maTemp)
+                        {
+                            checkMa = false;
+                            break;
+                        }
+                        pFind = pFind->getpNext();
+                    }
+                    if (checkMa == false)
+                    {
+                        int soTT = 0;
+                        while (pFind)
+                        {
+                            if (pFind->getData().getMa().getKiTu() == "QL" && pFind->getData().getMa().getSoTT() >= soTT)
+                            {
+                                soTT = pFind->getData().getMa().getSoTT();
+                            }
+                            pFind = pFind->getpNext();
+                        }
+                        _maTemp.setSoTT(soTT + 1);
+                    }
+                    _NVRepair.setMa(_maTemp);
+                    pTemp->setData(_NVRepair);
+                    printSuccess("Da thay doi chuc vu thanh cong");
+                }
+                else
+                {
+                    Ma _maTemp("NV", pTemp->getData().getMa().getSoTT());
+                    // _NVRepair.setMa(_maTemp);
+                    Node<NhanVien> *pFind = this->dbNV->getpHead();
+                    bool checkMa = true;
+                    while (pFind)
+                    {
+                        if (pFind->getData().getMa() == _maTemp)
+                        {
+                            checkMa = false;
+                            break;
+                        }
+                        pFind = pFind->getpNext();
+                    }
+                    if (checkMa == false)
+                    {
+                        int soTT = 0;
+                        while (pFind)
+                        {
+                            if (pFind->getData().getMa().getKiTu() == "NV" && pFind->getData().getMa().getSoTT() >= soTT)
+                            {
+                                soTT = pFind->getData().getMa().getSoTT();
+                            }
+                            pFind = pFind->getpNext();
+                        }
+                        _maTemp.setSoTT(soTT + 1);
+                    }
+                    _NVRepair.setMa(_maTemp);
+                    pTemp->setData(_NVRepair);
+                    printSuccess("Da thay doi chuc vu thanh cong");
+                }
+            }
+            break;
+            case 3:
+            {
+                string _tempSDT;
+                cout << "Nhap so dien thoai muon thay doi";
+                fflush(stdin);
+                getline(cin, _tempSDT);
+
+                NhanVien _NVRepair;
+                _NVRepair = pTemp->getData();
+                if (_tempSDT.length() == 0)
+                {
+                    printError("So dien thoai khong the de trong. Vui long thu lai");
+                }
+                else
+                {
+                    _NVRepair.setTen(temp);
+                    pTemp->setData(_NVRepair);
+
+                    printSuccess("Ban da thay doi so dien thoai cua nhan vien nay");
+                }
+            }
+            case 4:
+            {
+                string _tempDiaChi;
+                cout << "Nhap so dien thoai muon thay doi";
+                fflush(stdin);
+                getline(cin, _tempDiaChi);
+
+                NhanVien _NVRepair;
+                _NVRepair = pTemp->getData();
+                if (_tempDiaChi.length() == 0)
+                {
+                    _tempDiaChi = "(null)";
+                }
+                else
+                {
+                }
+                _NVRepair.setTen(temp);
+                pTemp->setData(_NVRepair);
+                printSuccess("Ban da thay doi dia chi cua nhan vien nay");
+            }
+            break;
+            case 5:
+            {
+                NhanVien _NVRepair;
+                _NVRepair = pTemp->getData();
+                {
+                    string arr[] = {"Nhap ca lam: ", "07h00 den 11h30", "13h30 den 18h00", "18h30 den 23h00"};
+                    printOpt(arr, 3);
+
+                    int key = getKey(3);
+                    switch (key)
+                    {
+                    case 1:
+                    case 2:
+                    case 3:
+                        _NVRepair.setCaLam(key);
+                        break;
+                    default:
+                        _NVRepair.setCaLam(-1);
+                        break;
+                    }
+                    _NVRepair.setTen(temp);
+                    pTemp->setData(_NVRepair);
+                    printSuccess("Ban da thay doi ca lam cua nhan vien nay");
+                }
+            }
+            break;
+            case 6:
+            {
+                NhanVien _NVRepair;
+                _NVRepair = pTemp->getData();
+                {
+                    string arr[] = {"Nhap gioi tinh", "Nam", "Nu", "Khac"};
+                    printOpt(arr, 3);
+                }
+                int key = getKey(3);
+                switch (key)
+                {
+                case 1:
+                case 2:
+                case 3:
+                    _NVRepair.setGioiTinh(key);
+                    break;
+                default:
+                    _NVRepair.setGioiTinh(-1);
+                    break;
+                }
+                _NVRepair.setTen(temp);
+                pTemp->setData(_NVRepair);
+                printSuccess("Ban da thay doi gioi tinh cua nhan vien nay");
+            }
+            break;
+            case 7:
+                return;
+                break;
+            default:
+                break;
+            }
+        }
     }
 }
 
@@ -191,6 +428,7 @@ void QLNhanVien::find()
                 if (pTemp->getData().getSoDienThoai() == _sdt)
                 {
                     pTemp->getData().xuatFullInfo();
+                    pauseScreen();
                     return;
                 }
                 pTemp = pTemp->getpNext();
@@ -209,7 +447,7 @@ void QLNhanVien::find()
             Node<NhanVien> *pTemp = this->dbNV->getpHead();
 
             ConsoleTable table{"STT", "Ma nhan vien", "Ten nhan vien", "Dia chi", "So dien thoai"};
-            int cnt = 0l;
+            int cnt = 0;
             table.setPadding(2);
             table.setStyle(0);
             while (pTemp)
@@ -229,7 +467,7 @@ void QLNhanVien::find()
             return;
         default:
             printError("Ban nhap sai yeu cau. Vui long thu lai");
-            system("pause");
+            // system("pause");
             break;
         }
     }
@@ -254,8 +492,35 @@ void QLNhanVien::deleteIndex()
         }
         else
         {
-            this->dbNV->deleteNode(index);
-            printSuccess("Da xoa thanh cong!");
+            Node<NhanVien> *pTemp = this->dbNV->getpHead();
+            while (true)
+            {
+
+                if (pTemp->getData().getSoDienThoai() == _sdt)
+                {
+                    break;
+                }
+                pTemp = pTemp->getpNext();
+            }
+            printWarning("Ban se xoa nhan vien nay!");
+            cout << endl << endl;
+
+            pTemp->getData().xuatFullInfo();
+
+            printRes("Ban co chac chan khong?(y/n): ");
+            char c;
+            fflush(stdin);
+            c = getchar();
+            
+            if (c == 'y' || c == 'Y')
+            {
+                this->dbNV->deleteNode(index);
+                printSuccess("Da xoa thanh cong!");
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
