@@ -366,7 +366,7 @@ void QLSanPham::update()
                     if (pTemp->getData().getMa() == tempMa && pTemp->getData().getSize() == tempSize)
                     {
                       tenSP = pTemp->getData().getTen();
-                      
+
                       tempSP->setMa(pTemp->getData().getMa());
                       tempSP->setSize(pTemp->getData().getSize());
                       tempSP->setTen(pTemp->getData().getTen());
@@ -436,7 +436,8 @@ void QLSanPham::update()
 
 void QLSanPham::read()
 {
-  QLSanPham::readList(this->dbSP);
+    QLSanPham::readList(this->dbSP);
+  
 }
 
 void QLSanPham::find()
@@ -563,6 +564,10 @@ void QLSanPham::sortMa(List<SanPham> *listSP)
 
 void QLSanPham::readList(List<SanPham> *listSP)
 {
+  if(listSP->getpHead() == nullptr){
+    printError("Danh sach nay rong. Vui long them du lieu");
+    return;
+  }
   ConsoleTable table{"STT", "Ma San Pham", "Ten San Pham", "Xuat Xu", "Gia Nhap", "Gia Ban", "Giam Gia", "S", "M", "L", "XL", "XXL", "Tong So Luong"};
   table.setPadding(1);
   table.setStyle(0);

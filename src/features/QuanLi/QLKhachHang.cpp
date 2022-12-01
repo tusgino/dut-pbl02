@@ -333,6 +333,22 @@ int QLKhachHang::findBySDT(const string &sdt)
     return -1;
 }
 
+const Ma QLKhachHang::findBySDTReturnMa(const string &sdt){
+    static Ma _maRac;
+    Node<KhachHang> *pTemp = this->dbKH->getpHead();
+    while (pTemp)
+    {
+        if (pTemp->getData().getSoDienThoai() == sdt)
+        {
+            return pTemp->getData().getMa();
+        }
+        // index++;
+        pTemp = pTemp->getpNext();
+    }
+
+    return _maRac;
+}
+
 void xuatFile()
 {
     fstream fileXuatKH;
@@ -395,7 +411,7 @@ void QLKhachHang::deleteIndex()
 
             pTemp->getData().xuatFullInfo();
 
-            printRes("Ban co chac chan khong?(y/n): ");
+            printRes("Ban co chac chan khong?(y: dong y/'ki tu bat ki': huy): ");
             char c;
             fflush(stdin);
             c = getchar();

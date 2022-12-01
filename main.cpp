@@ -14,8 +14,8 @@ int main()
   // // p->find();
   // // p->deleteIndex();
   // pSP->update();
-  // pSP->read();
   pSP->read();
+  // pSP->read();
 
   // // fileSP.open("src/components/data/SanPham1.DAT", ios_base::out);
   // // p->ghiFile(fileSP);
