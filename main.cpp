@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "class/lib.h"
 
 using namespace std;
 
@@ -13,7 +13,7 @@ int main()
   fileSP.close();
   // // p->find();
   // // p->deleteIndex();
-  pSP->update();
+  // pSP->update();
   pSP->read();
 
   // // fileSP.open("src/components/data/SanPham1.DAT", ios_base::out);

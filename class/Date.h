@@ -28,6 +28,7 @@ public:
   void setThang(const int &);
   void setNam(const int &);
   void ghiFile(fstream &);
+  void docFile(fstream &);
 
   friend istream &operator>>(istream &, Date &);
   friend ostream &operator<<(ostream &, const Date &);
