@@ -355,6 +355,10 @@ void QLNhanVien::update()
 
 void QLNhanVien::read()
 {
+    if (this->dbNV->getpHead() == nullptr)
+    {
+        printError("Danh sach khach hang dang rong. Vui long them du lieu");
+    }
     ConsoleTable table{"STT", "Ma nhan vien", "Ten nhan vien", "Dia chi", "So dien thoai"};
     Node<NhanVien> *pTemp = this->dbNV->getpHead();
     table.setPadding(2);
@@ -627,5 +631,9 @@ void QLNhanVien::deleteIndex()
                 }
             }
         }
+    }
+    else
+    {
+        printError("Khong tim thay nhan vien co ma hoac so dien thoai nay. Vui long thu lai!");
     }
 }

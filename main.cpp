@@ -4,9 +4,9 @@ using namespace std;
 
 int main()
 {
-<<<<<<< HEAD
   QLSanPham *pSP = new QLSanPham();
-  QLNhanVien *pNV = new QLNhanVien();
+  // QLNhanVien *pNV = new QLNhanVien();
+  QLNhanVien *p = new QLNhanVien();
   // QLKhachHang *pKH = new QLKhachHang();
   // fstream fileSP;
   // fileSP.open("src/components/data/SanPham.DAT", ios_base::in);
@@ -17,20 +17,18 @@ int main()
   // pSP->update();
   // pSP->read();
   // pSP->read();
-  QLNhanVien *p = new QLNhanVien();
   fstream fileNV;
   fileNV.open("src/components/data/NhanVien.DAT", ios_base::in);
   p->docFile(fileNV);
   // p->read();
   // p->find();
-=======
   QLHoaDon *pHD = new QLHoaDon();
->>>>>>> 7721033b971baaa719b0d1bb5f4773ee1c571dd9
 
   fstream fileHD;
   fileHD.open("src/components/data/HoaDon.DAT", ios_base::in);
   pHD->docFile(fileHD);
   fileHD.close();
+  
   fileHD.open("src/components/data/HoaDon1.DAT", ios_base::out);
   pHD->ghiFile(fileHD);
   fileHD.close();
@@ -42,7 +40,6 @@ int main()
   // // fileSP.open("src/components/data/SanPham.DAT", ios_base::in);
   // // pSP->docFile(fileSP);
   // // fileSP.close();
-<<<<<<< HEAD
   // return 0;
   // QLKhachHang *p = new QLKhachHang();
   // fstream fileKH;
@@ -50,10 +47,10 @@ int main()
   // p->docFile(fileKH);
   // fileKH.close();
   // // p->create();
-  p->read();
-  // p->update();
-  p->deleteIndex();
-  p->read();
+  // p->read();
+  // // p->update();
+  // p->deleteIndex();
+  // p->read();
   // // p->find();
   // // fileKH.open("src/components/data/ola1.dat", ios_base::out);
   // // p->ghiFile(fileKH);
@@ -65,13 +62,11 @@ int main()
   // // p->ghiFile(fileKH);
   // // fileKH.close();
   // // cout << 1;
-=======
   // // // p->find();
   // // // p->deleteIndex();
   // // pSP->update();
   // pSP->read();
   // // pSP->read();
->>>>>>> 7721033b971baaa719b0d1bb5f4773ee1c571dd9
 
   // // // fileSP.open("src/components/data/SanPham1.DAT", ios_base::out);
   // // // p->ghiFile(fileSP);

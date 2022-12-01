@@ -71,6 +71,9 @@ void QLKhachHang::create()
 }
 void QLKhachHang::read()
 {
+    if(this->dbKH->getpHead()  == nullptr){
+        printError("Danh sach khach hang dang rong. Vui long them du lieu");
+    }
     ConsoleTable table{"STT", "Ma khach hang", "Ten khach hang", "Dia chi", "So dien thoai"};
     Node<KhachHang> *pTemp = this->dbKH->getpHead();
     table.setPadding(2);
