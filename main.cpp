@@ -4,30 +4,30 @@ using namespace std;
 
 int main()
 {
-  QLSanPham *pSP = new QLSanPham();
-  // QLNhanVien *pNV = new QLNhanVien();
+  // QLSanPham *pSP = new QLSanPham();
+  QLNhanVien *pNV = new QLNhanVien();
   // QLKhachHang *pKH = new QLKhachHang();
-  fstream fileSP;
-  fileSP.open("src/components/data/SanPham.DAT", ios_base::in);
-  pSP->docFile(fileSP);
-  fileSP.close();
+  // fstream fileSP;
+  // fileSP.open("src/components/data/SanPham.DAT", ios_base::in);
+  // pSP->docFile(fileSP);
+  // fileSP.close();
   // // p->find();
   // // p->deleteIndex();
-  pSP->update();
-  pSP->read();
+  // pSP->update();
+  // pSP->read();
 
   // // fileSP.open("src/components/data/SanPham1.DAT", ios_base::out);
   // // p->ghiFile(fileSP);
   // // fileSP.close();
   // return 0;
-  // // QLKhachHang *p = new QLKhachHang();
-  // // fstream fileKH;
-  // // fileKH.open("src/components/data/ola.dat", ios_base::in);
-  // // p->docFile(fileKH);
-  // // fileKH.close();
+  QLKhachHang *p = new QLKhachHang();
+  fstream fileKH;
+  fileKH.open("src/components/data/ola.dat", ios_base::in);
+  p->docFile(fileKH);
+  fileKH.close();
   // // p->create();
-  // // p->read();
-  // // p->deleteIndex();
+  p->read();
+  p->deleteIndex();
   // // p->find();
   // // fileKH.open("src/components/data/ola1.dat", ios_base::out);
   // // p->ghiFile(fileKH);
@@ -40,7 +40,7 @@ int main()
   // // fileKH.close();
   // // cout << 1;
 
-  // return 0;
+  return 0;
   // // Ma ma("A", 67);
   // // cout << string(ma);
 }
