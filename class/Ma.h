@@ -7,6 +7,7 @@
 #include <fstream>
 
 #include "..\src\components\utils\components.cpp"
+#include "Variables.h"
 
 using namespace std;
 

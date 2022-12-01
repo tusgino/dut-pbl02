@@ -1,8 +1,0 @@
-#include "src\features\QuanLi\QLKhachHang.cpp"
-#include "src\features\QuanLi\QLNhanVien.cpp"
-#include "src\features\QuanLi\QLSanPham.cpp"
-#include "src\features\QuanLi\QuanLi.cpp"
-#include "src\features\NhanVien\NhanVien.cpp"
-#include "src\features\SanPham\SanPham.cpp"
-#include "src\features\KhachHang\KhachHang.cpp"
-#include "src\components\utils\Ma.cpp"

@@ -23,6 +23,7 @@ void QLSanPham::docFile(fstream &fileIn)
   {
     SanPham *SP = new SanPham;
     SP->docFile(fileIn);
+    fileIn.ignore(1);
     this->dbSP->push_back(*SP);
     delete SP;
   }

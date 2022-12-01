@@ -77,6 +77,20 @@ void Date::ghiFile(fstream &fileOut)
     fileOut << setfill('0') << setw(2) << right << this->gio << ":" << setw(2) << right << this->phut << "  " << setw(2) << this->ngay << "/" << setw(2) << this->thang << "/" << this->nam << "|";
 }
 
+void Date::docFile(fstream &fileIn)
+{
+    fileIn >> this->gio;
+    fileIn.ignore(1);
+    fileIn >> this->phut;
+    fileIn.ignore(1);
+    fileIn >> this->ngay;
+    fileIn.ignore(1);
+    fileIn >> this->thang;
+    fileIn.ignore(1);
+    fileIn >> this->nam;
+    fileIn.ignore(1);
+}
+
 istream &operator>>(istream &ip, Date &date)
 {
     fflush(stdin);

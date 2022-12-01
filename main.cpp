@@ -1,10 +1,10 @@
-#include "lib.h"
+#include "class/lib.h"
 
 using namespace std;
 
 int main()
 {
-  // QLSanPham *pSP = new QLSanPham();
+  QLSanPham *pSP = new QLSanPham();
   QLNhanVien *pNV = new QLNhanVien();
   // QLKhachHang *pKH = new QLKhachHang();
   // fstream fileSP;
@@ -15,6 +15,7 @@ int main()
   // // p->deleteIndex();
   // pSP->update();
   // pSP->read();
+  pSP->read();
 
   // // fileSP.open("src/components/data/SanPham1.DAT", ios_base::out);
   // // p->ghiFile(fileSP);

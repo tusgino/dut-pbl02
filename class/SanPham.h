@@ -8,8 +8,6 @@
 
 #include "Ma.h"
 
-typedef long long ll;
-
 using namespace std;
 
 class SanPham
