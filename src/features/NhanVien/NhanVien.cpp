@@ -190,11 +190,11 @@ void NhanVien::setGioiTinh(const int &gioitinh)
 {
   this->gioiTinh = gioitinh;
 }
-void NhanVien::setDiaChi(const int &diachi)
+void NhanVien::setDiaChi(const string &diachi)
 {
   this->diaChi = diachi;
 }
-void NhanVien::setMatKhau(const int &matkhau)
+void NhanVien::setMatKhau(const string &matkhau)
 {
   this->matKhau = matkhau;
 }

@@ -30,8 +30,8 @@ public:
   void setSoDienThoai(const string &);
   void setCaLam(const int &);
   void setGioiTinh(const int &);
-  void setDiaChi(const int &);
-  void setMatKhau(const int &);
+  void setDiaChi(const string &);
+  void setMatKhau(const string &);
   string getChucVu();
   Ma getMa();
   string getTen();

@@ -334,7 +334,7 @@ int QLKhachHang::findBySDT(const string &sdt)
 }
 
 const Ma QLKhachHang::findBySDTReturnMa(const string &sdt){
-    static Ma _maRac;
+    static Ma _maRac("null", -1); // Mã rác
     Node<KhachHang> *pTemp = this->dbKH->getpHead();
     while (pTemp)
     {
