@@ -17,7 +17,7 @@ public:
     virtual void sortMa();
 
     // HoaDon
-    virtual void thongke();
+    // virtual void thongke();
 };
 
 #endif
