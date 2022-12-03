@@ -19,19 +19,21 @@ int main()
   // pSP->read();
   fstream fileNV;
   fileNV.open("src/components/data/NhanVien.DAT", ios_base::in);
-  p->docFile(fileNV);
+  // p->docFile(fileNV);
+  p->deleteIndex();
   // p->read();
   // p->find();
-  QLHoaDon *pHD = new QLHoaDon();
-
-  fstream fileHD;
-  fileHD.open("src/components/data/HoaDon.DAT", ios_base::in);
-  pHD->docFile(fileHD);
-  fileHD.close();
   
-  fileHD.open("src/components/data/HoaDon1.DAT", ios_base::out);
-  pHD->ghiFile(fileHD);
-  fileHD.close();
+  // QLHoaDon *pHD = new QLHoaDon();
+
+  // fstream fileHD;
+  // fileHD.open("src/components/data/HoaDon.DAT", ios_base::in);
+  // pHD->docFile(fileHD);
+  // fileHD.close();
+  
+  // fileHD.open("src/components/data/HoaDon1.DAT", ios_base::out);
+  // pHD->ghiFile(fileHD);
+  // fileHD.close();
 
   // // QLSanPham *pSP = new QLSanPham();
   // // QLNhanVien *pNV = new QLNhanVien();

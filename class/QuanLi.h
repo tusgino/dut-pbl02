@@ -15,6 +15,7 @@ public:
     virtual void find();        // Tim Kiem
     virtual void deleteIndex(); // Xoa
     virtual void sortMa();
+    virtual ~QuanLi();
 
     // HoaDon
     // virtual void thongke();

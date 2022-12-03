@@ -346,7 +346,6 @@ void QLKhachHang::find()
         printError("Khong tim thay KHACH HANG co ket qua phu hop. Vui long thu lai");
     }
 }
-
 int QLKhachHang::findBySDT(const string &sdt)
 {
     int index = 0;
@@ -362,7 +361,6 @@ int QLKhachHang::findBySDT(const string &sdt)
     }
     return -1;
 }
-
 const Ma QLKhachHang::findBySDTReturnMa(const string &sdt)
 {
     static Ma _maRac("null", -1); // Mã rác
@@ -379,13 +377,11 @@ const Ma QLKhachHang::findBySDTReturnMa(const string &sdt)
 
     return _maRac;
 }
-
 void xuatFile()
 {
     fstream fileXuatKH;
     fileXuatKH.open("/src/components/data/file_KH.DAT");
 }
-
 void QLKhachHang::sortMa()
 {
     Node<KhachHang> *pBefore = this->dbKH->getpHead();
@@ -407,7 +403,6 @@ void QLKhachHang::sortMa()
     }
     printSuccess("Da sap xep thanh cong!");
 }
-
 void QLKhachHang::deleteIndex()
 {
     string _sdt;

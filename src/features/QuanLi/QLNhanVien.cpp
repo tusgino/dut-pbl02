@@ -493,7 +493,7 @@ void QLNhanVien::find()
     while (true)
     {
         string temp;
-        printRes("Nhap Ma, So dien thoai hoac Ten cua nhan vien can tim");
+        printRes("Nhap Ma, So dien thoai hoac Ten cua nhan vien can tim: ");
         fflush(stdin);
         getline(cin, temp);
 
@@ -501,9 +501,10 @@ void QLNhanVien::find()
         Node<NhanVien> *pTemp = this->dbNV->getpHead();
         while (pTemp)
         {
-            if (string(pTemp->getData().getMa()) == temp)
+            
+            if (findString(string(pTemp->getData().getMa()), temp) != -1)
             {
-                checkMa == true;
+                checkMa = true;
                 break;
             }
             pTemp = pTemp->getpNext();
@@ -521,7 +522,7 @@ void QLNhanVien::find()
         pTemp = this->dbNV->getpHead();
         while (pTemp)
         {
-            if ((pTemp->getData().getTen()) == temp)
+            if (findString(pTemp->getData().getTen(), temp) != -1)
             {
                 checkTen = true;
                 break;
@@ -592,7 +593,7 @@ void QLNhanVien::find()
 void QLNhanVien::deleteIndex()
 {
     string temp;
-    printRes("Nhap ma hoac so dien thoai cua nhan vien muon xoa");
+    printRes("Nhap Ma hoac So dien thoai cua nhan vien muon xoa: ");
     fflush(stdin);
     getline(cin, temp);
     bool checkMa = false, checkSDT = false;
@@ -601,7 +602,7 @@ void QLNhanVien::deleteIndex()
     {
         if (string(pTemp->getData().getMa()) == temp)
         {
-            checkMa == true;
+            checkMa = true;
             break;
         }
         pTemp = pTemp->getpNext();
@@ -617,16 +618,7 @@ void QLNhanVien::deleteIndex()
         pTemp = pTemp->getpNext();
     }
 
-    pTemp = this->dbNV->getpHead();
-    while (pTemp)
-    {
-        if (string(pTemp->getData().getMa()) == temp)
-        {
-            checkMa = true;
-            break;
-        }
-        pTemp = pTemp->getpNext();
-    }
+    
 
     if (checkMa == true)
     {
