@@ -367,7 +367,7 @@ int QLKhachHang::findBySDT(const string &sdt)
     }
     return -1;
 }
-const Ma QLKhachHang::findBySDTReturnMa(const string &sdt)
+Ma QLKhachHang::findKH(const string &sdt)
 {
     static Ma _maRac("null", -1); // Mã rác
     Node<KhachHang> *pTemp = this->dbKH->getpHead();
@@ -383,6 +383,7 @@ const Ma QLKhachHang::findBySDTReturnMa(const string &sdt)
 
     return _maRac;
 }
+
 void QLKhachHang::xuatFile(fstream &fileXuatKH)
 {
     if (this->dbKH->getpHead() == nullptr)
@@ -392,7 +393,8 @@ void QLKhachHang::xuatFile(fstream &fileXuatKH)
     }
 
     // fileXuatKH.open("/src/components/data/file_KH.DAT");
-    fileXuatKH << center << "\t\t\t    " << "THONG TIN KHACH HANG\n";
+    fileXuatKH << center << "\t\t\t    "
+               << "THONG TIN KHACH HANG\n";
 
     ConsoleTable table{"STT", "Ma khach hang", "Ten khach hang", "Dia chi", "So dien thoai"};
     Node<KhachHang> *pTemp = this->dbKH->getpHead();
@@ -482,4 +484,26 @@ void QLKhachHang::deleteIndex()
             }
         }
     }
+}
+
+void QLKhachHang::create(const string &_sdt)
+{
+    KhachHang _KHAdd;
+    int soTT = 0;
+    // Tìm soTT của MaKH lớn nhất để sinh mã
+    {
+        Node<KhachHang> *pTemp = this->dbKH->getpHead();
+        while (pTemp)
+        {
+            soTT = (pTemp->getData().getMa().getSoTT() > soTT) ? pTemp->getData().getMa().getSoTT() : soTT;
+            pTemp = pTemp->getpNext();
+        }
+    }
+    Ma tempMa("KH", soTT + 1);
+    _KHAdd.setMa(tempMa);
+    _KHAdd.setSoDienThoai(_sdt);
+    _KHAdd.nhap(); // Nhập từ phím
+
+    this->dbKH->push_back(_KHAdd);
+    this->count++;
 }

@@ -436,8 +436,7 @@ void QLSanPham::update()
 
 void QLSanPham::read()
 {
-    QLSanPham::readList(this->dbSP);
-  
+  QLSanPham::readList(this->dbSP);
 }
 
 void QLSanPham::find()
@@ -564,7 +563,8 @@ void QLSanPham::sortMa(List<SanPham> *listSP)
 
 void QLSanPham::readList(List<SanPham> *listSP)
 {
-  if(listSP->getpHead() == nullptr){
+  if (listSP->getpHead() == nullptr)
+  {
     printError("Danh sach nay rong. Vui long them du lieu");
     return;
   }
@@ -674,7 +674,22 @@ List<SanPham> *QLSanPham::findList()
   return NULL;
 }
 
-int QLSanPham::findIndex(List<SanPham> *listSP, const Ma &ma)
+const SanPham QLSanPham::findSP(List<SanPham> *listSP, const Ma &ma, const string &size)
+{
+  static Ma tempMa("NULL", -1);
+  static SanPham tempSP(tempMa);
+  Node<SanPham> *pTemp = listSP->getpHead();
+  while (pTemp)
+  {
+    if (pTemp->getData().getMa() == ma && pTemp->getData().getSize() == size)
+      return pTemp->getData();
+    pTemp = pTemp->getpNext();
+  }
+  printError("Ma san pham khong ton tai!");
+  return tempSP;
+}
+
+const int QLSanPham::findIndex(List<SanPham> *listSP, const Ma &ma)
 {
   Node<SanPham> *pTemp = listSP->getpHead();
   int cnt = 0;

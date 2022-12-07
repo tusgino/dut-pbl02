@@ -113,12 +113,11 @@ void HoaDon::ghiFile(fstream &fileOut)
     pTemp->getData().ghiFile(fileOut);
     pTemp = pTemp->getpNext();
   }
-  fileOut << endl;
 }
 
 void HoaDon::xuat()
 {
-  cout << center <<"+------------------------------------------------+\n";
+  cout << center << "+------------------------------------------------+\n";
   cout << center << "|              THONG TIN HOA DON                 |\n";
   cout << center << "| Ma nhan vien: " << this->maNV << "                           |\n";
   cout << center << "| Ma khach hang: " << this->maKH << "                          |\n";

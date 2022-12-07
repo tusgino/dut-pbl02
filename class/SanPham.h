@@ -25,7 +25,7 @@ private:
 public:
   // Init
   SanPham();
-  SanPham(const Ma &, const string &, const string &, const string &, const int &, const ll &, const ll &, const int &);
+  SanPham(const Ma &, const string & = " ", const string & = " ", const string & = " ", const int & = -1, const ll & = -1, const ll & = -1, const int & = -1);
   ~SanPham();
   // Set, Get
   void setMa(const Ma &);
