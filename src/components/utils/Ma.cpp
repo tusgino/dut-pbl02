@@ -102,7 +102,7 @@ Ma::operator std::string()
         res += '0';
     }
     res += to_string(this->soTT);
-    
+
     return res;
 }
 

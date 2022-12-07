@@ -384,6 +384,23 @@ Ma QLKhachHang::findKH(const string &sdt)
     return _maRac;
 }
 
+string QLKhachHang::findKH(const Ma &ma)
+{
+    string _tenRac = " ";
+    Node<KhachHang> *pTemp = this->dbKH->getpHead();
+    while (pTemp)
+    {
+        if (pTemp->getData().getMa() == ma)
+        {
+            return pTemp->getData().getTen();
+        }
+        // index++;
+        pTemp = pTemp->getpNext();
+    }
+
+    return _tenRac;
+}
+
 void QLKhachHang::xuatFile(fstream &fileXuatKH)
 {
     if (this->dbKH->getpHead() == nullptr)

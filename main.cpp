@@ -105,7 +105,7 @@ int main()
   // return 0;
   // // Ma ma("A", 67);
   // // cout << string(ma);
-  system("pause");
+  // system("pause");
   QLSanPham *pSP = new QLSanPham();
   QLNhanVien *pNV = new QLNhanVien();
   QLKhachHang *pKH = new QLKhachHang();
@@ -128,7 +128,9 @@ int main()
   fileKH.close();
   fileHD.close();
 
-  pHD->create();
+  // pHD->create();
+  // pHD->find();
+  pHD->read();
   fileHD.open("src/components/data/HoaDon1.DAT", ios_base::out);
   pHD->ghiFile(fileHD);
   fileHD.close();

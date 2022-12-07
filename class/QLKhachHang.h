@@ -23,8 +23,9 @@ public:
     void find();        // Tim Kiem
     void deleteIndex(); // Xoa
     int findBySDT(const string &);
-    void xuatFile(fstream&);
+    void xuatFile(fstream &);
     Ma findKH(const string &);
+    string findKH(const Ma &);
     void sortMa();
     void create(const string &);
 };

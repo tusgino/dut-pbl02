@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
+#include <string>
 using namespace std;
 class Date
 {
@@ -35,9 +36,12 @@ public:
   const bool operator<=(const Date &);
   const bool operator>=(const Date &);
   const bool operator==(const Date &);
+  operator string();
   friend const bool check(const Date &);
   friend void fix(Date &);
   Date operator++(int);
+  void nhapThang();
+  void nhapNam();
 };
 
 #endif

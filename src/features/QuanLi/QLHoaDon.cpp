@@ -167,6 +167,167 @@ void QLHoaDon::create()
   this->count++;
 }
 
+void QLHoaDon::read()
+{
+  while (true)
+  {
+    system("cls");
+    string arr[] = {"Xem hoa theo: ", "Ngay", "Thang", "Nam", "Thoat"};
+    printOpt(arr, 4);
+    int key = getKey(4);
+    switch (key)
+    {
+    case 1:
+    {
+      ConsoleTable table{"STT", "Ma Hoa Don", "Ma Nhan Vien", "Ma Khach Hang", "Ngay Tao Hoa Don", "Tong Tien"};
+      Date tempNgay;
+      cin >> tempNgay;
+      Node<HoaDon> *pTemp = this->listHD->getpHead();
+      int cnt = 0;
+      while (pTemp)
+      {
+        Date tempDate = pTemp->getData().getNgayHD();
+        if (tempDate == tempNgay)
+        {
+          Ma tempMaHD = pTemp->getData().getMaHD();
+          Ma tempMaNV = pTemp->getData().getMaNV();
+          Ma tempMaKH = pTemp->getData().getMaKH();
+          table += {to_string(++cnt), string(tempMaHD), string(tempMaNV), string(tempMaKH), string(tempDate), to_string(pTemp->getData().getTongTien())};
+        }
+        pTemp = pTemp->getpNext();
+      }
+      if (cnt == 0)
+      {
+        cout << "\n\tDanh sach nay khong co hoa don nao!";
+      }
+      else
+      {
+        cout << "\n\tDanh sach nay co " << cnt << " hoa don.\n";
+        cout << table;
+      }
+    }
+    break;
+    case 2:
+    {
+      ConsoleTable table{"STT", "Ma Hoa Don", "Ma Nhan Vien", "Ma Khach Hang", "Ngay Tao Hoa Don", "Tong Tien"};
+      Date tempNgay;
+      tempNgay.nhapThang();
+      Node<HoaDon> *pTemp = this->listHD->getpHead();
+      int cnt = 0;
+      while (pTemp)
+      {
+        Date tempDate = pTemp->getData().getNgayHD();
+        if (tempDate.getThang() == tempNgay.getThang() && tempDate.getNam() == tempNgay.getNam())
+        {
+          Ma tempMaHD = pTemp->getData().getMaHD();
+          Ma tempMaNV = pTemp->getData().getMaNV();
+          Ma tempMaKH = pTemp->getData().getMaKH();
+          table += {to_string(++cnt), string(tempMaHD), string(tempMaNV), string(tempMaKH), string(tempDate), to_string(pTemp->getData().getTongTien())};
+        }
+        pTemp = pTemp->getpNext();
+      }
+      if (cnt == 0)
+      {
+        cout << "\n\tDanh sach nay khong co hoa don nao!";
+      }
+      else
+      {
+        cout << "\n\tDanh sach nay co " << cnt << " hoa don.\n";
+        cout << table;
+      }
+    }
+    break;
+    case 3:
+    {
+      ConsoleTable table{"STT", "Ma Hoa Don", "Ma Nhan Vien", "Ma Khach Hang", "Ngay Tao Hoa Don", "Tong Tien"};
+      Date tempNgay;
+      tempNgay.nhapNam();
+      Node<HoaDon> *pTemp = this->listHD->getpHead();
+      int cnt = 0;
+      while (pTemp)
+      {
+        Date tempDate = pTemp->getData().getNgayHD();
+        if (tempDate.getNam() == tempNgay.getNam())
+        {
+          Ma tempMaHD = pTemp->getData().getMaHD();
+          Ma tempMaNV = pTemp->getData().getMaNV();
+          Ma tempMaKH = pTemp->getData().getMaKH();
+          table += {to_string(++cnt), string(tempMaHD), string(tempMaNV), string(tempMaKH), string(tempDate), to_string(pTemp->getData().getTongTien())};
+        }
+        pTemp = pTemp->getpNext();
+      }
+      if (cnt == 0)
+      {
+        cout << "\n\tDanh sach nay khong co hoa don nao!";
+      }
+      else
+      {
+        cout << "\n\tDanh sach nay co " << cnt << " hoa don.\n";
+        cout << table;
+      }
+    }
+    break;
+    case 4:
+    {
+      return;
+    }
+    break;
+    }
+  }
+}
+
+void QLHoaDon::find()
+{
+  ConsoleTable table{"STT", "Ma hoa don", "Ten Khach Hang", "Ngay tao hoa don", "Tong Tien"};
+  while (true)
+  {
+    system("cls");
+    string tempSDT;
+    Ma tempMaKH;
+    try
+    {
+      printRes("Nhap so dien thoai khach hang: ");
+      fflush(stdin);
+      getline(cin, tempSDT);
+      tempMaKH = pKH->findKH(tempSDT);
+      if (tempMaKH.getSoTT() == -1)
+        throw string("Khong tim thay khach hang!");
+    }
+    catch (const string error)
+    {
+      printError(error);
+      return;
+    }
+    Node<HoaDon> *pTemp = this->listHD->getpHead();
+    int cnt = 0;
+    while (pTemp)
+    {
+      Ma temp = pTemp->getData().getMaKH();
+      if (temp == tempMaKH)
+      {
+        string tempTen = this->pKH->findKH(tempMaKH);
+        Date tempNgay = pTemp->getData().getNgayHD();
+        table += {to_string(++cnt), string(temp), tempTen, string(tempNgay), to_string(pTemp->getData().getTongTien())};
+      }
+      pTemp = pTemp->getpNext();
+    }
+    if (cnt == 0)
+    {
+      cout << "\n\tKhach hang co " << tempSDT << " chua mua san pham nao";
+    }
+    else
+    {
+      cout << "\n\tKhach hang co " << tempSDT << " da mua " << cnt << " lan.\n";
+      cout << table;
+    }
+    printRes("Co muon tim them khach hang khac khong? (y/n): ");
+    char c;
+    c = getchar();
+    if (c == 'n')
+      break;
+  }
+}
+
 // Utils
 
 const int QLHoaDon::findMaMax()

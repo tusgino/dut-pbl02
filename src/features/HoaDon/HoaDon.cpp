@@ -92,10 +92,13 @@ void HoaDon::docFile(fstream &fileIn)
   this->ngayHD.docFile(fileIn);
   fileIn >> this->soLuong;
   fileIn.ignore(1);
+
+  this->tongTien = 0;
   for (int i = 0; i < this->soLuong; i++)
   {
     SanPham tempSP;
     tempSP.docFile(fileIn);
+    this->tongTien += ll(tempSP.getSoLuong() * (1 - tempSP.getGiamGia() / 100) * tempSP.getGiaBan());
     listSP->push_back(tempSP);
   }
 }
@@ -141,7 +144,8 @@ void HoaDon::xuat()
   cout << center << "\n\t\tTHANH TIEN: " << this->tongTien;
 }
 
-void HoaDon::xuatFile(fstream& fileHD){
+void HoaDon::xuatFile(fstream &fileHD)
+{
   fileHD << center << "+------------------------------------------------+\n";
   fileHD << center << "|              THONG TIN HOA DON                 |\n";
   fileHD << center << "| Ma nhan vien: " << this->maNV << "                           |\n";

@@ -113,7 +113,6 @@ istream &operator>>(istream &ip, Date &date)
         } while (date.nam < 1);
         if (!check(date))
         {
-            system("cls");
             cout << "\tVui long nhap lai ngay!\n";
         }
     } while (check(date) != true);
@@ -204,6 +203,12 @@ const bool check(const Date &date)
     return true;
 }
 
+Date::operator std::string()
+{
+    string tempDate = (this->gio < 10 ? "0" + to_string(this->gio) : to_string(this->gio)) + ":" + (this->phut < 10 ? "0" + to_string(this->phut) : to_string(this->phut)) + " " + (this->ngay < 10 ? "0" + to_string(this->ngay) : to_string(this->ngay)) + "/" + (this->thang < 10 ? "0" + to_string(this->thang) : to_string(this->thang)) + "/" + to_string(this->nam);
+    return tempDate;
+}
+
 void fix(Date &date)
 {
     static int namNhuan[13] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -242,4 +247,42 @@ Date Date::operator++(int)
         fix(*this);
 
     return before;
+}
+
+void Date::nhapThang()
+{
+    fflush(stdin);
+    do
+    {
+        do
+        {
+            cout << "\tNhap thang: ";
+            cin >> this->thang;
+        } while (this->thang < 1 || this->thang > 12);
+        do
+        {
+            cout << "\tNhap nam: ";
+            cin >> this->nam;
+        } while (this->nam < 1);
+        if (!check(*this))
+        {
+            cout << "\tVui long nhap lai thang!\n";
+        }
+    } while (check(*this) != true);
+}
+void Date::nhapNam()
+{
+    fflush(stdin);
+    do
+    {
+        do
+        {
+            cout << "\tNhap nam: ";
+            cin >> this->nam;
+        } while (this->nam < 1);
+        if (!check(*this))
+        {
+            cout << "\tVui long nhap lai nam!\n";
+        }
+    } while (check(*this) != true);
 }
