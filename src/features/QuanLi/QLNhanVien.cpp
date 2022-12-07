@@ -404,6 +404,7 @@ void QLNhanVien::read()
     if (this->dbNV->getpHead() == nullptr)
     {
         printError("Danh sach khach hang dang rong. Vui long them du lieu");
+        return;
     }
     ConsoleTable table{"STT", "Ma nhan vien", "Ten nhan vien", "Dia chi", "So dien thoai"};
     Node<NhanVien> *pTemp = this->dbNV->getpHead();
@@ -487,7 +488,33 @@ int QLNhanVien::findByMa(const string &_ma)
     }
     return -1;
 }
+void QLNhanVien::xuatFile(fstream &fileXuatNV)
+{
+    if (this->dbNV->getpHead() == nullptr)
+    {
+        printError("Danh sach khach hang dang rong. Vui long them du lieu");
+        return;
+    }
+    fileXuatNV << center << "\t\t\t    "
+               << "THONG TIN NHAN VIEN\n";
 
+    ConsoleTable table{"STT", "Ma nhan vien", "Ten nhan vien", "Dia chi", "So dien thoai"};
+    Node<NhanVien> *pTemp = this->dbNV->getpHead();
+    table.setPadding(2);
+    table.setStyle(0);
+    int cnt = 0;
+    while (pTemp)
+    {
+
+        // pTemp->getData().xuatFullInfo();
+
+        table += {to_string(++cnt), string(pTemp->getData().getMa()), pTemp->getData().getTen(), pTemp->getData().getDiaChi(), pTemp->getData().getSoDienThoai()};
+
+        pTemp = pTemp->getpNext();
+    }
+    // std::cout << table;
+    table.xuatFile(fileXuatNV);
+}
 void QLNhanVien::find()
 {
     while (true)
@@ -501,7 +528,7 @@ void QLNhanVien::find()
         Node<NhanVien> *pTemp = this->dbNV->getpHead();
         while (pTemp)
         {
-            
+
             if (findString(string(pTemp->getData().getMa()), temp) != -1)
             {
                 checkMa = true;
@@ -617,8 +644,6 @@ void QLNhanVien::deleteIndex()
         }
         pTemp = pTemp->getpNext();
     }
-
-    
 
     if (checkMa == true)
     {

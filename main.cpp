@@ -4,9 +4,9 @@ using namespace std;
 
 int main()
 {
-  QLSanPham *pSP = new QLSanPham();
-  // QLNhanVien *pNV = new QLNhanVien();
-  QLNhanVien *p = new QLNhanVien();
+  // QLSanPham *pSP = new QLSanPham();
+  QLNhanVien *pNV = new QLNhanVien();
+  // QLNhanVien *p = new QLNhanVien();
   // QLKhachHang *pKH = new QLKhachHang();
   // fstream fileSP;
   // fileSP.open("src/components/data/SanPham.DAT", ios_base::in);
@@ -17,24 +17,28 @@ int main()
   // pSP->update();
   // pSP->read();
   // pSP->read();
-  // fstream fileNV;
-  // fileNV.open("src/components/data/NhanVien.DAT", ios_base::in);
-  // p->docFile(fileNV);
+  fstream fileNV;
+  fileNV.open("src/components/data/NhanVien.DAT", ios_base::in);
+  pNV->docFile(fileNV);
+  fileNV.close();
+
+  fileNV.open("src/components/data/ola1.DAT", ios_base::out);
+  pNV->xuatFile(fileNV);
+  fileNV.close();
   // p->deleteIndex();
   // p->read();
   // p->find();
-  
+
   // QLHoaDon *pHD = new QLHoaDon();
-  HoaDon *pHD = new HoaDon();
-  fstream fileHD;
-  fileHD.open("src/components/data/HoaDon.DAT", ios_base::in);
-  pHD->docFile(fileHD);
-  pHD->xuat();
-  fileHD.close();
-  
-  fileHD.open("src/components/data/ola1.DAT", ios_base::out);
-  pHD->xuatFile(fileHD);
-  fileHD.close();
+  // HoaDon *pHD = new HoaDon();
+  // fstream fileHD;
+  // fileHD.open("src/components/data/HoaDon.DAT", ios_base::in);
+  // pHD->docFile(fileHD);
+  // pHD->xuat();
+  // fileHD.close();
+
+  // pHD->xuatFile(fileHD);
+  // fileHD.close();
 
   // // QLSanPham *pSP = new QLSanPham();
   // // QLNhanVien *pNV = new QLNhanVien();
@@ -77,15 +81,17 @@ int main()
   // // return 0;
   // QLKhachHang *p = new QLKhachHang();
   // fstream fileKH;
-  // fileKH.open("src/components/data/ola.dat", ios_base::in);
+  // fileKH.open("src/components/data/KhachHang.DAT", ios_base::in);
   // p->docFile(fileKH);
-  // // fileKH.close();
-  // // // p->create();
+  // fileKH.close();
+  // fileKH.open("src/components/data/ola1.dat", ios_base::out);
+  // p->xuatFile(fileKH);
+  // fileKH.close();
+  // p->
   // p->read();
   // p->deleteIndex();
   // p->read();
   // // // p->find();
-  // // // fileKH.open("src/components/data/ola1.dat", ios_base::out);
   // // // p->ghiFile(fileKH);
   // // // fileKH.close();
   // // // p->sortMa();

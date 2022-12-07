@@ -24,6 +24,7 @@ public:
     void deleteIndex(); // Xoa
     int findBySDT(const string &);
     const Ma findBySDTReturnMa(const string &);
+    void xuatFile(fstream&);
     void sortMa();
 };
 

@@ -74,6 +74,7 @@ void QLKhachHang::read()
     if (this->dbKH->getpHead() == nullptr)
     {
         printError("Danh sach khach hang dang rong. Vui long them du lieu");
+        return;
     }
     ConsoleTable table{"STT", "Ma khach hang", "Ten khach hang", "Dia chi", "So dien thoai"};
     Node<KhachHang> *pTemp = this->dbKH->getpHead();
@@ -93,6 +94,11 @@ void QLKhachHang::read()
 }
 void QLKhachHang::update()
 {
+    if (this->dbKH->getpHead() == nullptr)
+    {
+        printError("Danh sach khach hang dang rong. Vui long them du lieu");
+        return;
+    }
     string _sdt;
     cout << "Nhap so dien thoai can tim: ";
     fflush(stdin);
@@ -377,10 +383,32 @@ const Ma QLKhachHang::findBySDTReturnMa(const string &sdt)
 
     return _maRac;
 }
-void xuatFile()
+void QLKhachHang::xuatFile(fstream &fileXuatKH)
 {
-    fstream fileXuatKH;
-    fileXuatKH.open("/src/components/data/file_KH.DAT");
+    if (this->dbKH->getpHead() == nullptr)
+    {
+        printError("Danh sach khach hang dang rong, khong the xuat file. Vui long them du lieu");
+        return;
+    }
+
+    // fileXuatKH.open("/src/components/data/file_KH.DAT");
+    fileXuatKH << center << "\t\t\t    " << "THONG TIN KHACH HANG\n";
+
+    ConsoleTable table{"STT", "Ma khach hang", "Ten khach hang", "Dia chi", "So dien thoai"};
+    Node<KhachHang> *pTemp = this->dbKH->getpHead();
+    table.setPadding(2);
+    table.setStyle(3);
+    int cnt = 0;
+    while (pTemp)
+    {
+
+        // pTemp->getData().xuatFullInfo();
+
+        table += {to_string(++cnt), string(pTemp->getData().getMa()), pTemp->getData().getTen(), pTemp->getData().getDiaChi(), pTemp->getData().getSoDienThoai()};
+
+        pTemp = pTemp->getpNext();
+    }
+    table.xuatFile(fileXuatKH);
 }
 void QLKhachHang::sortMa()
 {

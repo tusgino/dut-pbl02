@@ -16,6 +16,7 @@ public:
 
     void docFile(fstream &);
     void ghiFile(fstream &);
+    void xuatFile(fstream &);
     void create();      // Nhap tu nguoi dung
     void update();      // Chinh sua
     void read();        // Xuat ra man hinh
