@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include <algorithm>
 
@@ -136,6 +137,8 @@ private:
     /// \param consoleTable The ConsoleTable-object
     /// \return Output stream with the formatted table string
     friend std::ostream &operator<<(std::ostream &out, const ConsoleTable &consoleTable);
+public:
+    void xuatFile(std::fstream& ); 
 };
 
 /// Repeats a given string n times

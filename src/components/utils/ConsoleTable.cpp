@@ -172,3 +172,12 @@ std::string operator*(const std::string &other, int repeats)
         ret.append(other);
     return ret;
 }
+
+void ConsoleTable::xuatFile(std::fstream &file)
+{
+    file << "\t\t\t" << ConsoleTable::getLine(ConsoleTable::style.top);
+    file << "\t\t\t" << ConsoleTable::getHeaders(ConsoleTable::headers);
+    file << "\t\t\t" << ConsoleTable::getLine(ConsoleTable::style.middle);
+    file << ConsoleTable::getRows(ConsoleTable::rows);
+    file << "\t\t\t" << ConsoleTable::getLine(ConsoleTable::style.bottom);
+}

@@ -30,11 +30,11 @@ int main()
   fileHD.open("src/components/data/HoaDon.DAT", ios_base::in);
   pHD->docFile(fileHD);
   pHD->xuat();
-  // fileHD.close();
+  fileHD.close();
   
-  // fileHD.open("src/components/data/HoaDon1.DAT", ios_base::out);
-  // pHD->ghiFile(fileHD);
-  // fileHD.close();
+  fileHD.open("src/components/data/ola1.DAT", ios_base::out);
+  pHD->xuatFile(fileHD);
+  fileHD.close();
 
   // // QLSanPham *pSP = new QLSanPham();
   // // QLNhanVien *pNV = new QLNhanVien();

@@ -46,6 +46,7 @@ public:
   void docFile(fstream &);
   void ghiFile(fstream &);
   void xuat();
+  void xuatFile(fstream &); // xuat full hoa don
 };
 
 #endif
