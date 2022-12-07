@@ -11,6 +11,7 @@
 using namespace std;
 
 const string tabtab = "\n\t\t";
+const string center = "\t\t\t\t\t";
 
 void printLineColor(string line, int color_code)
 {

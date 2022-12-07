@@ -122,7 +122,7 @@ istream &operator>>(istream &ip, Date &date)
 
 ostream &operator<<(ostream &op, const Date &date)
 {
-    op << setfill('0') << setw(2) << right << date.gio << ":" << setw(2) << right << date.phut << "  " << setw(2) << date.ngay << "/" << setw(2) << date.thang << "/" << date.nam << setfill(' ') << endl;
+    op << setfill('0') << setw(2) << right << date.gio << ":" << setw(2) << right << date.phut << "  " << setw(2) << date.ngay << "/" << setw(2) << date.thang << "/" << date.nam << setfill(' ');
     return op;
 }
 
