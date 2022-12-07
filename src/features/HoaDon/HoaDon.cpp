@@ -115,3 +115,29 @@ void HoaDon::ghiFile(fstream &fileOut)
   }
   fileOut << endl;
 }
+
+void HoaDon::xuat()
+{
+  cout << center <<"+------------------------------------------------+\n";
+  cout << center << "|              THONG TIN HOA DON                 |\n";
+  cout << center << "| Ma nhan vien: " << this->maNV << "                           |\n";
+  cout << center << "| Ma khach hang: " << this->maKH << "                          |\n";
+  cout << center << "| Ngay thuc hien hoa don: " << this->ngayHD << "      |\n";
+  cout << center << "+------------------------------------------------+\n";
+
+  ConsoleTable table = {"STT", "Ma san pham", "Ten san pham", "Size", "Don gia", "So luong", "Giam gia (%)", "Thanh tien"};
+  int cnt = 0;
+  Node<SanPham> *pTemp = this->listSP->getpHead();
+  this->tongTien = 0;
+  while (pTemp)
+  {
+    table += {to_string(++cnt), string(pTemp->getData().getMa()), pTemp->getData().getTen(), pTemp->getData().getSize(), to_string(pTemp->getData().getGiaBan()), to_string(pTemp->getData().getSoLuong()), to_string(pTemp->getData().getGiamGia()), to_string(ll(pTemp->getData().getSoLuong() * (1 - pTemp->getData().getGiamGia() / 100) * pTemp->getData().getGiaBan()))};
+    this->tongTien += ll(pTemp->getData().getSoLuong() * (1 - pTemp->getData().getGiamGia() / 100) * pTemp->getData().getGiaBan());
+    pTemp = pTemp->getpNext();
+  }
+  cout << center << "Don hang nay bao gom: " << cnt << " san pham\n";
+
+  cout << table;
+
+  cout << center << "\n\t\tTHANH TIEN: " << this->tongTien;
+}

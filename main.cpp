@@ -17,18 +17,19 @@ int main()
   // pSP->update();
   // pSP->read();
   // pSP->read();
-  fstream fileNV;
-  fileNV.open("src/components/data/NhanVien.DAT", ios_base::in);
+  // fstream fileNV;
+  // fileNV.open("src/components/data/NhanVien.DAT", ios_base::in);
   // p->docFile(fileNV);
-  p->deleteIndex();
+  // p->deleteIndex();
   // p->read();
   // p->find();
   
   // QLHoaDon *pHD = new QLHoaDon();
-
-  // fstream fileHD;
-  // fileHD.open("src/components/data/HoaDon.DAT", ios_base::in);
-  // pHD->docFile(fileHD);
+  HoaDon *pHD = new HoaDon();
+  fstream fileHD;
+  fileHD.open("src/components/data/HoaDon.DAT", ios_base::in);
+  pHD->docFile(fileHD);
+  pHD->xuat();
   // fileHD.close();
   
   // fileHD.open("src/components/data/HoaDon1.DAT", ios_base::out);
@@ -98,6 +99,7 @@ int main()
   // return 0;
   // // Ma ma("A", 67);
   // // cout << string(ma);
+  system("pause");
 }
 
 // #include <iostream>

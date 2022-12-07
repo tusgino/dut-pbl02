@@ -114,7 +114,7 @@ std::string ConsoleTable::getRows(Rows rows) const
     std::stringstream line;
     for (auto &row : rows)
     {
-        line << style.vertical;
+        line <<"\t\t\t" << style.vertical;
         for (unsigned int j = 0; j < row.size(); ++j)
         {
             std::string text = row[j];
@@ -129,11 +129,11 @@ std::string ConsoleTable::getRows(Rows rows) const
 
 std::ostream &operator<<(std::ostream &out, const ConsoleTable &consoleTable)
 {
-    out << consoleTable.getLine(consoleTable.style.top);
-    out << consoleTable.getHeaders(consoleTable.headers);
-    out << consoleTable.getLine(consoleTable.style.middle);
+    out << "\t\t\t" << consoleTable.getLine(consoleTable.style.top);
+    out << "\t\t\t" << consoleTable.getHeaders(consoleTable.headers);
+    out << "\t\t\t" << consoleTable.getLine(consoleTable.style.middle);
     out << consoleTable.getRows(consoleTable.rows);
-    out << consoleTable.getLine(consoleTable.style.bottom);
+    out << "\t\t\t" << consoleTable.getLine(consoleTable.style.bottom);
     return out;
 }
 
