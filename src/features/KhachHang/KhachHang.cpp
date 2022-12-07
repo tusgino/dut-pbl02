@@ -48,8 +48,22 @@ void KhachHang::nhap()
   cout << "Nhap email: ";
   fflush(stdin);
   getline(cin, this->email);
-  cout << "Nhap gioi tinh: ";
-  cin >> this->gioiTinh;
+  {
+    string arr[] = {"Nhap gioi tinh", "Nam", "Nu", "Khac"};
+    printOpt(arr, 3);
+  }
+  int key = getKey(3);
+  switch (key)
+  {
+  case 1:
+  case 2:
+  case 3:
+    this->gioiTinh = key;
+    break;
+  default:
+    this->gioiTinh = -1;
+    break;
+  }
 }
 void KhachHang::xuat()
 {

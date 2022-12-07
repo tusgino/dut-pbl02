@@ -30,7 +30,8 @@ public:
   int findMaMax();                // Tim ma so lon nhat hien tai de tao ma san pham khong bi trung
   void readList(List<SanPham> *); // in danh sach san pham ra man hinh
   List<SanPham> *findList();      // Tim va tra ve danh sach san pham
-  int findIndex(List<SanPham> *, const Ma &);
+  const SanPham findSP(List<SanPham> *, const Ma &, const string &);
+  const int findIndex(List<SanPham> *, const Ma &);
 };
 
 #endif
