@@ -35,7 +35,6 @@ istream &operator>>(istream &i, Ma &ma)
     while (1)
     {
         string temp;
-        printRes("Nhap ma: ");
         fflush(stdin);
         getline(cin, temp); // A101
         tempKT = "", tempSoTT = "";

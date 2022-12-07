@@ -132,7 +132,8 @@ bool checkSDT(string soDienThoai)
   return true;
 }
 
-void pauseScreen(){
+void pauseScreen()
+{
   fflush(stdin);
   char c;
   c = getchar();

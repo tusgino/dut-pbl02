@@ -130,7 +130,9 @@ int main()
 
   // pHD->create();
   // pHD->find();
-  pHD->read();
+  // pHD->read();
+  pHD->update();
+  // pHD->deleteIndex();
   fileHD.open("src/components/data/HoaDon1.DAT", ios_base::out);
   pHD->ghiFile(fileHD);
   fileHD.close();

@@ -28,7 +28,7 @@ public:
   void setMaHD(const Ma &);
   void setMaNV(const Ma &);
   void setMaKH(const Ma &);
-  void setsoLuong(const int &);
+  void setSoLuong(const int &);
   void setTongTien(const ll &);
   void setNgayHD(const Date &);
   void setListSP(List<SanPham> *);
@@ -47,6 +47,8 @@ public:
   void ghiFile(fstream &);
   void xuat();
   void xuatFile(fstream &); // xuat full hoa don
+  void tinhTongTien();
+  HoaDon &operator=(const HoaDon &);
 };
 
 #endif

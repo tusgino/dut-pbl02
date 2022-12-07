@@ -20,22 +20,23 @@ class QLHoaDon : public QuanLi
   QLNhanVien *pNV;
   QLSanPham *pSP;
   List<HoaDon> *listHD;
+  Ma maNhanVien;
   int count;
 
 public:
   QLHoaDon();
-  QLHoaDon(QLNhanVien *, QLKhachHang *, QLSanPham *);
+  QLHoaDon(QLNhanVien *, QLKhachHang *, QLSanPham *, const Ma &);
   ~QLHoaDon();
 
   // components
 
   void docFile(fstream &);
   void ghiFile(fstream &);
-  void create(); // Nhap tu nguoi dung
-  // void update();      // Chinh sua
-  void read(); // Xuat ra man hinh
-  void find(); // Tim Kiem
-  // void deleteIndex(); // Xoa
+  void create();      // Nhap tu nguoi dung
+  void update();      // Chinh sua
+  void read();        // Xuat ra man hinh
+  void find();        // Tim Kiem
+  void deleteIndex(); // Xoa
   const int findMaMax();
   // utils
 };
