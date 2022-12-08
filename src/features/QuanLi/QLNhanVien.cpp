@@ -42,7 +42,7 @@ void QLNhanVien::create()
     string str;
     while (true)
     {
-        cout << "Nhap so dien thoai nhan vien nay: ";
+        cout << "Nhap so dien thoai nhan vien can them: ";
         fflush(stdin);
         getline(cin, str);
         if (str.length() == 0)
@@ -56,6 +56,7 @@ void QLNhanVien::create()
     }
     Node<NhanVien> *pTemp = this->dbNV->getpHead();
     bool check = checkSDT(str);
+    // bool check = true;
     while (pTemp)
     {
         if (pTemp->getData().getSoDienThoai() == str)
@@ -63,7 +64,9 @@ void QLNhanVien::create()
             check = false;
             break;
         }
+        pTemp = pTemp->getpNext();
     }
+    // cout << 1;
     while (true)
     {
         if (check == true)
@@ -96,9 +99,9 @@ void QLNhanVien::create()
                 this->count++;
                 printSuccess("Ban da them thanh cong mot nhan vien!");
                 fstream fileNhanVien;
-                fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
-                QLNhanVien::ghiFile(fileNhanVien);
-                fileNhanVien.close();
+                // fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                // QLNhanVien::ghiFile(fileNhanVien);
+                // fileNhanVien.close();
             }
             break;
             case 2:
@@ -123,9 +126,9 @@ void QLNhanVien::create()
                 this->count++;
                 printSuccess("Ban da them thanh cong mot quan li!");
                 fstream fileNhanVien;
-                fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
-                QLNhanVien::ghiFile(fileNhanVien);
-                fileNhanVien.close();
+                // fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                // QLNhanVien::ghiFile(fileNhanVien);
+                // fileNhanVien.close();
             }
             break;
             case 3:

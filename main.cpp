@@ -128,15 +128,19 @@ int main()
   fileNV.close();
   fileKH.close();
   fileHD.close();
+  QuanLi *p;
+  p = pKH;
 
+  // p->read();
+  p->create();
   // pHD->create();
   // pHD->find();
   // pHD->read();
-  pHD->update();
+  // pHD->update();
   // pHD->deleteIndex();
-  fileHD.open("src/components/data/HoaDon1.DAT", ios_base::out);
-  pHD->ghiFile(fileHD);
-  fileHD.close();
+  // fileHD.open("src/components/data/HoaDon1.DAT", ios_base::out);
+  // pHD->ghiFile(fileHD);
+  // fileHD.close();
   return 0;
 }
 

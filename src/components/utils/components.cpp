@@ -119,9 +119,9 @@ int findString(string parent, string sub)
   return -1;
 }
 
-bool checkSDT(string soDienThoai)
+bool checkSDT(string &soDienThoai)
 {
-  if (soDienThoai.length() != 10 || soDienThoai.at(0) != 0)
+  if (soDienThoai.length() != 10 || soDienThoai.at(0) != '0')
     return false;
   for (int i = 0; i < soDienThoai.length(); i++)
   {

@@ -35,7 +35,7 @@ void KhachHang::ghiFile(fstream &fileOut)
 }
 void KhachHang::nhap()
 {
-  cout << "Khach hang co ma la" << this->ma << endl;
+  cout << "Khach hang co ma la: " << this->ma << endl;
   cout << "Nhap ten khach hang: ";
   fflush(stdin);
   getline(cin, this->ten);

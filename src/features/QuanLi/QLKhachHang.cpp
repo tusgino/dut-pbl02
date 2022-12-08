@@ -39,9 +39,16 @@ void QLKhachHang::ghiFile(fstream &fileOut)
 void QLKhachHang::create()
 {
     string _sdt;
-    cout << "Nhap so dien thoai can tim: ";
+    cout << "Nhap so dien thoai can tao: ";
     fflush(stdin);
     getline(cin, _sdt);
+
+    if(!checkSDT(_sdt)){
+        printError("So dien thoai ban nhap khong hop le");
+        pauseScreen();
+        return;
+    }
+    
     int index = QLKhachHang::findBySDT(_sdt);
     if (index == -1)
     {
