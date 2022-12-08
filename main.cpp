@@ -109,7 +109,8 @@ int main()
   QLSanPham *pSP = new QLSanPham();
   QLNhanVien *pNV = new QLNhanVien();
   QLKhachHang *pKH = new QLKhachHang();
-  QLHoaDon *pHD = new QLHoaDon(pNV, pKH, pSP);
+  Ma Matemp("NV", 0001);
+  QLHoaDon *pHD = new QLHoaDon(pNV, pKH, pSP, Matemp);
 
   fstream fileSP;
   fstream fileNV;
