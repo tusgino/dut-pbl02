@@ -26,7 +26,11 @@ class QLHoaDon : public QuanLi
 public:
   QLHoaDon();
   QLHoaDon(QLNhanVien *, QLKhachHang *, QLSanPham *, const Ma &);
+  QLHoaDon(QLNhanVien *, QLKhachHang *, QLSanPham *);
   ~QLHoaDon();
+
+  //
+  void setMaDangNhap(const Ma &);
 
   // components
 
@@ -37,8 +41,8 @@ public:
   void read();        // Xuat ra man hinh
   void find();        // Tim Kiem
   void deleteIndex(); // Xoa
-  const int findMaMax();
   // utils
+  const int findMaMax();
 };
 
 #endif

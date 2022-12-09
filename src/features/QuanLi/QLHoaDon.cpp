@@ -19,7 +19,21 @@ QLHoaDon::QLHoaDon(QLNhanVien *NV, QLKhachHang *KH, QLSanPham *SP, const Ma &maN
   this->count = 0;
 }
 
+QLHoaDon::QLHoaDon(QLNhanVien *NV, QLKhachHang *KH, QLSanPham *SP)
+{
+  this->pNV = NV;
+  this->pKH = KH;
+  this->pSP = SP;
+  this->listHD = new List<HoaDon>();
+  this->count = 0;
+}
+
 QLHoaDon::~QLHoaDon() {}
+
+void QLHoaDon::setMaDangNhap(const Ma &ma)
+{
+  this->maNhanVien = ma;
+}
 
 void QLHoaDon::docFile(fstream &fileIn)
 {
@@ -33,6 +47,7 @@ void QLHoaDon::docFile(fstream &fileIn)
     this->listHD->push_back(tempHD);
   }
 }
+
 void QLHoaDon::ghiFile(fstream &fileOut)
 {
   fileOut << this->count << endl;
@@ -509,7 +524,7 @@ void QLHoaDon::read()
   while (true)
   {
     system("cls");
-    string arr[] = {"Xem hoa theo: ", "Ngay", "Thang", "Nam", "Thoat"};
+    string arr[] = {"Xem hoa don theo: ", "Ngay", "Thang", "Nam", "Thoat"};
     printOpt(arr, 4);
     int key = getKey(4);
     switch (key)
@@ -542,6 +557,9 @@ void QLHoaDon::read()
         cout << "\n\tDanh sach nay co " << cnt << " hoa don.\n";
         cout << table;
       }
+      char c;
+      fflush(stdin);
+      c = getchar();
     }
     break;
     case 2:
@@ -572,6 +590,9 @@ void QLHoaDon::read()
         cout << "\n\tDanh sach nay co " << cnt << " hoa don.\n";
         cout << table;
       }
+      char c;
+      fflush(stdin);
+      c = getchar();
     }
     break;
     case 3:
@@ -602,6 +623,9 @@ void QLHoaDon::read()
         cout << "\n\tDanh sach nay co " << cnt << " hoa don.\n";
         cout << table;
       }
+      char c;
+      fflush(stdin);
+      c = getchar();
     }
     break;
     case 4:
