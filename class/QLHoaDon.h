@@ -42,6 +42,9 @@ public:
   void find();        // Tim Kiem
   void deleteIndex(); // Xoa
   // utils
+  void statisticalByDate();
+  void statisticalByMonth();
+  void statisticalByYear();
   const int findMaMax();
 };
 

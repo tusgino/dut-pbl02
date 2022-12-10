@@ -5,7 +5,7 @@ HoaDon::HoaDon()
   this->listSP = new List<SanPham>();
 }
 
-HoaDon::HoaDon(List<SanPham> *listSP, const Ma &maHD, const Ma &maNV, const Ma &maKH)
+HoaDon::HoaDon(List<SanPham> *listSP, const Ma &maHD, const Ma &maNV, const Ma &maKH, const bool &exported)
 {
   this->maHD = maHD;
   this->maNV = maNV;
@@ -13,6 +13,7 @@ HoaDon::HoaDon(List<SanPham> *listSP, const Ma &maHD, const Ma &maNV, const Ma &
   this->listSP = listSP;
   this->tongTien = 0;
   this->soLuong = 0;
+  this->exported = exported;
   this->ngayHD = Date(0, 0, 0, 0, 0);
 }
 
@@ -24,6 +25,7 @@ HoaDon &HoaDon::operator=(const HoaDon &hoadon)
   this->tongTien = hoadon.tongTien;
   this->soLuong = hoadon.soLuong;
   this->ngayHD = hoadon.ngayHD;
+  this->exported = hoadon.exported;
   Node<SanPham> *pTemp = hoadon.listSP->getpHead();
   this->listSP = new List<SanPham>();
   while (pTemp)
@@ -61,6 +63,10 @@ void HoaDon::setNgayHD(const Date &ngayHD)
 {
   this->ngayHD = ngayHD;
 }
+void HoaDon::setExported(const bool &exported)
+{
+  this->exported = exported;
+}
 void HoaDon::setListSP(List<SanPham> *listSP)
 {
   this->listSP = listSP;
@@ -87,6 +93,17 @@ const int &HoaDon::getSoLuong()
 {
   return this->soLuong;
 }
+const ll &HoaDon::getTongTienChi()
+{
+  Node<SanPham> *pTemp = this->listSP->getpHead();
+  static ll TTT = 0;
+  while (pTemp)
+  {
+    TTT += pTemp->getData().getGiaNhap();
+    pTemp = pTemp->getpNext();
+  }
+  return TTT;
+}
 const ll &HoaDon::getTongTien()
 {
   return this->tongTien;
@@ -94,6 +111,10 @@ const ll &HoaDon::getTongTien()
 const Date &HoaDon::getNgayHD()
 {
   return this->ngayHD;
+}
+const bool &HoaDon::getExported()
+{
+  return this->exported;
 }
 List<SanPham> *HoaDon::getListSP()
 {
@@ -108,6 +129,8 @@ void HoaDon::docFile(fstream &fileIn)
   this->maNV.docFile(fileIn);
   this->maKH.docFile(fileIn);
   this->ngayHD.docFile(fileIn);
+  fileIn >> this->exported;
+  fileIn.ignore(1);
   fileIn >> this->soLuong;
   fileIn.ignore(1);
 
@@ -127,6 +150,7 @@ void HoaDon::ghiFile(fstream &fileOut)
   this->maNV.ghiFile(fileOut);
   this->maKH.ghiFile(fileOut);
   this->ngayHD.ghiFile(fileOut);
+  fileOut << int(this->exported) << "|";
   fileOut << this->soLuong << "|";
   Node<SanPham> *pTemp = listSP->getpHead();
   while (pTemp)
@@ -170,7 +194,7 @@ void HoaDon::xuatFile(fstream &fileHD)
   fileHD << center << "| Ma khach hang: " << this->maKH << "                          |\n";
   fileHD << center << "| Ngay thuc hien hoa don: " << this->ngayHD << "      |\n";
   fileHD << center << "+------------------------------------------------+\n";
-
+  this->exported = false;
   ConsoleTable table = {"STT", "Ma san pham", "Ten san pham", "Size", "Don gia", "So luong", "Giam gia (%)", "Thanh tien"};
   int cnt = 0;
   Node<SanPham> *pTemp = this->listSP->getpHead();

@@ -281,35 +281,54 @@ void AdminMenu::quanLiKhachHang(Menu &menu)
   }
 }
 
-// void AdminMenu::thongKe(QuanLi *admin)
-// {
-//   system("cls");
-//   printUI("Data/Pages/thongke.txt");
-//   cout << "\n\t\t1. Thong ke hoa don.";
-//   cout << "\n\t\t2. Thong ke san pham.";
-//   cout << "\n\t\t3. Quay lai.";
-//   int key = getKey(3);
-//   switch (key)
-//   {
-//   case 1:
-//   {
-//     admin->DatabaseHD->thongKe();
-//     system("pause");
-//     AdminMenu::thongKe(admin);
-//   }
-//   break;
-//   case 2:
-//   {
-//     admin->DatabaseHD->thongKeSanPham();
-//     system("pause");
-//     AdminMenu::thongKe(admin);
-//   }
-//   break;
-//   case 3:
-//     AdminMenu::adMenu(admin);
-//     break;
-//   }
-// }
+void AdminMenu::thongKe(Menu &menu)
+{
+  bool check = true;
+  while (check)
+  {
+    system("cls");
+    {
+      string arr[] = {"Thong ke theo: ", "Ngay", "Thang", "Nam", "Thoat"};
+      printOpt(arr, 4);
+    }
+    int key = getKey(4);
+    switch (key)
+    {
+    case 1:
+    {
+      system("cls");
+      menu.DatabaseHD->statisticalByDate();
+      char c;
+      fflush(stdin);
+      c = getchar();
+    }
+    break;
+    case 2:
+    {
+      system("cls");
+      menu.DatabaseHD->statisticalByMonth();
+      char c;
+      fflush(stdin);
+      c = getchar();
+    }
+    break;
+    case 3:
+    {
+      system("cls");
+      menu.DatabaseHD->statisticalByYear();
+      char c;
+      fflush(stdin);
+      c = getchar();
+    }
+    break;
+    case 4:
+    {
+      check = false;
+    }
+    break;
+    }
+  }
+}
 
 void AdminMenu::adMenu(Menu &menu)
 {
@@ -347,7 +366,7 @@ void AdminMenu::adMenu(Menu &menu)
     break;
     case 5:
     {
-      // AdminMenu::thongKe();
+      AdminMenu::thongKe(menu);
     }
     break;
     case 7:

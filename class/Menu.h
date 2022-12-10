@@ -37,7 +37,7 @@ public:
   static void quanLiSanPham(Menu &);
   static void quanLiHoaDon(Menu &);
   static void quanLiKhachHang(Menu &);
-  // static void thongKe();
+  static void thongKe(Menu &);
   static void adMenu(Menu &);
 };
 
