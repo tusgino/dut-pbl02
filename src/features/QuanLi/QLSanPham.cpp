@@ -153,6 +153,7 @@ void QLSanPham::create()
   fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
   QLSanPham::ghiFile(fileSanPham);
   fileSanPham.close();
+  printSuccess("Them san pham thanh cong!");
 }
 
 void QLSanPham::update()
@@ -207,6 +208,10 @@ void QLSanPham::update()
           }
           string Success = "Da thay doi ten cua san pham " + tenSP + " thanh " + tempTen + " thanh cong!";
           printSuccess(Success);
+          fstream fileSanPham;
+          fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
+          QLSanPham::ghiFile(fileSanPham);
+          fileSanPham.close();
           char c;
           fflush(stdin);
           c = getchar();
@@ -240,6 +245,10 @@ void QLSanPham::update()
           }
           string Success = "Da thay doi xuat xu cua san pham " + tenSP + " thanh " + tempXuatXu + " thanh cong!";
           printSuccess(Success);
+          fstream fileSanPham;
+          fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
+          QLSanPham::ghiFile(fileSanPham);
+          fileSanPham.close();
           char c;
           fflush(stdin);
           c = getchar();
@@ -272,6 +281,10 @@ void QLSanPham::update()
           }
           string Success = "Da thay doi gia nhap cua san pham " + tenSP + " thanh " + to_string(tempGiaNhap) + " thanh cong!";
           printSuccess(Success);
+          fstream fileSanPham;
+          fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
+          QLSanPham::ghiFile(fileSanPham);
+          fileSanPham.close();
           char c;
           fflush(stdin);
           c = getchar();
@@ -304,6 +317,10 @@ void QLSanPham::update()
           }
           string Success = "Da thay doi gia ban cua san pham " + tenSP + " thanh " + to_string(tempGiaBan) + " thanh cong!";
           printSuccess(Success);
+          fstream fileSanPham;
+          fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
+          QLSanPham::ghiFile(fileSanPham);
+          fileSanPham.close();
           char c;
           fflush(stdin);
           c = getchar();
@@ -336,6 +353,10 @@ void QLSanPham::update()
           }
           string Success = "Da thay doi giam gia cua san pham " + tenSP + " thanh " + to_string(tempGiamGia) + " thanh cong!";
           printSuccess(Success);
+          fstream fileSanPham;
+          fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
+          QLSanPham::ghiFile(fileSanPham);
+          fileSanPham.close();
           char c;
           fflush(stdin);
           c = getchar();
@@ -382,6 +403,10 @@ void QLSanPham::update()
                   }
                   string Success = "Thay doi so luong cho size " + tempSize + " cua san pham " + tenSP + " thanh cong!";
                   printSuccess(Success);
+                  fstream fileSanPham;
+                  fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
+                  QLSanPham::ghiFile(fileSanPham);
+                  fileSanPham.close();
                   break;
                 }
                 else
@@ -503,6 +528,11 @@ void QLSanPham::deleteIndex()
         if (pTemp->getData().getMa() == tempMa)
         {
           this->dbSP->deleteNode(QLSanPham::findIndex(this->dbSP, tempMa));
+          printSuccess("Xoa san pham thanh cong!");
+          fstream fileSanPham;
+          fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
+          QLSanPham::ghiFile(fileSanPham);
+          fileSanPham.close();
           check = false;
         }
         pTemp = pTemp->getpNext();

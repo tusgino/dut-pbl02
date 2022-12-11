@@ -3,38 +3,43 @@
 
 #include "iostream"
 #include <fstream>
-#include "QuanLi.h"
 #include "QLSanPham.h"
 #include "QLNhanVien.h"
 #include "QLKhachHang.h"
-
-#include "..\src\features\QuanLi\QuanLi.cpp"
-#include "..\src\features\QuanLi\QLNhanVien.cpp"
-#include "..\src\features\QuanLi\QLSanPham.cpp"
-#include "..\src\features\QuanLi\QLKhachHang.cpp"
+#include "QLHoaDon.h"
 
 class Menu
 {
+
+  int checkRole;
+  bool log;
+
 public:
+  QLNhanVien *DatabaseNV;
+  QLSanPham *DatabaseSP;
+  QLKhachHang *DatabaseKH;
+  QLHoaDon *DatabaseHD;
   Menu();
   ~Menu();
-  static void login();
+  void setLog(const bool &);
+  void checkLogin();
+  void login();
 };
 
-// class AdminMenu
-// {
-// public:
-//   AdminMenu();
-//   ~AdminMenu();
-//   static void printInfo();
-//   static void printInfoThongKe();
-//   static void adMenu(QuanLi *);
-//   static void quanLiNhanVien(QuanLi *);
-//   static void quanLiSanPham(QuanLi *);
-//   static void quanLiHoaDon(QuanLi *);
-//   static void quanLiKhachHang(QuanLi *);
-//   static void thongKe(QuanLi *);
-// };
+class AdminMenu
+{
+public:
+  AdminMenu();
+  ~AdminMenu();
+  static void printInfo();
+  // static void printInfoThongKe();
+  static void quanLiNhanVien(Menu &);
+  static void quanLiSanPham(Menu &);
+  static void quanLiHoaDon(Menu &);
+  static void quanLiKhachHang(Menu &);
+  static void thongKe(Menu &);
+  static void adMenu(Menu &);
+};
 
 // class NVMenu
 // {

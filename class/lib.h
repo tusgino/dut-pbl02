@@ -9,3 +9,5 @@
 #include "..\src\features\HoaDon\HoaDon.cpp"
 #include "..\src\components\utils\Ma.cpp"
 #include "..\src\components\utils\Date.cpp"
+#include "..\src\features\Menu\Menu.cpp"
+#include "..\src\features\Menu\Adminmenu.cpp"

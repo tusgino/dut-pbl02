@@ -17,11 +17,12 @@ class HoaDon
   int soLuong;
   ll tongTien;
   Date ngayHD;
+  bool exported;
   List<SanPham> *listSP;
 
 public:
   HoaDon();
-  HoaDon(List<SanPham> *, const Ma &, const Ma &, const Ma &);
+  HoaDon(List<SanPham> *, const Ma &, const Ma &, const Ma &, const bool &);
   ~HoaDon();
 
   //--set, get
@@ -31,6 +32,7 @@ public:
   void setSoLuong(const int &);
   void setTongTien(const ll &);
   void setNgayHD(const Date &);
+  void setExported(const bool &);
   void setListSP(List<SanPham> *);
   //-
   const Ma &getMaHD();
@@ -38,7 +40,9 @@ public:
   const Ma &getMaNV();
   const Ma &getMaKH();
   const int &getSoLuong();
+  const ll &getTongTienChi();
   const ll &getTongTien();
+  const bool &getExported();
   const Date &getNgayHD();
   List<SanPham> *getListSP();
 

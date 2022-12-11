@@ -1,32 +1,137 @@
-#include "../../../class/Menu.h"
-// #include "AdminMenu.cpp"
-// #include "NVMenu.cpp"
+#include "..\..\..\class\Menu.h"
 Menu::Menu()
 {
+    this->log = true;
+    this->DatabaseNV = new QLNhanVien();
+    fstream fileNhanVien;
+    fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::in);
+    this->DatabaseNV->docFile(fileNhanVien);
+
+    this->DatabaseSP = new QLSanPham();
+    fstream fileSanPham;
+    fileSanPham.open("src/components/data/SanPham.DAT", ios_base::in);
+    this->DatabaseSP->docFile(fileSanPham);
+
+    this->DatabaseKH = new QLKhachHang();
+    fstream fileKhachHang;
+    fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::in);
+    this->DatabaseKH->docFile(fileKhachHang);
+
+    this->DatabaseHD = new QLHoaDon(this->DatabaseNV, this->DatabaseKH, this->DatabaseSP);
+    fstream fileHoaDon;
+    fileHoaDon.open("src/components/data/HoaDon.DAT", ios_base::in);
+    this->DatabaseHD->docFile(fileHoaDon);
+
+    fileNhanVien.close();
+    fileSanPham.close();
+    fileKhachHang.close();
+    fileHoaDon.close();
 }
 
 Menu::~Menu()
 {
 }
 
+void Menu::setLog(const bool &log)
+{
+    this->log = log;
+}
+
+void Menu::checkLogin()
+{
+    while (true)
+    {
+        system("cls");
+        // printUI("Data/Pages/dangnhap.txt");
+        string mk;
+        Ma tk;
+        cout << "\t\tVui long nhap tai khoan, mat khau de dang nhap he thong.";
+        cout << "\n\t\tTen dang nhap: ";
+        cin >> tk;
+        cout << "\t\tMat Khau: ";
+        fflush(stdin);
+        string tempPass = "";
+        char c = getchar();
+        while (c != 10 && c != 13)
+        {
+            if (c != 8)
+            {
+                cout << '*';
+                tempPass += c;
+                c = getchar();
+            }
+            else if (tempPass.length() > 0)
+            {
+                cout << "\b \b";
+                tempPass = tempPass.erase(tempPass.size() - 1);
+                c = getchar();
+            }
+            else
+            {
+                c = getchar();
+            }
+        }
+        mk = tempPass;
+        fstream fileAdmin;
+        fileAdmin.open("src/components/data/Admin.DAT");
+
+        int size;
+        fileAdmin >> size;
+        fileAdmin.ignore(1);
+        for (int i = 0; i < size; i++)
+        {
+            string checktk, checkmk;
+
+            getline(fileAdmin, checktk, '|');
+            getline(fileAdmin, checkmk, '|');
+            // cout << checktk << " " << string(tk) << endl;
+            if (checkmk.compare(mk) == 0 && checktk.compare(string(tk)) == 0)
+            {
+                this->checkRole = 3;
+                // cout << "Hello !! Ban dang truy cap voi quyen quan tri vien." << endl;
+                Ma ma("ADMIN", 1);
+                this->DatabaseHD->setMaDangNhap(ma);
+
+                return;
+                break;
+            }
+        }
+        int role = DatabaseNV->checkRole(tk, mk);
+        if (role == -1)
+        {
+            printError("Tai khoan dang nhap hoac mat khau khong chinh xac! Vui long thu lai");
+            char q;
+            cout << "\n\tBan co muon tiep tuc dang nhap (y/n)?";
+            fflush(stdin);
+            q = getchar();
+            cout << "\n";
+            if (q == 'n')
+                return;
+        }
+        else
+        {
+            this->checkRole = role;
+            this->DatabaseHD->setMaDangNhap(tk);
+        }
+    }
+};
+
 void Menu::login()
 {
-    QLKhachHang *user = new quanLiKhachHang();
-    // QuanLi *user;
-    // user = new QuanLi();
-    // user->dangNhap();
-    // int role = user->getRole();
-    // switch (role)
-    // {
-    // case 1:
-    //     NVMenu::nvMenu(user);
-    //     break;
-    // case 2:
-    //     AdminMenu::adMenu(user);
-    //     break;
-    // case 3:
-    //     AdminMenu::adMenu(user);
-    //     break;
-    // }
-    system("pause");
+    while (this->log)
+    {
+        Menu::checkLogin();
+        switch (this->checkRole)
+        {
+        case 1:
+            // NVMenu::nvMenu(user);
+            break;
+        case 2:
+            AdminMenu::adMenu(*this);
+            break;
+        case 3:
+            AdminMenu::adMenu(*this);
+            break;
+        }
+    }
 }
