@@ -23,7 +23,6 @@ void QLKhachHang::docFile(fstream &fileIn)
         delete KH;
     }
 }
-
 void QLKhachHang::ghiFile(fstream &fileOut)
 {
     fileOut << this->count << endl;
@@ -35,7 +34,6 @@ void QLKhachHang::ghiFile(fstream &fileOut)
         pTemp = pTemp->getpNext();
     }
 }
-
 void QLKhachHang::create()
 {
     string _sdt;
@@ -390,7 +388,6 @@ Ma QLKhachHang::findKH(const string &sdt)
 
     return _maRac;
 }
-
 string QLKhachHang::findKH(const Ma &ma)
 {
     string _tenRac = " ";
@@ -407,7 +404,6 @@ string QLKhachHang::findKH(const Ma &ma)
 
     return _tenRac;
 }
-
 void QLKhachHang::xuatFile(fstream &fileXuatKH)
 {
     if (this->dbKH->getpHead() == nullptr)
@@ -509,7 +505,6 @@ void QLKhachHang::deleteIndex()
         }
     }
 }
-
 void QLKhachHang::create(const string &_sdt)
 {
     KhachHang _KHAdd;
