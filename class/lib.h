@@ -10,4 +10,5 @@
 #include "..\src\components\utils\Ma.cpp"
 #include "..\src\components\utils\Date.cpp"
 #include "..\src\features\Menu\Menu.cpp"
-#include "..\src\features\Menu\Adminmenu.cpp"
+#include "..\src\features\Menu\AdminMenu.cpp"
+#include "..\src\features\Menu\NVMenu.cpp"

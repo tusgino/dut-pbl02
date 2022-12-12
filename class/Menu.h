@@ -42,16 +42,16 @@ public:
   static void adMenu(Menu &);
 };
 
-// class NVMenu
-// {
-// public:
-//   NVMenu();
-//   ~NVMenu();
-//   static void printInfo();
-//   static void nvMenu(QuanLi *);
-//   static void quanLiSanPham(QuanLi *);
-//   static void quanLiHoaDon(QuanLi *);
-//   static void quanLiKhachHang(QuanLi *);
-// };
+class NVMenu
+{
+public:
+  NVMenu();
+  ~NVMenu();
+  static void printInfo();
+  static void nvMenu(Menu &);
+  static void quanLiSanPham(Menu &);
+  static void quanLiHoaDon(Menu &);
+  static void quanLiKhachHang(Menu &);
+};
 
 #endif

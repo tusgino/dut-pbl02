@@ -34,7 +34,7 @@ void AdminMenu::quanLiNhanVien(Menu &menu)
   while (check)
   {
     system("cls");
-    // printUI("Data/Pages/qlnhanvien.txt");
+    printUI("src/components/data/Pages/qlnhanvien.txt");
     cout << "\n\t\t1. Xuat danh sach nhan vien.";
     cout << "\n\t\t2. Xuat danh sanh nhan vien ra file";
     cout << "\n\t\t3. Them nhan vien.";
@@ -110,7 +110,7 @@ void AdminMenu::quanLiSanPham(Menu &menu)
   while (check)
   {
     system("cls");
-    // printUI("Data/Pages/qlsanpham.txt");
+    printUI("src/components/data/Pages/qlsanpham.txt");
     cout << "\n\t\t1. Xuat danh sach san pham.";
     cout << "\n\t\t2. Them san pham.";
     cout << "\n\t\t3. Chinh sua san pham.";
@@ -173,14 +173,14 @@ void AdminMenu::quanLiHoaDon(Menu &menu)
   while (check)
   {
     system("cls");
-    // printUI("Data/Pages/qlhoadon.txt");
+    printUI("src/components/data/Pages/qlhoadon.txt");
     cout << "\n\t\t1. Xuat danh sach hoa don.";
     cout << "\n\t\t2. Them hoa don.";
     cout << "\n\t\t3. Chinh sua hoa don.";
     cout << "\n\t\t4. Xuat chi tiet hoa don.";
     cout << "\n\t\t5. Xoa hoa don.";
     cout << "\n\t\t6. Quay lai.";
-    int key = getKey(4);
+    int key = getKey(6);
     switch (key)
     {
     case 1:
@@ -237,7 +237,7 @@ void AdminMenu::quanLiKhachHang(Menu &menu)
   while (check)
   {
     system("cls");
-    // printUI("Data/Pages/qlkhachhang.txt");
+    printUI("src/components/data/Pages/qlkhachhang.txt");
     cout << "\n\t\t1. Xuat danh sach khach hang.";
     cout << "\n\t\t2. Them thong tin khach hang.";
     cout << "\n\t\t3. Chinh sua thong tin khach hang.";
@@ -300,6 +300,7 @@ void AdminMenu::thongKe(Menu &menu)
   while (check)
   {
     system("cls");
+    printUI("src/components/data/Pages/thongke.txt");
     {
       string arr[] = {"Thong ke theo: ", "Ngay", "Thang", "Nam", "Thoat"};
       printOpt(arr, 4);
@@ -349,7 +350,7 @@ void AdminMenu::adMenu(Menu &menu)
   while (check)
   {
     system("cls");
-    // printUI("Data/Pages/quanli.txt");
+    printUI("src/components/data/Pages/quanli.txt");
     printSuccess("Ban da dang nhap thanh cong!");
     cout << "\n\tVui long chon nhung tac vu de thuc hien";
     AdminMenu::printInfo();
