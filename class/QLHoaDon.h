@@ -41,6 +41,7 @@ public:
   void read();        // Xuat ra man hinh
   void find();        // Tim Kiem
   void deleteIndex(); // Xoa
+  void xuatFile();
   // utils
   void statisticalByDate();
   void statisticalByMonth();

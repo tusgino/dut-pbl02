@@ -19,6 +19,7 @@ public:
   QLSanPham *DatabaseSP;
   QLKhachHang *DatabaseKH;
   QLHoaDon *DatabaseHD;
+  QuanLi *quanLi;
   Menu();
   ~Menu();
   void setLog(const bool &);

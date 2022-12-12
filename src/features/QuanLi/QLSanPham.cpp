@@ -570,6 +570,22 @@ int QLSanPham::findMaMax()
   return maMax;
 }
 
+void QLSanPham::setSLSize(const Ma &ma, const string &size, const int &sl)
+{
+  Node<SanPham> *pTemp = this->dbSP->getpHead();
+  while (pTemp)
+  {
+    if (pTemp->getData().getMa() == ma && pTemp->getData().getSize() == size)
+    {
+      SanPham tempSP = pTemp->getData();
+      tempSP.setSoLuong(tempSP.getSoLuong() - sl);
+      pTemp->setData(tempSP);
+      return;
+    }
+    pTemp = pTemp->getpNext();
+  }
+}
+
 void QLSanPham::sortMa(List<SanPham> *listSP)
 {
   Node<SanPham> *pBefore = listSP->getpHead();

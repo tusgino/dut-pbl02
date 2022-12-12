@@ -753,8 +753,11 @@ int QLNhanVien::findByMa(const string &_ma)
     return -1;
 }
 
-void QLNhanVien::xuatFile(fstream &fileXuatNV)
+void QLNhanVien::xuatFile()
 {
+    fstream fileXuatNV;
+    Date ngay;
+    fileXuatNV.open("src/components/data/NhanVien/DanhSachNhanVien.DAT", ios_base::out);
     if (this->dbNV->getpHead() == nullptr)
     {
         printError("Danh sach khach hang dang rong. Vui long them du lieu");
@@ -779,6 +782,9 @@ void QLNhanVien::xuatFile(fstream &fileXuatNV)
     }
     // std::cout << table;
     table.xuatFile(fileXuatNV);
+    fileXuatNV << "Ngay xuat file: " << string(ngay);
+    fileXuatNV.close();
+    printSuccess("Xuat file nhan vien thanh cong! Ten file: DanhSachNhanVien.DAT");
 }
 
 int QLNhanVien::checkRole(Ma tk, const string &mk)

@@ -194,7 +194,6 @@ void HoaDon::xuatFile(fstream &fileHD)
   fileHD << center << "| Ma khach hang: " << this->maKH << "                          |\n";
   fileHD << center << "| Ngay thuc hien hoa don: " << this->ngayHD << "      |\n";
   fileHD << center << "+------------------------------------------------+\n";
-  this->exported = false;
   ConsoleTable table = {"STT", "Ma san pham", "Ten san pham", "Size", "Don gia", "So luong", "Giam gia (%)", "Thanh tien"};
   int cnt = 0;
   Node<SanPham> *pTemp = this->listSP->getpHead();
@@ -210,6 +209,7 @@ void HoaDon::xuatFile(fstream &fileHD)
   table.xuatFile(fileHD);
 
   fileHD << center << "\n\t\tTHANH TIEN: " << this->tongTien;
+  this->exported = true;
 }
 
 void HoaDon::tinhTongTien()
