@@ -4,6 +4,7 @@
 #include "NhanVien.h"
 // #include "..\src\features\QuanLi\QuanLi.cpp"
 #include "QuanLi.h"
+#include "Date.h"
 
 class QLNhanVien : public QuanLi
 {
@@ -16,7 +17,7 @@ public:
 
     void docFile(fstream &);
     void ghiFile(fstream &);
-    void xuatFile(fstream &);
+    void xuatFile();
     void create();      // Nhap tu nguoi dung
     void update();      // Chinh sua
     void read();        // Xuat ra man hinh

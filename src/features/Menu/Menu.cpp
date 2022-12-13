@@ -42,7 +42,7 @@ void Menu::checkLogin()
     while (true)
     {
         system("cls");
-        // printUI("Data/Pages/dangnhap.txt");
+        printUI("src/components/data/Pages/dangnhap.txt");
         string mk;
         Ma tk;
         cout << "\t\tVui long nhap tai khoan, mat khau de dang nhap he thong.";
@@ -112,6 +112,7 @@ void Menu::checkLogin()
         {
             this->checkRole = role;
             this->DatabaseHD->setMaDangNhap(tk);
+            return;
         }
     }
 };
@@ -124,7 +125,7 @@ void Menu::login()
         switch (this->checkRole)
         {
         case 1:
-            // NVMenu::nvMenu(user);
+            NVMenu::nvMenu(*this);
             break;
         case 2:
             AdminMenu::adMenu(*this);

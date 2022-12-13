@@ -145,6 +145,8 @@ void QLHoaDon::create()
               throw string("So luong san pham can > 0");
             SanPham tempSP;
             tempSP = this->pSP->findSP(tempList, tempMa, tempSize);
+            if (tempSP.getSoLuong() - tempSoLuong < 0)
+              throw string("So luong san pham vua nhap lon hon so luong trong kho");
             tempSP.setSoLuong(tempSoLuong);
             listSP->push_back(tempSP);
             break;
@@ -766,10 +768,10 @@ void QLHoaDon::deleteIndex()
 
 void QLHoaDon::find()
 {
-  ConsoleTable table{"STT", "Ma hoa don", "Ten Khach Hang", "Ngay tao hoa don", "Tinh trang", "Tong Tien"};
   while (true)
   {
     system("cls");
+    ConsoleTable table{"STT", "Ma hoa don", "Ten Khach Hang", "Ngay tao hoa don", "Tinh trang", "Tong Tien"};
     string tempSDT;
     Ma tempMaKH;
     try
@@ -784,7 +786,10 @@ void QLHoaDon::find()
     catch (const string error)
     {
       printError(error);
-      return;
+      char c;
+      fflush(stdin);
+      c = getchar();
+      continue;
     }
     Node<HoaDon> *pTemp = this->listHD->getpHead();
     int cnt = 0;
@@ -810,11 +815,85 @@ void QLHoaDon::find()
       cout << "\n\tKhach hang co " << tempSDT << " da mua " << cnt << " lan.\n";
       cout << table;
     }
-    printRes("Co muon tim them khach hang khac khong? (y/n): ");
+    printRes("Co muon tim lai khach hang khac khong? (y/n): ");
     char c;
     c = getchar();
     if (c == 'n')
       break;
+  }
+}
+
+void QLHoaDon::xuatFile()
+{
+  printRes("Nhap thong tin hoa don can xuat: \n");
+  QLHoaDon::find();
+  while (true)
+  {
+    Ma tempMa;
+    printRes("Nhap ma hoa don can xuat file: ");
+    cin >> tempMa;
+    try
+    {
+      Node<HoaDon> *pTemp = this->listHD->getpHead();
+      while (pTemp)
+      {
+        Ma temp = pTemp->getData().getMaHD();
+        if (temp == tempMa)
+        {
+          if (pTemp->getData().getExported())
+          {
+            pTemp->getData().xuat();
+            throw string("Hoa don nay da duoc xuat!");
+          }
+          pTemp->getData().xuat();
+          Node<SanPham> *tempSP = pTemp->getData().getListSP()->getpHead();
+          while (tempSP)
+          {
+            pSP->setSLSize(tempSP->getData().getMa(), tempSP->getData().getSize(), tempSP->getData().getSoLuong());
+            tempSP = tempSP->getpNext();
+          }
+          printRes("\nBan co muon xuat hoa don nay khong?(y/n): ");
+          char c;
+          fflush(stdin);
+          c = getchar();
+          if (c == 'n')
+          {
+            return;
+          }
+          // Xuat hoa don ra file
+          fstream fileHoaDon;
+          string src = "src/components/data/HoaDon/" + string(tempMa) + ".DAT";
+          fileHoaDon.open(src, ios_base::out);
+          pTemp->getData().xuatFile(fileHoaDon);
+          static HoaDon tempHD = pTemp->getData();
+          tempHD.setExported(true);
+          pTemp->setData(tempHD);
+          fileHoaDon.close();
+          // Ghi lai du lieu
+          fileHoaDon.open("src/components/data/HoaDon.DAT", ios_base::out);
+          QLHoaDon::ghiFile(fileHoaDon);
+          fileHoaDon.close();
+          fstream fileSanPham;
+          fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
+          pSP->ghiFile(fileSanPham);
+          fileSanPham.close();
+          printSuccess("Da xuat hoa don thanh cong!");
+          return;
+        }
+        pTemp = pTemp->getpNext();
+      }
+      if (!pTemp)
+      {
+        throw string("Khong tim thay ma hoa don! Vui long thu lai");
+      }
+    }
+    catch (const string &e)
+    {
+      printError(e);
+      char c;
+      fflush(stdin);
+      c = getchar();
+    }
   }
 }
 
@@ -843,7 +922,7 @@ void QLHoaDon::statisticalByDate()
   }
 
   cout << "\n\tThong tin thong ke ngay: " << tempNgay.getNgay() << "/" << tempNgay.getThang() << "/" << tempNgay.getNam() << " :";
-  cout << "\n\t Hoa don xuat trong ngay: " << hddx << "/" << hd;
+  cout << "\n\t Hoa don da xuat trong ngay/tong so hoa dong trong ngay: " << hddx << "/" << hd;
   cout << "\n\tTong so tien chi: " << tongTienChi;
   cout << "\n\t Tong so tien thu: " << tongTienThu;
   cout << "\n\t Loi nhuan: " << tongTienThu - tongTienChi;
@@ -872,7 +951,7 @@ void QLHoaDon::statisticalByMonth()
   }
 
   cout << "\n\tThong tin thong ke thang: " << tempNgay.getThang() << "/" << tempNgay.getNam() << " :";
-  cout << "\n\t Hoa don xuat trong thang: " << hddx << "/" << hd;
+  cout << "\n\t Hoa don da xuat trong thang/tong so hoa don trong thang: " << hddx << "/" << hd;
   cout << "\n\tTong so tien chi: " << tongTienChi;
   cout << "\n\t Tong so tien thu: " << tongTienThu;
   cout << "\n\t Loi nhuan: " << tongTienThu - tongTienChi;
@@ -901,7 +980,7 @@ void QLHoaDon::statisticalByYear()
   }
 
   cout << "\n\tThong tin thong ke nam " << tempNgay.getNam() << " :";
-  cout << "\n\t Hoa don xuat trong thang: " << hddx << "/" << hd;
+  cout << "\n\t Hoa don da xuat trong nam/tong so hoa don trong nam: " << hddx << "/" << hd;
   cout << "\n\tTong so tien chi: " << tongTienChi;
   cout << "\n\t Tong so tien thu: " << tongTienThu;
   cout << "\n\t Loi nhuan: " << tongTienThu - tongTienChi;

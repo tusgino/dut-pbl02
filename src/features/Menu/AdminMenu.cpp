@@ -29,23 +29,25 @@ void AdminMenu::printInfo()
 
 void AdminMenu::quanLiNhanVien(Menu &menu)
 {
+  menu.quanLi = menu.DatabaseNV;
   bool check = true;
   while (check)
   {
     system("cls");
-    // printUI("Data/Pages/qlnhanvien.txt");
+    printUI("src/components/data/Pages/qlnhanvien.txt");
     cout << "\n\t\t1. Xuat danh sach nhan vien.";
-    cout << "\n\t\t2. Them nhan vien.";
-    cout << "\n\t\t3. Tim kiem nhan vien.";
-    cout << "\n\t\t4. Chinh sua nhan vien";
-    cout << "\n\t\t5. Xoa nhan vien.";
-    cout << "\n\t\t6. Quay lai.";
-    int key = getKey(6);
+    cout << "\n\t\t2. Xuat danh sanh nhan vien ra file";
+    cout << "\n\t\t3. Them nhan vien.";
+    cout << "\n\t\t4. Tim kiem nhan vien.";
+    cout << "\n\t\t5. Chinh sua nhan vien";
+    cout << "\n\t\t6. Xoa nhan vien.";
+    cout << "\n\t\t7. Quay lai.";
+    int key = getKey(7);
     switch (key)
     {
     case 1:
     {
-      menu.DatabaseNV->read();
+      menu.quanLi->read();
       char c;
       fflush(stdin);
       c = getchar();
@@ -53,7 +55,8 @@ void AdminMenu::quanLiNhanVien(Menu &menu)
     break;
     case 2:
     {
-      menu.DatabaseNV->create();
+
+      menu.quanLi->xuatFile();
       char c;
       fflush(stdin);
       c = getchar();
@@ -61,7 +64,7 @@ void AdminMenu::quanLiNhanVien(Menu &menu)
     break;
     case 3:
     {
-      menu.DatabaseNV->find();
+      menu.quanLi->create();
       char c;
       fflush(stdin);
       c = getchar();
@@ -69,7 +72,7 @@ void AdminMenu::quanLiNhanVien(Menu &menu)
     break;
     case 4:
     {
-      menu.DatabaseNV->update();
+      menu.quanLi->find();
       char c;
       fflush(stdin);
       c = getchar();
@@ -77,13 +80,21 @@ void AdminMenu::quanLiNhanVien(Menu &menu)
     break;
     case 5:
     {
-      menu.DatabaseNV->deleteIndex();
+      menu.quanLi->update();
       char c;
       fflush(stdin);
       c = getchar();
     }
     break;
     case 6:
+    {
+      menu.quanLi->deleteIndex();
+      char c;
+      fflush(stdin);
+      c = getchar();
+    }
+    break;
+    case 7:
     {
       check = false;
     }
@@ -94,11 +105,12 @@ void AdminMenu::quanLiNhanVien(Menu &menu)
 
 void AdminMenu::quanLiSanPham(Menu &menu)
 {
+  menu.quanLi = menu.DatabaseSP;
   bool check = true;
   while (check)
   {
     system("cls");
-    // printUI("Data/Pages/qlsanpham.txt");
+    printUI("src/components/data/Pages/qlsanpham.txt");
     cout << "\n\t\t1. Xuat danh sach san pham.";
     cout << "\n\t\t2. Them san pham.";
     cout << "\n\t\t3. Chinh sua san pham.";
@@ -110,7 +122,7 @@ void AdminMenu::quanLiSanPham(Menu &menu)
     {
     case 1:
     {
-      menu.DatabaseSP->read();
+      menu.quanLi->read();
       char c;
       fflush(stdin);
       c = getchar();
@@ -118,7 +130,7 @@ void AdminMenu::quanLiSanPham(Menu &menu)
     break;
     case 2:
     {
-      menu.DatabaseSP->create();
+      menu.quanLi->create();
       char c;
       fflush(stdin);
       c = getchar();
@@ -126,7 +138,7 @@ void AdminMenu::quanLiSanPham(Menu &menu)
     break;
     case 3:
     {
-      menu.DatabaseSP->update();
+      menu.quanLi->update();
       char c;
       fflush(stdin);
       c = getchar();
@@ -134,7 +146,7 @@ void AdminMenu::quanLiSanPham(Menu &menu)
     break;
     case 4:
     {
-      menu.DatabaseSP->find();
+      menu.quanLi->find();
       char c;
       fflush(stdin);
       c = getchar();
@@ -142,7 +154,7 @@ void AdminMenu::quanLiSanPham(Menu &menu)
     break;
     case 5:
     {
-      menu.DatabaseSP->deleteIndex();
+      menu.quanLi->deleteIndex();
       char c;
       fflush(stdin);
       c = getchar();
@@ -161,7 +173,7 @@ void AdminMenu::quanLiHoaDon(Menu &menu)
   while (check)
   {
     system("cls");
-    // printUI("Data/Pages/qlhoadon.txt");
+    printUI("src/components/data/Pages/qlhoadon.txt");
     cout << "\n\t\t1. Xuat danh sach hoa don.";
     cout << "\n\t\t2. Them hoa don.";
     cout << "\n\t\t3. Chinh sua hoa don.";
@@ -197,7 +209,7 @@ void AdminMenu::quanLiHoaDon(Menu &menu)
     break;
     case 4:
     {
-      // menu.DatabaseHD->Xuat();
+      menu.DatabaseHD->xuatFile();
       char c;
       fflush(stdin);
       c = getchar();
@@ -220,11 +232,12 @@ void AdminMenu::quanLiHoaDon(Menu &menu)
 
 void AdminMenu::quanLiKhachHang(Menu &menu)
 {
+  menu.quanLi = menu.DatabaseKH;
   bool check = true;
   while (check)
   {
     system("cls");
-    // printUI("Data/Pages/qlkhachhang.txt");
+    printUI("src/components/data/Pages/qlkhachhang.txt");
     cout << "\n\t\t1. Xuat danh sach khach hang.";
     cout << "\n\t\t2. Them thong tin khach hang.";
     cout << "\n\t\t3. Chinh sua thong tin khach hang.";
@@ -236,7 +249,7 @@ void AdminMenu::quanLiKhachHang(Menu &menu)
     {
     case 1:
     {
-      menu.DatabaseKH->read();
+      menu.quanLi->read();
       char c;
       fflush(stdin);
       c = getchar();
@@ -244,7 +257,7 @@ void AdminMenu::quanLiKhachHang(Menu &menu)
     break;
     case 2:
     {
-      menu.DatabaseKH->create();
+      menu.quanLi->create();
       char c;
       fflush(stdin);
       c = getchar();
@@ -252,7 +265,7 @@ void AdminMenu::quanLiKhachHang(Menu &menu)
     break;
     case 3:
     {
-      menu.DatabaseKH->update();
+      menu.quanLi->update();
       char c;
       fflush(stdin);
       c = getchar();
@@ -260,7 +273,7 @@ void AdminMenu::quanLiKhachHang(Menu &menu)
     break;
     case 4:
     {
-      menu.DatabaseKH->find();
+      menu.quanLi->find();
       char c;
       fflush(stdin);
       c = getchar();
@@ -268,7 +281,7 @@ void AdminMenu::quanLiKhachHang(Menu &menu)
     break;
     case 5:
     {
-      menu.DatabaseKH->deleteIndex();
+      menu.quanLi->deleteIndex();
       char c;
       fflush(stdin);
       c = getchar();
@@ -287,6 +300,7 @@ void AdminMenu::thongKe(Menu &menu)
   while (check)
   {
     system("cls");
+    printUI("src/components/data/Pages/thongke.txt");
     {
       string arr[] = {"Thong ke theo: ", "Ngay", "Thang", "Nam", "Thoat"};
       printOpt(arr, 4);
@@ -336,7 +350,7 @@ void AdminMenu::adMenu(Menu &menu)
   while (check)
   {
     system("cls");
-    // printUI("Data/Pages/quanli.txt");
+    printUI("src/components/data/Pages/quanli.txt");
     printSuccess("Ban da dang nhap thanh cong!");
     cout << "\n\tVui long chon nhung tac vu de thuc hien";
     AdminMenu::printInfo();

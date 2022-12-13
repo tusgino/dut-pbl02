@@ -9,6 +9,7 @@ class QuanLi
 public:
     virtual void docFile(fstream &) = 0;
     virtual void ghiFile(fstream &);
+    virtual void xuatFile();
     virtual void create();      // Nhap tu nguoi dung
     virtual void update();      // Chinh sua
     virtual void read();        // Xuat ra man hinh

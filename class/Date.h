@@ -7,6 +7,7 @@
 using namespace std;
 class Date
 {
+private:
   int gio;
   int phut;
   int ngay;
@@ -18,19 +19,16 @@ public:
   Date(const Date &);
   // Phut:Gio Nam/Thang/Ngay
   Date(const int &, const int &, const int &, const int & = 1, const int & = 1);
-
   const int &getPhut();
   const int &getGio();
   const int &getNgay();
   const int &getThang();
   const int &getNam();
-
   void setNgay(const int &);
   void setThang(const int &);
   void setNam(const int &);
   void ghiFile(fstream &);
   void docFile(fstream &);
-
   friend istream &operator>>(istream &, Date &);
   friend ostream &operator<<(ostream &, const Date &);
   const bool operator<=(const Date &);

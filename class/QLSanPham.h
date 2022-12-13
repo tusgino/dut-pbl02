@@ -13,9 +13,7 @@ class QLSanPham : public QuanLi
 public:
   QLSanPham();
   ~QLSanPham();
-
   // components
-
   void docFile(fstream &);
   void ghiFile(fstream &);
   void create();      // Nhap tu nguoi dung
@@ -23,9 +21,8 @@ public:
   void read();        // Xuat ra man hinh
   void find();        // Tim Kiem
   void deleteIndex(); // Xoa
-
   // utils
-
+  void setSLSize(const Ma &, const string &, const int &);
   void sortMa(List<SanPham> *);   // sap xep list tang dan theo ma san pham
   int findMaMax();                // Tim ma so lon nhat hien tai de tao ma san pham khong bi trung
   void readList(List<SanPham> *); // in danh sach san pham ra man hinh

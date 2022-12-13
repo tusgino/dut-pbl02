@@ -188,11 +188,13 @@ void HoaDon::xuat()
 
 void HoaDon::xuatFile(fstream &fileHD)
 {
+  Date ngayX;
   fileHD << center << "+------------------------------------------------+\n";
   fileHD << center << "|              THONG TIN HOA DON                 |\n";
   fileHD << center << "| Ma nhan vien: " << this->maNV << "                           |\n";
   fileHD << center << "| Ma khach hang: " << this->maKH << "                          |\n";
-  fileHD << center << "| Ngay thuc hien hoa don: " << this->ngayHD << "      |\n";
+  fileHD << center << "| Ngay tao hoa don: " << this->ngayHD << "            |\n";
+  fileHD << center << "| Ngay xuat hoa don: " << ngayX << "           |\n";
   fileHD << center << "+------------------------------------------------+\n";
   ConsoleTable table = {"STT", "Ma san pham", "Ten san pham", "Size", "Don gia", "So luong", "Giam gia (%)", "Thanh tien"};
   int cnt = 0;
@@ -209,6 +211,7 @@ void HoaDon::xuatFile(fstream &fileHD)
   table.xuatFile(fileHD);
 
   fileHD << center << "\n\t\tTHANH TIEN: " << this->tongTien;
+  this->exported = true;
 }
 
 void HoaDon::tinhTongTien()
