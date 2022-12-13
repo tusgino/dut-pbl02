@@ -41,8 +41,9 @@ void NhanVien::ghiFile(fstream &fileOut)
 
 void NhanVien::nhap()
 {
-  cout << "Nhan vien hay Quan li dang nhap du lieu co ma la: " << this->ma << endl;
-  cout << "Nhap ten nhan vien nay: ";
+  cout << endl;
+  cout << "\tNhan vien hay Quan li dang nhap du lieu co ma la: " << this->ma << endl;
+  cout << "\tNhap ten nhan vien nay: ";
   fflush(stdin);
   getline(cin, this->ten);
   // while (true)
@@ -76,7 +77,7 @@ void NhanVien::nhap()
     break;
   }
 
-  cout << "Nhap dia chi:";
+  cout << "\tNhap dia chi:";
   fflush(stdin);
   getline(cin, this->diaChi);
   if (this->diaChi.length() == 0)
@@ -101,13 +102,13 @@ void NhanVien::nhap()
       break;
     }
   }
-  cout << "Nhap mat khau:";
+  cout << "\tNhap mat khau:";
   fflush(stdin);
   getline(cin, this->matKhau);
-  if (this->diaChi.length() == 0)
+  if (this->matKhau.length() == 0)
   {
-    cout << "Vi dia chi ban nhap la rong nen he thong se dat mat khau mac dinh cho nguoi dung la \"1\"" << endl;
-    this->diaChi = "1";
+    cout << "Vi mat khau ban nhap la rong nen he thong se dat mat khau mac dinh cho nguoi dung la \"1\"" << endl;
+    this->matKhau = "1";
   }
 }
 
