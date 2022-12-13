@@ -45,20 +45,6 @@ void NhanVien::nhap()
   cout << "Nhap ten nhan vien nay: ";
   fflush(stdin);
   getline(cin, this->ten);
-  // while (true)
-  // {
-  //   cout << "Nhap so dien thoai nhan vien nay: ";
-  //   fflush(stdin);
-  //   getline(cin, this->soDienThoai);
-  //   if (this->soDienThoai.length() == 0)
-  //   {
-  //     printError("So dien thoai khong the de trong!");
-  //   }
-  //   else
-  //   {
-  //     break;
-  //   }
-  // }
   {
     string arr[] = {"Nhap gioi tinh", "Nam", "Nu", "Khac"};
     printOpt(arr, 3);

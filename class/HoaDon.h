@@ -13,6 +13,7 @@
 
 class HoaDon
 {
+private:
   Ma maHD, maNV, maKH;
   int soLuong;
   ll tongTien;

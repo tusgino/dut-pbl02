@@ -28,12 +28,8 @@ public:
   QLHoaDon(QLNhanVien *, QLKhachHang *, QLSanPham *, const Ma &);
   QLHoaDon(QLNhanVien *, QLKhachHang *, QLSanPham *);
   ~QLHoaDon();
-
-  //
   void setMaDangNhap(const Ma &);
-
   // components
-
   void docFile(fstream &);
   void ghiFile(fstream &);
   void create();      // Nhap tu nguoi dung

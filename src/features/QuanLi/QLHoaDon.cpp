@@ -768,10 +768,10 @@ void QLHoaDon::deleteIndex()
 
 void QLHoaDon::find()
 {
-  ConsoleTable table{"STT", "Ma hoa don", "Ten Khach Hang", "Ngay tao hoa don", "Tinh trang", "Tong Tien"};
   while (true)
   {
     system("cls");
+    ConsoleTable table{"STT", "Ma hoa don", "Ten Khach Hang", "Ngay tao hoa don", "Tinh trang", "Tong Tien"};
     string tempSDT;
     Ma tempMaKH;
     try
@@ -786,7 +786,10 @@ void QLHoaDon::find()
     catch (const string error)
     {
       printError(error);
-      return;
+      char c;
+      fflush(stdin);
+      c = getchar();
+      continue;
     }
     Node<HoaDon> *pTemp = this->listHD->getpHead();
     int cnt = 0;
@@ -835,13 +838,13 @@ void QLHoaDon::xuatFile()
       while (pTemp)
       {
         Ma temp = pTemp->getData().getMaHD();
-        if (pTemp->getData().getExported())
-        {
-          pTemp->getData().xuat();
-          throw string("Hoa don nay da duoc xuat!");
-        }
         if (temp == tempMa)
         {
+          if (pTemp->getData().getExported())
+          {
+            pTemp->getData().xuat();
+            throw string("Hoa don nay da duoc xuat!");
+          }
           pTemp->getData().xuat();
           Node<SanPham> *tempSP = pTemp->getData().getListSP()->getpHead();
           while (tempSP)

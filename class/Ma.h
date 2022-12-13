@@ -13,6 +13,7 @@ using namespace std;
 
 class Ma
 {
+private:
     string kiTu;
     int soTT;
 
