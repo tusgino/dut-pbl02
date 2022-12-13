@@ -168,7 +168,7 @@ void AdminMenu::quanLiHoaDon(Menu &menu)
     cout << "\n\t\t4. Xuat chi tiet hoa don.";
     cout << "\n\t\t5. Xoa hoa don.";
     cout << "\n\t\t6. Quay lai.";
-    int key = getKey(4);
+    int key = getKey(6);
     switch (key)
     {
     case 1:
