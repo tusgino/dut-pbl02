@@ -69,6 +69,7 @@ void QLHoaDon::create()
   while (true)
   {
     system("cls");
+    printUI("src/components/data/Pages/qlhoadon.txt");
     string tempSDT;
     try
     {
@@ -89,7 +90,7 @@ void QLHoaDon::create()
       c = getchar();
       if (c == 'y')
       {
-        pKH->create(tempSDT);
+        pKH->create(tempSDT, tempMaKH);
         break;
       }
       return;
@@ -105,6 +106,7 @@ void QLHoaDon::create()
     while (true)
     {
       system("cls");
+      printUI("src/components/data/Pages/qlhoadon.txt");
       pSP->readList(tempList);
       try
       {
@@ -197,6 +199,7 @@ void QLHoaDon::update()
   while (true)
   {
     system("cls");
+    printUI("src/components/data/Pages/qlhoadon.txt");
     string tempSDT;
     Ma tempMaKH;
     try
@@ -252,19 +255,23 @@ void QLHoaDon::update()
       while (pTemp)
       {
         Ma tempMa = pTemp->getData().getMaHD();
+        cout << (temp == tempMa) << endl;
         if (temp == tempMa)
         {
           Node<HoaDon> *pTemp1 = this->listHD->getpHead();
           int cnt = 0;
           while (pTemp1)
           {
-            tempMa = pTemp1->getData().getMaHD();
-            if (tempMa == temp)
+            Ma maListRoot = pTemp1->getData().getMaHD();
+            cout << (maListRoot == tempMa) << endl;
+            if (maListRoot == temp)
             {
+              cout << "Alo";
               HoaDon tempRepair = pTemp1->getData();
               while (tempRepair.getSoLuong() != 0)
               {
                 system("cls");
+                printUI("src/components/data/Pages/qlhoadon.txt");
                 tempRepair.xuat();
                 string arr[] = {"Ban muon lam gi: ", "Them san pham", "Xoa san pham", "Thoat"};
                 printOpt(arr, 3);
@@ -284,6 +291,7 @@ void QLHoaDon::update()
                     while (true)
                     {
                       system("cls");
+                      printUI("src/components/data/Pages/qlhoadon.txt");
                       pSP->readList(tempList);
                       try
                       {
@@ -326,6 +334,7 @@ void QLHoaDon::update()
                             tempSP = this->pSP->findSP(tempList, tempMa, tempSize);
                             tempSP.setSoLuong(tempSoLuong);
                             listSP->push_back(tempSP);
+                            cnt++;
                             break;
                           }
                           catch (const string error)
@@ -378,6 +387,7 @@ void QLHoaDon::update()
                   while (check)
                   {
                     system("cls");
+                    printUI("src/components/data/Pages/qlhoadon.txt");
                     tempRepair.xuat();
                     printRes("\nNhap so thu tu san pham can xoa: ");
                     int i;
@@ -517,6 +527,7 @@ void QLHoaDon::update()
             ++cnt;
             pTemp1 = pTemp1->getpNext();
           }
+          return;
         }
         cntHD++;
         pTemp = pTemp->getpNext();
@@ -538,6 +549,7 @@ void QLHoaDon::read()
   while (true)
   {
     system("cls");
+    printUI("src/components/data/Pages/qlhoadon.txt");
     string arr[] = {"Xem hoa don theo: ", "Ngay", "Thang", "Nam", "Thoat"};
     printOpt(arr, 4);
     int key = getKey(4);
@@ -664,6 +676,7 @@ void QLHoaDon::deleteIndex()
   while (true)
   {
     system("cls");
+    printUI("src/components/data/Pages/qlhoadon.txt");
     string tempSDT;
     Ma tempMaKH;
     try
@@ -750,7 +763,7 @@ void QLHoaDon::deleteIndex()
         }
         else if (pTemp->getData().getExported())
         {
-          throw("Hoa don nay da xuat! khong the xoa");
+          throw string("Hoa don nay da xuat! khong the xoa");
         }
         pTemp = pTemp->getpNext();
       }
@@ -760,8 +773,11 @@ void QLHoaDon::deleteIndex()
     {
       printError(e);
       char c;
+      printRes("Ban co muon xoa hoa don khac khong? (y/n): ");
       fflush(stdin);
       c = getchar();
+      if (c == 'n')
+        return;
     }
   }
 }
@@ -771,6 +787,7 @@ void QLHoaDon::find()
   while (true)
   {
     system("cls");
+    printUI("src/components/data/Pages/qlhoadon.txt");
     ConsoleTable table{"STT", "Ma hoa don", "Ten Khach Hang", "Ngay tao hoa don", "Tinh trang", "Tong Tien"};
     string tempSDT;
     Ma tempMaKH;
@@ -840,6 +857,8 @@ void QLHoaDon::xuatFile()
         Ma temp = pTemp->getData().getMaHD();
         if (temp == tempMa)
         {
+          system("cls");
+          printUI("src/components/data/Pages/qlhoadon.txt");
           if (pTemp->getData().getExported())
           {
             pTemp->getData().xuat();

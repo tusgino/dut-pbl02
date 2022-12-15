@@ -43,6 +43,8 @@ void QLSanPham::ghiFile(fstream &fileOut)
 
 void QLSanPham::create()
 {
+  system("cls");
+  printUI("src/components/data/Pages/qlsanpham.txt");
   string arr[] = {
       "Vui long chon loai san pham:",
       "Ao",
@@ -84,6 +86,7 @@ void QLSanPham::create()
   while (check)
   {
     system("cls");
+    printUI("src/components/data/Pages/qlsanpham.txt");
     printOpt(arr1, 6);
     int key = getKey(6);
     if (key == 6)
@@ -94,7 +97,7 @@ void QLSanPham::create()
       printWarning("Ban da co size nay roi!");
       string arr3[] = {"Ban muon?: ", "Thay doi so luong.", "Them vao so luong da co.", "Quay lai"};
       printOpt(arr3, 3);
-      int key = getKey(2);
+      int key = getKey(3);
       if (key == 1)
       {
         Node<SanPham> *pTemp = tempList->getpHead();
@@ -123,13 +126,17 @@ void QLSanPham::create()
             int tempSoLuong;
             string warning = "So luong hien tai cua size " + tempSize + " la: " + to_string(pTemp->getData().getSoLuong());
             printWarning(warning);
-            printRes("Nhap so luong: ");
+            printRes("\nNhap so luong: ");
             cin >> tempSoLuong;
             SanPham tempSP(tempMa, tempSize, tempTen, tempXuatXu, pTemp->getData().getSoLuong() + tempSoLuong, tempGiaNhap, tempGiaBan, tempGiamGia);
             pTemp->setData(tempSP);
           }
           pTemp = pTemp->getpNext();
         }
+      }
+      if (key == 3)
+      {
+        break;
       }
     }
     else
@@ -159,12 +166,15 @@ void QLSanPham::create()
 void QLSanPham::update()
 {
   List<SanPham> *tempList = new List<SanPham>();
+  system("cls");
+  printUI("src/components/data/Pages/qlsanpham.txt");
   tempList = QLSanPham::findList();
   while (1)
   {
     system("cls");
+    printUI("src/components/data/Pages/qlsanpham.txt");
     QLSanPham::readList(tempList);
-    printRes("Vui long nhap ma san pham can chinh sua!\n");
+    printRes("Vui long nhap ma san pham can chinh sua: ");
     Ma tempMa;
     cin >> tempMa;
     Node<SanPham> *pTemp = tempList->getpHead();
@@ -174,15 +184,20 @@ void QLSanPham::update()
       while (check)
       {
         system("cls");
+        printUI("src/components/data/Pages/qlsanpham.txt");
+        printWarning("Dang sua san pham co ma la: " + string(tempMa) + "\n");
         string arr[] = {"Nhap lua chon:", "Chinh sua ten.", "Chinh sua xuat xu", "Chinh sua gia nhap", "Chinh sua gia ban", "Chinh sua giam gia", "Chinh sua size", "Quay lai"};
         printOpt(arr, 7);
         int key = getKey(7);
         SanPham *tempSP = new SanPham;
+        SanPham spTemp;
         switch (key)
         {
         case 1:
         {
           system("cls");
+          printUI("src/components/data/Pages/qlsanpham.txt");
+          printWarning("Dang sua san pham co ma la: " + string(tempMa) + "\n");
           printRes("Nhap ten can thay doi: ");
           string tempTen;
           string tenSP;
@@ -194,15 +209,9 @@ void QLSanPham::update()
             if (pTemp->getData().getMa() == tempMa)
             {
               tenSP = pTemp->getData().getTen();
-              tempSP->setMa(pTemp->getData().getMa());
-              tempSP->setSize(pTemp->getData().getSize());
-              tempSP->setTen(tempTen);
-              tempSP->setXuatXu(pTemp->getData().getXuatXu());
-              tempSP->setSoLuong(pTemp->getData().getSoLuong());
-              tempSP->setGiaNhap(pTemp->getData().getGiaNhap());
-              tempSP->setGiaBan(pTemp->getData().getGiaBan());
-              tempSP->setGiamGia(pTemp->getData().getGiamGia());
-              pTemp->setData(*tempSP);
+              spTemp = pTemp->getData();
+              spTemp.setTen(tempTen);
+              pTemp->setData(spTemp);
             }
             pTemp = pTemp->getpNext();
           }
@@ -220,6 +229,8 @@ void QLSanPham::update()
         case 2:
         {
           system("cls");
+          printUI("src/components/data/Pages/qlsanpham.txt");
+          printWarning("Dang sua san pham co ma la: " + string(tempMa) + "\n");
           printRes("Nhap xuat xu can thay doi: ");
           string tempXuatXu;
           fflush(stdin);
@@ -231,15 +242,9 @@ void QLSanPham::update()
             if (pTemp->getData().getMa() == tempMa)
             {
               tenSP = pTemp->getData().getTen();
-              tempSP->setMa(pTemp->getData().getMa());
-              tempSP->setSize(pTemp->getData().getSize());
-              tempSP->setTen(pTemp->getData().getTen());
-              tempSP->setXuatXu(tempXuatXu);
-              tempSP->setSoLuong(pTemp->getData().getSoLuong());
-              tempSP->setGiaNhap(pTemp->getData().getGiaNhap());
-              tempSP->setGiaBan(pTemp->getData().getGiaBan());
-              tempSP->setGiamGia(pTemp->getData().getGiamGia());
-              pTemp->setData(*tempSP);
+              spTemp = pTemp->getData();
+              spTemp.setXuatXu(tempXuatXu);
+              pTemp->setData(spTemp);
             }
             pTemp = pTemp->getpNext();
           }
@@ -257,6 +262,8 @@ void QLSanPham::update()
         case 3:
         {
           system("cls");
+          printUI("src/components/data/Pages/qlsanpham.txt");
+          printWarning("Dang sua san pham co ma la: " + string(tempMa) + "\n");
           printRes("Nhap gia nhap can thay doi: ");
           ll tempGiaNhap;
           cin >> tempGiaNhap;
@@ -267,15 +274,9 @@ void QLSanPham::update()
             if (pTemp->getData().getMa() == tempMa)
             {
               tenSP = pTemp->getData().getTen();
-              tempSP->setMa(pTemp->getData().getMa());
-              tempSP->setSize(pTemp->getData().getSize());
-              tempSP->setTen(pTemp->getData().getTen());
-              tempSP->setXuatXu(pTemp->getData().getXuatXu());
-              tempSP->setSoLuong(pTemp->getData().getSoLuong());
-              tempSP->setGiaNhap(tempGiaNhap);
-              tempSP->setGiaBan(pTemp->getData().getGiaBan());
-              tempSP->setGiamGia(pTemp->getData().getGiamGia());
-              pTemp->setData(*tempSP);
+              spTemp = pTemp->getData();
+              spTemp.setGiaNhap(tempGiaNhap);
+              pTemp->setData(spTemp);
             }
             pTemp = pTemp->getpNext();
           }
@@ -293,6 +294,8 @@ void QLSanPham::update()
         case 4:
         {
           system("cls");
+          printUI("src/components/data/Pages/qlsanpham.txt");
+          printWarning("Dang sua san pham co ma la: " + string(tempMa) + "\n");
           printRes("Nhap gia ban can thay doi: ");
           ll tempGiaBan;
           cin >> tempGiaBan;
@@ -303,15 +306,9 @@ void QLSanPham::update()
             if (pTemp->getData().getMa() == tempMa)
             {
               tenSP = pTemp->getData().getTen();
-              tempSP->setMa(pTemp->getData().getMa());
-              tempSP->setSize(pTemp->getData().getSize());
-              tempSP->setTen(pTemp->getData().getTen());
-              tempSP->setXuatXu(pTemp->getData().getXuatXu());
-              tempSP->setSoLuong(pTemp->getData().getSoLuong());
-              tempSP->setGiaNhap(pTemp->getData().getGiaNhap());
-              tempSP->setGiaBan(tempGiaBan);
-              tempSP->setGiamGia(pTemp->getData().getGiamGia());
-              pTemp->setData(*tempSP);
+              spTemp = pTemp->getData();
+              spTemp.setGiaBan(tempGiaBan);
+              pTemp->setData(spTemp);
             }
             pTemp = pTemp->getpNext();
           }
@@ -329,6 +326,8 @@ void QLSanPham::update()
         case 5:
         {
           system("cls");
+          printUI("src/components/data/Pages/qlsanpham.txt");
+          printWarning("Dang sua san pham co ma la: " + string(tempMa) + "\n");
           printRes("Nhap giam gia can thay doi: ");
           int tempGiamGia;
           cin >> tempGiamGia;
@@ -339,15 +338,9 @@ void QLSanPham::update()
             if (pTemp->getData().getMa() == tempMa)
             {
               tenSP = pTemp->getData().getTen();
-              tempSP->setMa(pTemp->getData().getMa());
-              tempSP->setSize(pTemp->getData().getSize());
-              tempSP->setTen(pTemp->getData().getTen());
-              tempSP->setXuatXu(pTemp->getData().getXuatXu());
-              tempSP->setSoLuong(pTemp->getData().getSoLuong());
-              tempSP->setGiaNhap(pTemp->getData().getGiaNhap());
-              tempSP->setGiaBan(pTemp->getData().getGiaBan());
+              spTemp = pTemp->getData();
               tempSP->setGiamGia(tempGiamGia);
-              pTemp->setData(*tempSP);
+              pTemp->setData(spTemp);
             }
             pTemp = pTemp->getpNext();
           }
@@ -367,6 +360,8 @@ void QLSanPham::update()
           while (1)
           {
             system("cls");
+            printUI("src/components/data/Pages/qlsanpham.txt");
+            printWarning("Dang sua san pham co ma la: " + string(tempMa) + "\n");
             printRes("Vui long nhap size(S/M/L/XL/XXL): ");
             string tempSize;
             fflush(stdin);
@@ -387,16 +382,9 @@ void QLSanPham::update()
                     if (pTemp->getData().getMa() == tempMa && pTemp->getData().getSize() == tempSize)
                     {
                       tenSP = pTemp->getData().getTen();
-
-                      tempSP->setMa(pTemp->getData().getMa());
-                      tempSP->setSize(pTemp->getData().getSize());
-                      tempSP->setTen(pTemp->getData().getTen());
-                      tempSP->setXuatXu(pTemp->getData().getXuatXu());
+                      spTemp = pTemp->getData();
                       tempSP->setSoLuong(tempSoLuong);
-                      tempSP->setGiaNhap(pTemp->getData().getGiaNhap());
-                      tempSP->setGiaBan(pTemp->getData().getGiaBan());
-                      tempSP->setGiamGia(pTemp->getData().getGiamGia());
-                      pTemp->setData(*tempSP);
+                      pTemp->setData(spTemp);
                       break;
                     }
                     pTemp = pTemp->getpNext();
@@ -461,6 +449,8 @@ void QLSanPham::update()
 
 void QLSanPham::read()
 {
+  system("cls");
+  printUI("src/components/data/Pages/qlsanpham.txt");
   QLSanPham::readList(this->dbSP);
 }
 
@@ -470,6 +460,7 @@ void QLSanPham::find()
   while (check)
   {
     system("cls");
+    printUI("src/components/data/Pages/qlsanpham.txt");
     printRes("Vui long nhap ten san pham can tim: ");
     string tempTenSP;
     fflush(stdin);
@@ -506,12 +497,15 @@ void QLSanPham::find()
 void QLSanPham::deleteIndex()
 {
   List<SanPham> *tempList = new List<SanPham>();
+  system("cls");
+  printUI("src/components/data/Pages/qlsanpham.txt");
   tempList = QLSanPham::findList();
   while (1)
   {
     system("cls");
+    printUI("src/components/data/Pages/qlsanpham.txt");
     QLSanPham::readList(tempList);
-    printRes("Vui long nhap ma san pham can xoa!\n");
+    printRes("Vui long nhap ma san pham can xoa!: ");
     Ma tempMa;
     cin >> tempMa;
     Node<SanPham> *pTemp = tempList->getpHead();
@@ -528,7 +522,7 @@ void QLSanPham::deleteIndex()
         if (pTemp->getData().getMa() == tempMa)
         {
           this->dbSP->deleteNode(QLSanPham::findIndex(this->dbSP, tempMa));
-          printSuccess("Xoa san pham thanh cong!");
+          this->count--;
           fstream fileSanPham;
           fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
           QLSanPham::ghiFile(fileSanPham);
@@ -549,7 +543,10 @@ void QLSanPham::deleteIndex()
           break;
       }
       else
+      {
+        printSuccess("Xoa san pham thanh cong!");
         break;
+      }
     }
   }
 }
@@ -685,7 +682,6 @@ List<SanPham> *QLSanPham::findList()
   bool check = true;
   while (check)
   {
-    system("cls");
     printRes("Vui long nhap ten san pham can tim: ");
     string tempTenSP;
     fflush(stdin);
@@ -715,6 +711,7 @@ List<SanPham> *QLSanPham::findList()
       c = getchar();
       if (c == 'n')
         check = false;
+      system("cls");
     }
   }
   return NULL;

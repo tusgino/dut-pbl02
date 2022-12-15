@@ -533,7 +533,7 @@ void QLKhachHang::deleteIndex()
     }
 }
 
-void QLKhachHang::create(const string &_sdt)
+void QLKhachHang::create(const string &_sdt, Ma &maKH)
 {
     KhachHang _KHAdd;
     int soTT = 0;
@@ -547,6 +547,7 @@ void QLKhachHang::create(const string &_sdt)
         }
     }
     Ma tempMa("KH", soTT + 1);
+    maKH = tempMa;
     _KHAdd.setMa(tempMa);
     _KHAdd.setSoDienThoai(_sdt);
     _KHAdd.nhap(); // Nhập từ phím

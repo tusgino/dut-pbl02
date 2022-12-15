@@ -13,8 +13,15 @@ HoaDon::HoaDon(List<SanPham> *listSP, const Ma &maHD, const Ma &maNV, const Ma &
   this->listSP = listSP;
   this->tongTien = 0;
   this->soLuong = 0;
+  Node<SanPham> *pTemp = this->listSP->getpHead();
+  while (pTemp)
+  {
+    this->tongTien += ll(pTemp->getData().getSoLuong() * (1 - (float)pTemp->getData().getGiamGia() / 100) * pTemp->getData().getGiaBan());
+    this->soLuong++;
+    pTemp = pTemp->getpNext();
+  }
   this->exported = exported;
-  this->ngayHD = Date(0, 0, 0, 0, 0);
+  this->ngayHD = Date();
 }
 
 HoaDon &HoaDon::operator=(const HoaDon &hoadon)
