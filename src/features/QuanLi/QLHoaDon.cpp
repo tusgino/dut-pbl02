@@ -182,6 +182,8 @@ void QLHoaDon::create()
       check = false;
   }
   HoaDon tempHD(listSP, tempMaHD, tempMaNV, tempMaKH, false);
+  Date now;
+  tempHD.setNgayHD(now);
   listHD->push_back(tempHD);
   this->count++;
   fstream fileHoaDon;

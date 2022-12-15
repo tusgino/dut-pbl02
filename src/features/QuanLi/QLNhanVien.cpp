@@ -171,7 +171,8 @@ void QLNhanVien::update()
             }
             pTemp = pTemp->getpNext();
         }
-        pTemp = this->dbNV->getpHead();
+        if (checkMa == false)
+            pTemp = this->dbNV->getpHead();
         while (pTemp && checkMa == false)
         {
             if ((pTemp->getData().getSoDienThoai()) == temp)
@@ -181,7 +182,6 @@ void QLNhanVien::update()
             }
             pTemp = pTemp->getpNext();
         }
-
 
         if (checkMa == true)
         {
@@ -198,12 +198,12 @@ void QLNhanVien::update()
             _NVRepair.xuatFullInfo();
 
             {
-                string arr[] = {"Nhap thong tin can chinh sua", "Ten nhan vien", "Chuc vu", "So dien thoai", "Dia chi", "Ca lam", "Gioi tinh", "Quay lai"};
+                string arr[] = {"Nhap thong tin can chinh sua", "Ten nhan vien", "Chuc vu", "So dien thoai", "Dia chi", "Ca lam", "Gioi tinh", "Mat khau", "Quay lai"};
 
-                printOpt(arr, 7);
+                printOpt(arr, 8);
             }
 
-            int key = getKey(7);
+            int key = getKey(8);
             switch (key)
             {
             case 1:
@@ -413,6 +413,28 @@ void QLNhanVien::update()
             }
             break;
             case 7:
+            {
+                string _tempMatKhau;
+                cout << "Nhap mat khau muon thay doi: ";
+                fflush(stdin);
+                getline(cin, _tempMatKhau);
+
+                // NhanVien _NVRepair;
+                // _NVRepair = pTemp->getData();
+                if (_tempMatKhau.length() == 0)
+                {
+                    printError("Mat khau khong the de trong. Doi mat khau that bai");
+                }
+                _NVRepair.setMatKhau(_tempMatKhau);
+                pTemp->setData(_NVRepair);
+                printSuccess("Ban da thay doi mat khau cua nhan vien nay");
+                fstream fileNhanVien;
+                fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                QLNhanVien::ghiFile(fileNhanVien);
+                fileNhanVien.close();
+            }
+            break;
+            case 8:
                 return;
                 break;
             default:
@@ -788,7 +810,7 @@ void QLNhanVien::xuatFile()
     printSuccess("Xuat file nhan vien thanh cong! Ten file: DanhSachNhanVien.DAT");
 }
 
-int QLNhanVien::checkRole(Ma tk, const string &mk)
+int QLNhanVien::checkRole(string &tk, const string &mk, Ma &ma)
 {
     Node<NhanVien> *pTemp = this->dbNV->getpHead();
 
@@ -802,11 +824,13 @@ int QLNhanVien::checkRole(Ma tk, const string &mk)
         {
             if (pTemp->getData().getMa().getKiTu() == "NV")
             {
+                ma = pTemp->getData().getMa();
                 return 1;
                 // cout << "Hello Nhan Vien";
             }
             else
             {
+                ma = pTemp->getData().getMa();
                 return 2;
                 // cout << "Hello Quan li ..";
             }

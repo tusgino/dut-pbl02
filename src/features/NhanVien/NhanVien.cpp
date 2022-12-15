@@ -63,7 +63,7 @@ void NhanVien::nhap()
     break;
   }
 
-  cout << "\tNhap dia chi:";
+  cout << "\tNhap dia chi: ";
   fflush(stdin);
   getline(cin, this->diaChi);
   if (this->diaChi.length() == 0)
@@ -88,7 +88,7 @@ void NhanVien::nhap()
       break;
     }
   }
-  cout << "\tNhap mat khau:";
+  cout << "\tNhap mat khau: ";
   fflush(stdin);
   getline(cin, this->matKhau);
   if (this->matKhau.length() == 0)

@@ -30,6 +30,10 @@ Menu::Menu()
 
 Menu::~Menu()
 {
+    delete this->DatabaseNV; 
+    delete this->DatabaseSP; 
+    delete this->DatabaseKH; 
+    delete this->DatabaseHD; 
 }
 
 void Menu::setLog(const bool &log)
@@ -44,10 +48,11 @@ void Menu::checkLogin()
         system("cls");
         printUI("src/components/data/Pages/dangnhap.txt");
         string mk;
-        Ma tk;
+        // Ma tk;
+        string tk;
         cout << "\t\tVui long nhap tai khoan, mat khau de dang nhap he thong.";
         cout << "\n\t\tTen dang nhap: ";
-        cin >> tk;
+        fflush(stdin); getline(cin, tk);
         cout << "\t\tMat Khau: ";
         fflush(stdin);
         string tempPass = "";
@@ -85,7 +90,7 @@ void Menu::checkLogin()
             getline(fileAdmin, checktk, '|');
             getline(fileAdmin, checkmk, '|');
             // cout << checktk << " " << string(tk) << endl;
-            if (checkmk.compare(mk) == 0 && checktk.compare(string(tk)) == 0)
+            if (checkmk.compare(mk) == 0 && checktk.compare(tk) == 0)
             {
                 this->checkRole = 3;
                 // cout << "Hello !! Ban dang truy cap voi quyen quan tri vien." << endl;
@@ -96,7 +101,8 @@ void Menu::checkLogin()
                 break;
             }
         }
-        int role = DatabaseNV->checkRole(tk, mk);
+        Ma matemp;
+        int role = DatabaseNV->checkRole(tk, mk, matemp);
         if (role == -1)
         {
             printError("Tai khoan dang nhap hoac mat khau khong chinh xac! Vui long thu lai");
@@ -111,7 +117,7 @@ void Menu::checkLogin()
         else
         {
             this->checkRole = role;
-            this->DatabaseHD->setMaDangNhap(tk);
+            this->DatabaseHD->setMaDangNhap(matemp);
             return;
         }
     }
