@@ -617,7 +617,7 @@ void QLNhanVien::find()
         while (pTemp)
         {
 
-            if (findString(string(pTemp->getData().getMa()), temp) != -1)
+            if (string(pTemp->getData().getMa()) == temp)
             {
                 checkMa = true;
                 break;
@@ -656,12 +656,12 @@ void QLNhanVien::find()
                 {
                     pTemp->getData().xuatFullInfo();
                     // pauseScreen();
-                    return;
+                    // return;
                 }
                 pTemp = pTemp->getpNext();
             }
 
-            printError("Khong tim thay Nhan vien nao so dien thoai nay");
+            // printError("Khong tim thay Nhan vien nao so dien thoai nay");
         }
         else if (checkTen == true)
         {
@@ -685,7 +685,7 @@ void QLNhanVien::find()
                 pTemp = pTemp->getpNext();
             }
             std::cout << table;
-            return;
+            // return;
         }
         else if (checkMa == true)
         {
@@ -697,16 +697,28 @@ void QLNhanVien::find()
                 {
                     pTemp->getData().xuatFullInfo();
                     // pauseScreen();
-                    return;
+                    // return;
                 }
                 pTemp = pTemp->getpNext();
             }
         }
         else
         {
-            printError("Khong tim thay nhan vien nao phu hop. Vui long thu lai");
-            return;
+            printError("Khong tim thay NHAN VIEN nao phu hop. Vui long thu lai");
+            // return;
         }
+
+        char c;
+        printRes("Ban co muon tiep tuc tim kiem thong tin khach hang khong?(y: dong y / 'ki tu khac' : bo qua): ");
+        fflush(stdin);
+        c = getchar();
+        if (c == 'Y' || c == 'y')
+        {
+            cout << endl;
+            continue;
+        }
+        else
+            return;
     }
 }
 
@@ -838,4 +850,28 @@ int QLNhanVien::checkRole(string &tk, const string &mk, Ma &ma)
         pTemp = pTemp->getpNext();
     }
     return -1;
+}
+
+void QLNhanVien::sort(){
+    Node<NhanVien> *pBefore = this->dbNV->getpHead();
+    Node<NhanVien> *pAfter = pBefore->getpNext();
+    while (pBefore)
+    {
+        pAfter = pBefore->getpNext();
+        while (pAfter)
+        {
+            if (pBefore->getData().getMa() >= pAfter->getData().getMa())
+            {
+                NhanVien pTemp = pBefore->getData();
+                pBefore->setData(pAfter->getData());
+                pAfter->setData(pTemp);
+            }
+            pAfter = pAfter->getpNext();
+        }
+        pBefore = pBefore->getpNext();
+    }
+    // fstream fileNhanVien;
+    // fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+    // QLNhanVien::ghiFile(fileNhanVien);
+    // fileNhanVien.close();
 }

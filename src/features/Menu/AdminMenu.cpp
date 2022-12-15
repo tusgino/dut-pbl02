@@ -33,6 +33,7 @@ void AdminMenu::quanLiNhanVien(Menu &menu)
   bool check = true;
   while (check)
   {
+    menu.quanLi->sort();
     system("cls");
     printUI("src/components/data/Pages/qlnhanvien.txt");
     cout << "\n\t\t1. Xuat danh sach nhan vien.";
@@ -236,6 +237,7 @@ void AdminMenu::quanLiKhachHang(Menu &menu)
   bool check = true;
   while (check)
   {
+    menu.quanLi->sort();
     system("cls");
     printUI("src/components/data/Pages/qlkhachhang.txt");
     cout << "\n\t\t1. Xuat danh sach khach hang.";

@@ -150,6 +150,7 @@ void NVMenu::quanLiKhachHang(Menu &menu)
   bool check = true;
   while (check)
   {
+    menu.quanLi->sort();
     system("cls");
     printUI("src/components/data/Pages/qlkhachhang.txt");
     cout << "\n\t\t1. Xuat danh sach khach hang.";

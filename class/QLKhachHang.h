@@ -28,6 +28,7 @@ public:
     Ma findKH(const string &);
     string findKH(const Ma &);
     void sortMa();
+    void sort();
     void create(const string &);
 };
 #endif

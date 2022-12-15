@@ -26,6 +26,7 @@ public:
     int findBySDT(const string &);
     int findByMa(const string &);
     void sortMa();
+    void sort();
     int checkRole(string &, const string &, Ma&);
 };
 
