@@ -119,10 +119,10 @@ void QLKhachHang::update()
     int indexFind = 0;
     if (index == -1)
     {
-
         Node<KhachHang> *pTemp = this->dbKH->getpHead();
         while (pTemp)
         {
+            // cout << 1 << endl;
             if (string(pTemp->getData().getMa()) == _temp)
             {
                 index = indexFind;
@@ -134,7 +134,7 @@ void QLKhachHang::update()
     }
     if (index == -1)
     {
-        printError("Khong tim thay KHACH HANG da dang ki so dien thoai nay");
+        printError("Khong tim thay KHACH HANG da dang ki So dien thoai hoac co Ma nay nay");
     }
     else
     {
@@ -143,6 +143,8 @@ void QLKhachHang::update()
         {
             pTemp = pTemp->getpNext();
         }
+
+        printSuccess("Da tim thay nhan vien nay\n\n");
         while (true)
         {
             cout << center << "\t  THONG TIN CUA KHACH HANG: " << endl;
@@ -154,7 +156,7 @@ void QLKhachHang::update()
                                 "Gioi Tinh",
                                 "So dien thoai",
                                 "Dia chi",
-                                "Email", "Quay lai"};
+                                "Email", "Hoan tat chinh sua"};
                 printOpt(arr, 6);
             }
             int key = getKey(6);
@@ -354,6 +356,7 @@ void QLKhachHang::find()
             {
                 if (pTemp->getData().getSoDienThoai() == temp)
                 {
+                    printSuccess("Da tim thay thanh cong\n\n");
                     cout << center << "\tTHONG TIN KHACH HANG PHU HOP VOI YEU CAU" << endl;
                     pTemp->getData().xuatFullInfo();
                     // return;
@@ -366,6 +369,7 @@ void QLKhachHang::find()
         else if (checkTen)
         {
             Node<KhachHang> *pTemp = this->dbKH->getpHead();
+            printSuccess("Da tim thay thanh cong\n\n");
 
             ConsoleTable table{"STT", "Ma khach hang", "Ten khach hang", "Dia chi", "So dien thoai"};
             int count = 0;
@@ -390,6 +394,8 @@ void QLKhachHang::find()
         }
         else if (checkMa)
         {
+            printSuccess("Da tim thay thanh cong\n\n");
+
             Node<KhachHang> *pTemp = this->dbKH->getpHead();
             while (pTemp)
             {
