@@ -173,6 +173,7 @@ void QLNhanVien::update()
         }
         if (checkMa == false)
             pTemp = this->dbNV->getpHead();
+
         while (pTemp && checkMa == false)
         {
             if ((pTemp->getData().getSoDienThoai()) == temp)
@@ -183,15 +184,24 @@ void QLNhanVien::update()
             pTemp = pTemp->getpNext();
         }
 
+        NhanVien _NVRepair;
         if (checkMa == true)
         {
             printSuccess("Da tim thay nhan vien co ma nay");
+            _NVRepair = pTemp->getData();
         }
         else if (checkMa == true)
         {
             printSuccess("Da tim thay nhan vien co so dien thoai nay");
+            _NVRepair = pTemp->getData();
         }
-        NhanVien _NVRepair = pTemp->getData();
+        else
+        {
+            printError("Khong tim thay nhan vien phu hop. Vui long thu lai.");
+            // pauseScreen();
+
+            return;
+        }
         while (true)
         {
             // pTemp->getData().xuatFullInfo();
@@ -852,7 +862,8 @@ int QLNhanVien::checkRole(string &tk, const string &mk, Ma &ma)
     return -1;
 }
 
-void QLNhanVien::sort(){
+void QLNhanVien::sort()
+{
     Node<NhanVien> *pBefore = this->dbNV->getpHead();
     Node<NhanVien> *pAfter = pBefore->getpNext();
     while (pBefore)
