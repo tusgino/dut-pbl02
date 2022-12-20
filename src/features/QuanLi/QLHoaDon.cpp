@@ -184,6 +184,8 @@ void QLHoaDon::create()
       check = false;
   }
   HoaDon tempHD(listSP, tempMaHD, tempMaNV, tempMaKH, false);
+  Date now;
+  tempHD.setNgayHD(now);
   listHD->push_back(tempHD);
   this->count++;
   fstream fileHoaDon;
@@ -884,7 +886,7 @@ void QLHoaDon::xuatFile()
           string src = "src/components/data/HoaDon/" + string(tempMa) + ".DAT";
           fileHoaDon.open(src, ios_base::out);
           pTemp->getData().xuatFile(fileHoaDon);
-          static HoaDon tempHD = pTemp->getData();
+          HoaDon tempHD = pTemp->getData();
           tempHD.setExported(true);
           pTemp->setData(tempHD);
           fileHoaDon.close();
@@ -893,7 +895,7 @@ void QLHoaDon::xuatFile()
           QLHoaDon::ghiFile(fileHoaDon);
           fileHoaDon.close();
           fstream fileSanPham;
-          fileSanPham.open("src/components/data/SanPham.DAT", ios_base::out);
+          fileSanPham.open(dataSanPham, ios_base::out);
           pSP->ghiFile(fileSanPham);
           fileSanPham.close();
           printSuccess("Da xuat hoa don thanh cong!");
@@ -932,25 +934,38 @@ void QLHoaDon::statisticalByDate()
   while (pTemp)
   {
     Date ngay = pTemp->getData().getNgayHD();
+    if (tempNgay == ngay)
+    {
+      hd++;
+    }
     if (tempNgay == ngay && pTemp->getData().getExported())
     {
       tongTienChi += pTemp->getData().getTongTienChi();
       tongTienThu += pTemp->getData().getTongTien();
       hddx++;
     }
-    hd++;
     pTemp = pTemp->getpNext();
   }
-
-  cout << "\n\tThong tin thong ke ngay: " << tempNgay.getNgay() << "/" << tempNgay.getThang() << "/" << tempNgay.getNam() << " :";
-  cout << "\n\t Hoa don da xuat trong ngay/tong so hoa dong trong ngay: " << hddx << "/" << hd;
-  cout << "\n\tTong so tien chi: " << tongTienChi;
-  cout << "\n\t Tong so tien thu: " << tongTienThu;
-  cout << "\n\t Loi nhuan: " << tongTienThu - tongTienChi;
+  if (!hddx)
+  {
+    printWarning("Ngay nay khong co hoa don nao duoc xuat!");
+  }
+  else
+  {
+    cout << center << "+-------------------------------------------------------------------+\n";
+    cout << center << "| Thong ke hoa don theo ngay: " << tempNgay.getNgay() << "/" << tempNgay.getThang() << "/" << tempNgay.getNam() << "                            |\n";
+    cout << center << "| Hoa don da xuat trong ngay/tong so hoa don trong ngay: " << hddx << "/" << hd << "        |\n";
+    cout << center << "| Tong so tien chi: " << tongTienChi << "                                          |\n";
+    cout << center << "| Tong so tien thu: " << tongTienThu << "                                          |\n";
+    cout << center << "| Loi nhuan: " << tongTienThu - tongTienChi << "                                                 |\n";
+    cout << center << "+-------------------------------------------------------------------+\n";
+  }
 };
 
 void QLHoaDon::statisticalByMonth()
 {
+  system("cls");
+  printUI("src/components/data/Pages/thongke.txt");
   Date tempNgay;
   tempNgay.nhapThang();
   int hddx = 0;
@@ -961,25 +976,38 @@ void QLHoaDon::statisticalByMonth()
   while (pTemp)
   {
     Date ngay = pTemp->getData().getNgayHD();
+    if (tempNgay.getThang() == ngay.getThang() && tempNgay.getNam() == ngay.getNam())
+    {
+      hd++;
+    }
     if (tempNgay.getThang() == ngay.getThang() && tempNgay.getNam() == ngay.getNam() && pTemp->getData().getExported())
     {
       tongTienChi += pTemp->getData().getTongTienChi();
       tongTienThu += pTemp->getData().getTongTien();
       hddx++;
     }
-    hd++;
     pTemp = pTemp->getpNext();
   }
-
-  cout << "\n\tThong tin thong ke thang: " << tempNgay.getThang() << "/" << tempNgay.getNam() << " :";
-  cout << "\n\t Hoa don da xuat trong thang/tong so hoa don trong thang: " << hddx << "/" << hd;
-  cout << "\n\tTong so tien chi: " << tongTienChi;
-  cout << "\n\t Tong so tien thu: " << tongTienThu;
-  cout << "\n\t Loi nhuan: " << tongTienThu - tongTienChi;
+  if (!hddx)
+  {
+    printWarning("Thang nay khong co hoa don nao duoc xuat!");
+  }
+  else
+  {
+    cout << center << "+-------------------------------------------------------------------+\n";
+    cout << center << "| Thong ke hoa don theo thang: " << tempNgay.getThang() << "/" << tempNgay.getNam() << "                              |\n";
+    cout << center << "| Hoa don da xuat trong thang/tong so hoa don trong thang: " << hddx << "/" << hd << "      |\n";
+    cout << center << "| Tong so tien chi: " << tongTienChi << "                                          |\n";
+    cout << center << "| Tong so tien thu: " << tongTienThu << "                                          |\n";
+    cout << center << "| Loi nhuan: " << tongTienThu - tongTienChi << "                                                 |\n";
+    cout << center << "+-------------------------------------------------------------------+\n";
+  }
 };
 
 void QLHoaDon::statisticalByYear()
 {
+  system("cls");
+  printUI("src/components/data/Pages/thongke.txt");
   Date tempNgay;
   tempNgay.nhapNam();
   int hddx = 0;
@@ -990,21 +1018,32 @@ void QLHoaDon::statisticalByYear()
   while (pTemp)
   {
     Date ngay = pTemp->getData().getNgayHD();
+    if (tempNgay.getNam() == ngay.getNam())
+    {
+      hd++;
+    }
     if (tempNgay.getNam() == ngay.getNam() && pTemp->getData().getExported())
     {
       tongTienChi += pTemp->getData().getTongTienChi();
       tongTienThu += pTemp->getData().getTongTien();
       hddx++;
     }
-    hd++;
     pTemp = pTemp->getpNext();
   }
-
-  cout << "\n\tThong tin thong ke nam " << tempNgay.getNam() << " :";
-  cout << "\n\t Hoa don da xuat trong nam/tong so hoa don trong nam: " << hddx << "/" << hd;
-  cout << "\n\tTong so tien chi: " << tongTienChi;
-  cout << "\n\t Tong so tien thu: " << tongTienThu;
-  cout << "\n\t Loi nhuan: " << tongTienThu - tongTienChi;
+  if (!hddx)
+  {
+    printWarning("Nam nay khong co hoa don nao duoc xuat!");
+  }
+  else
+  {
+    cout << center << "+-------------------------------------------------------------------+\n";
+    cout << center << "| Thong ke hoa don theo nam " << tempNgay.getNam() << "                                    |\n";
+    cout << center << "| Hoa don da xuat trong nam/tong so hoa don trong nam: " << hddx << "/" << hd << "          |\n";
+    cout << center << "| Tong so tien chi: " << tongTienChi << "                                         |\n";
+    cout << center << "| Tong so tien thu: " << tongTienThu << "                                         |\n";
+    cout << center << "| Loi nhuan: " << tongTienThu - tongTienChi << "                                                |\n";
+    cout << center << "+-------------------------------------------------------------------+\n";
+  }
 };
 
 const int QLHoaDon::findMaMax()

@@ -41,8 +41,8 @@ public:
   const Ma &getMaNV();
   const Ma &getMaKH();
   const int &getSoLuong();
-  const ll &getTongTienChi();
-  const ll &getTongTien();
+  const ll getTongTienChi();
+  const ll getTongTien();
   const bool &getExported();
   const Date &getNgayHD();
   List<SanPham> *getListSP();

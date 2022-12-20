@@ -98,7 +98,7 @@ Ma::operator std::string()
     }
     for (int i = 0; i < 4 - cnt; i++)
     {
-        res += '0';
+        res += "0";
     }
     res += to_string(this->soTT);
 

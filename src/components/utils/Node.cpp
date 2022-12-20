@@ -6,7 +6,7 @@ Node<T>::Node()
 }
 
 template <class T>
-Node<T>::Node(const T data)
+Node<T>::Node(const T& data)
 {
     this->data = data;
     this->pNext = nullptr;

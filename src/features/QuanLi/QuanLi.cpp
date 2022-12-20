@@ -9,4 +9,5 @@ void QuanLi::read() {}   // Xuat ra man hinh
 void QuanLi::find() {}   // Tim Kiem
 void QuanLi::deleteIndex() {}
 void QuanLi::sortMa() {}
+void QuanLi::sort() {}
 QuanLi::~QuanLi() {}

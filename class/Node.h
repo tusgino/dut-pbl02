@@ -10,7 +10,7 @@ private:
 public:
     Node();
     ~Node();
-    Node(const T);
+    Node(const T&);
     
     T getData();
     Node<T> *getpNext();

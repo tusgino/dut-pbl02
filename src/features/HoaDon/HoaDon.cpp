@@ -100,18 +100,18 @@ const int &HoaDon::getSoLuong()
 {
   return this->soLuong;
 }
-const ll &HoaDon::getTongTienChi()
+const ll HoaDon::getTongTienChi()
 {
   Node<SanPham> *pTemp = this->listSP->getpHead();
-  static ll TTT = 0;
+  ll TTT = 0;
   while (pTemp)
   {
-    TTT += pTemp->getData().getGiaNhap();
+    TTT += pTemp->getData().getGiaNhap() * pTemp->getData().getSoLuong();
     pTemp = pTemp->getpNext();
   }
   return TTT;
 }
-const ll &HoaDon::getTongTien()
+const ll HoaDon::getTongTien()
 {
   return this->tongTien;
 }
@@ -146,7 +146,7 @@ void HoaDon::docFile(fstream &fileIn)
   {
     SanPham tempSP;
     tempSP.docFile(fileIn);
-    this->tongTien += ll(tempSP.getSoLuong() * (1 - float(tempSP.getGiamGia() / 100)) * tempSP.getGiaBan());
+    this->tongTien += ll(tempSP.getSoLuong() * (1 - (float)tempSP.getGiamGia() / 100) * tempSP.getGiaBan());
     listSP->push_back(tempSP);
   }
 }

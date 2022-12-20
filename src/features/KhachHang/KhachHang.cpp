@@ -35,17 +35,17 @@ void KhachHang::ghiFile(fstream &fileOut)
 }
 void KhachHang::nhap()
 {
-  cout << "Khach hang co ma la" << this->ma << endl;
-  cout << "Nhap ten khach hang: ";
+  cout << "\tKhach hang co ma la: " << this->ma << endl;
+  cout << "\tNhap ten khach hang: ";
   fflush(stdin);
   getline(cin, this->ten);
   // cout << "Nhap so dien thoai: " << this->soDienThoai;
   // fflush(stdin);
   // getline(cin, this->soDienThoai);
-  cout << "Nhap dia chi: ";
+  cout << "\tNhap dia chi: ";
   fflush(stdin);
   getline(cin, this->diaChi);
-  cout << "Nhap email: ";
+  cout << "\tNhap email: ";
   fflush(stdin);
   getline(cin, this->email);
   {
@@ -74,36 +74,36 @@ void KhachHang::chinhSua()
 
 void KhachHang::xuatFullInfo()
 {
-  cout << "+--------------------------------------------------------+\n";
-  cout << "| " << setw(25) << right << "Ma khach hang: " << this->ma << setw(26) << right << "|\n";
-  cout << "| " << setw(25) << right << "Ho ten khach hang: " << setw(30) << left << this->ten << "|\n";
-  cout << "| " << setw(25) << right << "So dien thoai: " << setw(30) << left << this->soDienThoai << "|\n";
-  cout << "| " << setw(25) << right << "Dia chi: " << setw(30) << left << this->diaChi << "|\n";
-  cout << "| " << setw(25) << right << "Email: " << setw(30) << left << this->email << "|\n";
+  cout << center << "+--------------------------------------------------------+\n";
+  cout << center << "| " << setw(25) << right << "Ma khach hang: " << this->ma << setw(26) << right << "|\n";
+  cout << center << "| " << setw(25) << right << "Ho ten khach hang: " << setw(30) << left << this->ten << "|\n";
+  cout << center << "| " << setw(25) << right << "So dien thoai: " << setw(30) << left << this->soDienThoai << "|\n";
+  cout << center << "| " << setw(25) << right << "Dia chi: " << setw(30) << left << this->diaChi << "|\n";
+  cout << center << "| " << setw(25) << right << "Email: " << setw(30) << left << this->email << "|\n";
   switch (this->gioiTinh)
   {
   case 1:
-    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Nam"
+    cout << center << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Nam"
          << "|\n";
 
     break;
   case 2:
-    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Nu"
+    cout << center << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Nu"
          << "|\n";
 
     break;
   case 3:
-    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Khac"
+    cout << center << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "Khac"
          << "|\n";
 
     break;
   default:
-    cout << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "(null)"
+    cout << center << "| " << setw(25) << right << "Gioi tinh: " << setw(30) << left << "(null)"
          << "|\n";
 
     break;
   }
-  cout << "+--------------------------------------------------------+\n";
+  cout << center << "+--------------------------------------------------------+\n";
 }
 void KhachHang::setMa(const Ma &ma)
 {
