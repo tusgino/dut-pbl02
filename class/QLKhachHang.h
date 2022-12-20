@@ -22,13 +22,13 @@ public:
     void read();        // Xuat ra man hinh
     void find();        // Tim Kiem
     void deleteIndex(); // Xoa
-    
+
     int findBySDT(const string &);
     void xuatFile(fstream &);
     Ma findKH(const string &);
     string findKH(const Ma &);
     void sortMa();
+    void create(const string &, Ma &);
     void sort();
-    void create(const string &);
 };
 #endif

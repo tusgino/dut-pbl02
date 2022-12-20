@@ -12,6 +12,10 @@ using namespace std;
 
 const string tabtab = "\n\t\t";
 const string center = "\t\t\t\t\t";
+const string dataNhanVien = "src/components/data/NhanVien.DAT";
+const string dataKhachHang = "src/components/data/KhachHang.DAT";
+const string dataSanPham = "src/components/data/SanPham.DAT";
+const string dataHoaDon = "src/components/data/HoaDon.DAT";
 
 void printLineColor(string line, int color_code)
 {

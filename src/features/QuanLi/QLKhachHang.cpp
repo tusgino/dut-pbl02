@@ -71,7 +71,7 @@ void QLKhachHang::create()
         this->count++;
         printSuccess("Tao KHACH HANG thanh cong");
         fstream fileKhachHang;
-        fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+        fileKhachHang.open(dataKhachHang, ios_base::out);
         QLKhachHang::ghiFile(fileKhachHang);
         fileKhachHang.close();
     }
@@ -181,7 +181,7 @@ void QLKhachHang::update()
                     pTemp->setData(_KH_repair);
                     printSuccess("Da doi thong tin thanh cong!");
                     fstream fileKhachHang;
-                    fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                    fileKhachHang.open(dataKhachHang, ios_base::out);
                     QLKhachHang::ghiFile(fileKhachHang);
                     fileKhachHang.close();
                 }
@@ -210,7 +210,7 @@ void QLKhachHang::update()
                     pTemp->setData(_KH_repair);
                     printSuccess("Da doi thong tin thanh cong!");
                     fstream fileKhachHang;
-                    fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                    fileKhachHang.open(dataKhachHang, ios_base::out);
                     QLKhachHang::ghiFile(fileKhachHang);
                     fileKhachHang.close();
                 }
@@ -242,7 +242,7 @@ void QLKhachHang::update()
                     pTemp->setData(_KH_repair);
                     printSuccess("Da doi thong tin thanh cong!");
                     fstream fileKhachHang;
-                    fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                    fileKhachHang.open(dataKhachHang, ios_base::out);
                     QLKhachHang::ghiFile(fileKhachHang);
                     fileKhachHang.close();
                 }
@@ -267,7 +267,7 @@ void QLKhachHang::update()
                 pTemp->setData(_KH_repair);
                 printSuccess("Da doi thong tin thanh cong!");
                 fstream fileKhachHang;
-                fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                fileKhachHang.open(dataKhachHang, ios_base::out);
                 QLKhachHang::ghiFile(fileKhachHang);
                 fileKhachHang.close();
             }
@@ -291,7 +291,7 @@ void QLKhachHang::update()
                 pTemp->setData(_KH_repair);
                 printSuccess("Da doi thong tin thanh cong!");
                 fstream fileKhachHang;
-                fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                fileKhachHang.open(dataKhachHang, ios_base::out);
                 QLKhachHang::ghiFile(fileKhachHang);
                 fileKhachHang.close();
             }
@@ -582,7 +582,7 @@ void QLKhachHang::deleteIndex()
                 this->count--;
                 printSuccess("Da xoa thanh cong!");
                 fstream fileKhachHang;
-                fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                fileKhachHang.open(dataKhachHang, ios_base::out);
                 QLKhachHang::ghiFile(fileKhachHang);
                 fileKhachHang.close();
             }
@@ -593,7 +593,8 @@ void QLKhachHang::deleteIndex()
         }
     }
 }
-void QLKhachHang::create(const string &_sdt)
+
+void QLKhachHang::create(const string &_sdt, Ma &maKH)
 {
     KhachHang _KHAdd;
     int soTT = 0;
@@ -607,6 +608,7 @@ void QLKhachHang::create(const string &_sdt)
         }
     }
     Ma tempMa("KH", soTT + 1);
+    maKH = tempMa;
     _KHAdd.setMa(tempMa);
     _KHAdd.setSoDienThoai(_sdt);
     _KHAdd.nhap(); // Nhập từ phím
@@ -615,12 +617,13 @@ void QLKhachHang::create(const string &_sdt)
     this->count++;
     printSuccess("Tao KHACH HANG thanh cong!");
     fstream fileKhachHang;
-    fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+    fileKhachHang.open(dataKhachHang, ios_base::out);
     QLKhachHang::ghiFile(fileKhachHang);
     fileKhachHang.close();
 }
 
-void QLKhachHang::sort(){
+void QLKhachHang::sort()
+{
     Node<KhachHang> *pBefore = this->dbKH->getpHead();
     Node<KhachHang> *pAfter = pBefore->getpNext();
     while (pBefore)
