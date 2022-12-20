@@ -69,7 +69,7 @@ void QLKhachHang::create()
 
         this->dbKH->push_back(_KHAdd);
         this->count++;
-        printSuccess("Tao khach hang thanh cong");
+        printSuccess("Tao KHACH HANG thanh cong");
         fstream fileKhachHang;
         fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
         QLKhachHang::ghiFile(fileKhachHang);
@@ -77,14 +77,14 @@ void QLKhachHang::create()
     }
     else
     {
-        printError("Da co khach hang dang ki so dien thoai nay da ton tai");
+        printError("Da co KHACH HANG dang ki so dien thoai nay da ton tai");
     }
 }
 void QLKhachHang::read()
 {
     if (this->dbKH->getpHead() == nullptr)
     {
-        printError("Danh sach khach hang dang rong. Vui long them du lieu");
+        printError("Danh sach KHACH HANG dang rong. Vui long them du lieu");
         return;
     }
     ConsoleTable table{"STT", "Ma khach hang", "Ten khach hang", "Dia chi", "So dien thoai"};
@@ -107,7 +107,7 @@ void QLKhachHang::update()
 {
     if (this->dbKH->getpHead() == nullptr)
     {
-        printError("Danh sach khach hang dang rong. Vui long them du lieu");
+        printError("Danh sach KHACH HANG dang rong. Vui long them du lieu");
         return;
     }
     string _temp;
@@ -171,7 +171,7 @@ void QLKhachHang::update()
 
                 if (tempTen.length() == 0)
                 {
-                    printError("Ten khach hang khong duoc de trong vui long thu lai");
+                    printError("Ten KHACH HANG khong duoc de trong vui long thu lai");
                 }
                 else
                 {
@@ -232,7 +232,7 @@ void QLKhachHang::update()
 
                 if (tempSDT.length() == 0)
                 {
-                    printError("So dien thoai khach hang khong duoc de trong vui long thu lai");
+                    printError("So dien thoai KHACH HANG khong duoc de trong vui long thu lai");
                 }
                 else
                 {
@@ -312,7 +312,7 @@ void QLKhachHang::find()
     while (true)
     {
         string temp;
-        printRes("Nhap Ma hoac So dien thoai hoac Ten cua khach hang can tim: ");
+        printRes("Nhap Ma hoac So dien thoai hoac Ten cua KHACH HANG can tim: ");
         fflush(stdin);
         getline(cin, temp);
 
@@ -416,7 +416,7 @@ void QLKhachHang::find()
         }
 
         char c;
-        printRes("Ban co muon tiep tuc tim kiem thong tin khach hang khong?(y: dong y / 'ki tu khac' : bo qua): ");
+        printRes("Ban co muon tiep tuc khong?(y: dong y / 'ki tu khac' : bo qua): ");
         fflush(stdin);
         c = getchar();
         if (c == 'Y' || c == 'y')
@@ -479,7 +479,7 @@ void QLKhachHang::xuatFile(fstream &fileXuatKH)
 {
     if (this->dbKH->getpHead() == nullptr)
     {
-        printError("Danh sach khach hang dang rong, khong the xuat file. Vui long them du lieu");
+        printError("Danh sach KHACH HANG dang rong, khong the xuat file. Vui long them du lieu");
         return;
     }
 
@@ -527,7 +527,7 @@ void QLKhachHang::sortMa()
 void QLKhachHang::deleteIndex()
 {
     string _sdt;
-    cout << "Nhap Ma hoac So dien thoai can xoa khach hang: ";
+    cout << "Nhap Ma hoac So dien thoai can xoa KHACH HANG: ";
     fflush(stdin);
     getline(cin, _sdt);
     int indexFind = 0;
@@ -558,14 +558,14 @@ void QLKhachHang::deleteIndex()
         }
         else
         {
-            printSuccess("Da tim thay khach hang co so dien thoai tren. ");
+            printSuccess("Da tim thay KHACH HANG co so dien thoai tren. ");
             Node<KhachHang> *pTemp = this->dbKH->getpHead();
             for (int i = 0; i < index; i++)
             {
                 pTemp = pTemp->getpNext();
             }
             
-            printWarning("Ban se xoa khach hang nay!");
+            printWarning("Ban se xoa KHACH HANG nay!");
             cout << endl
                  << endl;
 
@@ -613,7 +613,7 @@ void QLKhachHang::create(const string &_sdt)
 
     this->dbKH->push_back(_KHAdd);
     this->count++;
-    printSuccess("Tao khach hang thanh cong!");
+    printSuccess("Tao KHACH HANG thanh cong!");
     fstream fileKhachHang;
     fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
     QLKhachHang::ghiFile(fileKhachHang);
