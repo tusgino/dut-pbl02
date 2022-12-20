@@ -187,7 +187,7 @@ void QLHoaDon::create()
   listHD->push_back(tempHD);
   this->count++;
   fstream fileHoaDon;
-  fileHoaDon.open("src/components/data/HoaDon.DAT", ios_base::out);
+  fileHoaDon.open(dataHoaDon, ios_base::out);
   QLHoaDon::ghiFile(fileHoaDon);
   fileHoaDon.close();
 }
@@ -373,7 +373,7 @@ void QLHoaDon::update()
                   tempRepair.xuat();
                   pTemp1->setData(tempRepair);
                   fstream fileHoaDon;
-                  fileHoaDon.open("src/components/data/HoaDon.DAT", ios_base::out);
+                  fileHoaDon.open(dataHoaDon, ios_base::out);
                   QLHoaDon::ghiFile(fileHoaDon);
                   fileHoaDon.close();
                 }
@@ -508,7 +508,7 @@ void QLHoaDon::update()
                     break;
                   }
                   fstream fileHoaDon;
-                  fileHoaDon.open("src/components/data/HoaDon.DAT", ios_base::out);
+                  fileHoaDon.open(dataHoaDon, ios_base::out);
                   QLHoaDon::ghiFile(fileHoaDon);
                   fileHoaDon.close();
                 }
@@ -752,7 +752,7 @@ void QLHoaDon::deleteIndex()
               this->count--;
               printSuccess("Xoa hoa don thanh cong!");
               fstream fileHoaDon;
-              fileHoaDon.open("src/components/data/HoaDon.DAT", ios_base::out);
+              fileHoaDon.open(dataHoaDon, ios_base::out);
               QLHoaDon::ghiFile(fileHoaDon);
               fileHoaDon.close();
               return;
@@ -889,7 +889,7 @@ void QLHoaDon::xuatFile()
           pTemp->setData(tempHD);
           fileHoaDon.close();
           // Ghi lai du lieu
-          fileHoaDon.open("src/components/data/HoaDon.DAT", ios_base::out);
+          fileHoaDon.open(dataHoaDon, ios_base::out);
           QLHoaDon::ghiFile(fileHoaDon);
           fileHoaDon.close();
           fstream fileSanPham;
@@ -920,6 +920,8 @@ void QLHoaDon::xuatFile()
 //- Tìm mã HD lớn nhất để tạo mã HD
 void QLHoaDon::statisticalByDate()
 {
+  system("cls");
+  printUI("src/components/data/Pages/thongke.txt");
   Date tempNgay;
   cin >> tempNgay;
   int hddx = 0;

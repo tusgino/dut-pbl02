@@ -4,22 +4,22 @@ Menu::Menu()
     this->log = true;
     this->DatabaseNV = new QLNhanVien();
     fstream fileNhanVien;
-    fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::in);
+    fileNhanVien.open(dataNhanVien, ios_base::in);
     this->DatabaseNV->docFile(fileNhanVien);
 
     this->DatabaseSP = new QLSanPham();
     fstream fileSanPham;
-    fileSanPham.open("src/components/data/SanPham.DAT", ios_base::in);
+    fileSanPham.open(dataSanPham, ios_base::in);
     this->DatabaseSP->docFile(fileSanPham);
 
     this->DatabaseKH = new QLKhachHang();
     fstream fileKhachHang;
-    fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::in);
+    fileKhachHang.open(dataKhachHang, ios_base::in);
     this->DatabaseKH->docFile(fileKhachHang);
 
     this->DatabaseHD = new QLHoaDon(this->DatabaseNV, this->DatabaseKH, this->DatabaseSP);
     fstream fileHoaDon;
-    fileHoaDon.open("src/components/data/HoaDon.DAT", ios_base::in);
+    fileHoaDon.open(dataHoaDon, ios_base::in);
     this->DatabaseHD->docFile(fileHoaDon);
 
     fileNhanVien.close();

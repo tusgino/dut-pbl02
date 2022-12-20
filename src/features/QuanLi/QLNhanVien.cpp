@@ -96,7 +96,7 @@ void QLNhanVien::create()
                 this->count++;
                 printSuccess("Ban da them thanh cong mot nhan vien!");
                 fstream fileNhanVien;
-                fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                fileNhanVien.open(dataNhanVien, ios_base::out);
                 QLNhanVien::ghiFile(fileNhanVien);
                 fileNhanVien.close();
             }
@@ -123,7 +123,7 @@ void QLNhanVien::create()
                 this->count++;
                 printSuccess("Ban da them thanh cong mot quan li!");
                 fstream fileNhanVien;
-                fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                fileNhanVien.open(dataNhanVien, ios_base::out);
                 QLNhanVien::ghiFile(fileNhanVien);
                 fileNhanVien.close();
             }
@@ -152,7 +152,7 @@ void QLNhanVien::update()
 
     {
         string temp;
-        printRes("Nhap ma hoac so dien thoai cua nhan vien muon thay doi thong tin");
+        printRes("Nhap ma hoac so dien thoai cua nhan vien muon thay doi thong tin: ");
         fflush(stdin);
         getline(cin, temp);
         bool checkMa = false, checkSDT = false;
@@ -228,7 +228,7 @@ void QLNhanVien::update()
 
                     printSuccess("Ban da thay doi ten thanh cong cua nhan vien nay");
                     fstream fileNhanVien;
-                    fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                    fileNhanVien.open(dataNhanVien, ios_base::out);
                     QLNhanVien::ghiFile(fileNhanVien);
                     fileNhanVien.close();
                 }
@@ -270,7 +270,7 @@ void QLNhanVien::update()
                     pTemp->setData(_NVRepair);
                     printSuccess("Da thay doi chuc vu thanh cong");
                     fstream fileNhanVien;
-                    fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                    fileNhanVien.open(dataNhanVien, ios_base::out);
                     QLNhanVien::ghiFile(fileNhanVien);
                     fileNhanVien.close();
                 }
@@ -306,7 +306,7 @@ void QLNhanVien::update()
                     pTemp->setData(_NVRepair);
                     printSuccess("Da thay doi chuc vu thanh cong");
                     fstream fileNhanVien;
-                    fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                    fileNhanVien.open(dataNhanVien, ios_base::out);
                     QLNhanVien::ghiFile(fileNhanVien);
                     fileNhanVien.close();
                 }
@@ -332,7 +332,7 @@ void QLNhanVien::update()
 
                     printSuccess("Ban da thay doi so dien thoai cua nhan vien nay");
                     fstream fileNhanVien;
-                    fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                    fileNhanVien.open(dataNhanVien, ios_base::out);
                     QLNhanVien::ghiFile(fileNhanVien);
                     fileNhanVien.close();
                 }
@@ -355,7 +355,7 @@ void QLNhanVien::update()
                 pTemp->setData(_NVRepair);
                 printSuccess("Ban da thay doi dia chi cua nhan vien nay");
                 fstream fileNhanVien;
-                fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                fileNhanVien.open(dataNhanVien, ios_base::out);
                 QLNhanVien::ghiFile(fileNhanVien);
                 fileNhanVien.close();
             }
@@ -383,7 +383,7 @@ void QLNhanVien::update()
                     pTemp->setData(_NVRepair);
                     printSuccess("Ban da thay doi ca lam cua nhan vien nay");
                     fstream fileNhanVien;
-                    fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                    fileNhanVien.open(dataNhanVien, ios_base::out);
                     QLNhanVien::ghiFile(fileNhanVien);
                     fileNhanVien.close();
                 }
@@ -412,7 +412,7 @@ void QLNhanVien::update()
                 pTemp->setData(_NVRepair);
                 printSuccess("Ban da thay doi gioi tinh cua nhan vien nay");
                 fstream fileNhanVien;
-                fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                fileNhanVien.open(dataNhanVien, ios_base::out);
                 QLNhanVien::ghiFile(fileNhanVien);
                 fileNhanVien.close();
             }
@@ -516,7 +516,7 @@ void QLNhanVien::deleteIndex()
                 this->dbNV->deleteNode(index);
                 printSuccess("Da xoa thanh cong!");
                 fstream fileNhanVien;
-                fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                fileNhanVien.open(dataNhanVien, ios_base::out);
                 QLNhanVien::ghiFile(fileNhanVien);
                 fileNhanVien.close();
             }
@@ -568,7 +568,7 @@ void QLNhanVien::deleteIndex()
                     printSuccess("Da xoa thanh cong!");
 
                     fstream fileNhanVien;
-                    fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+                    fileNhanVien.open(dataNhanVien, ios_base::out);
                     QLNhanVien::ghiFile(fileNhanVien);
                     fileNhanVien.close();
                 }
@@ -714,7 +714,7 @@ void QLNhanVien::sortMa()
             pBefore = pBefore->getpNext();
         }
         fstream fileNhanVien;
-        fileNhanVien.open("src/components/data/NhanVien.DAT", ios_base::out);
+        fileNhanVien.open(dataNhanVien, ios_base::out);
         QLNhanVien::ghiFile(fileNhanVien);
         fileNhanVien.close();
         printSuccess("Da sap xep thanh cong!");

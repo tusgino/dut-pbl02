@@ -65,7 +65,7 @@ void QLKhachHang::create()
         this->count++;
         printSuccess("Tao khach hang thanh cong");
         fstream fileKhachHang;
-        fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+        fileKhachHang.open(dataKhachHang, ios_base::out);
         QLKhachHang::ghiFile(fileKhachHang);
         fileKhachHang.close();
     }
@@ -157,7 +157,7 @@ void QLKhachHang::update()
                     pTemp->setData(_KH_repair);
                     printSuccess("Da doi thong tin thanh cong!");
                     fstream fileKhachHang;
-                    fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                    fileKhachHang.open(dataKhachHang, ios_base::out);
                     QLKhachHang::ghiFile(fileKhachHang);
                     fileKhachHang.close();
                 }
@@ -186,7 +186,7 @@ void QLKhachHang::update()
                     pTemp->setData(_KH_repair);
                     printSuccess("Da doi thong tin thanh cong!");
                     fstream fileKhachHang;
-                    fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                    fileKhachHang.open(dataKhachHang, ios_base::out);
                     QLKhachHang::ghiFile(fileKhachHang);
                     fileKhachHang.close();
                 }
@@ -218,7 +218,7 @@ void QLKhachHang::update()
                     pTemp->setData(_KH_repair);
                     printSuccess("Da doi thong tin thanh cong!");
                     fstream fileKhachHang;
-                    fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                    fileKhachHang.open(dataKhachHang, ios_base::out);
                     QLKhachHang::ghiFile(fileKhachHang);
                     fileKhachHang.close();
                 }
@@ -243,7 +243,7 @@ void QLKhachHang::update()
                 pTemp->setData(_KH_repair);
                 printSuccess("Da doi thong tin thanh cong!");
                 fstream fileKhachHang;
-                fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                fileKhachHang.open(dataKhachHang, ios_base::out);
                 QLKhachHang::ghiFile(fileKhachHang);
                 fileKhachHang.close();
             }
@@ -267,7 +267,7 @@ void QLKhachHang::update()
                 pTemp->setData(_KH_repair);
                 printSuccess("Da doi thong tin thanh cong!");
                 fstream fileKhachHang;
-                fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                fileKhachHang.open(dataKhachHang, ios_base::out);
                 QLKhachHang::ghiFile(fileKhachHang);
                 fileKhachHang.close();
             }
@@ -521,7 +521,7 @@ void QLKhachHang::deleteIndex()
                 this->dbKH->deleteNode(index);
                 printSuccess("Da xoa thanh cong!");
                 fstream fileKhachHang;
-                fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+                fileKhachHang.open(dataKhachHang, ios_base::out);
                 QLKhachHang::ghiFile(fileKhachHang);
                 fileKhachHang.close();
             }
@@ -556,7 +556,7 @@ void QLKhachHang::create(const string &_sdt, Ma &maKH)
     this->count++;
     printSuccess("Tao khach hang thanh cong!");
     fstream fileKhachHang;
-    fileKhachHang.open("src/components/data/KhachHang.DAT", ios_base::out);
+    fileKhachHang.open(dataKhachHang, ios_base::out);
     QLKhachHang::ghiFile(fileKhachHang);
     fileKhachHang.close();
 }
