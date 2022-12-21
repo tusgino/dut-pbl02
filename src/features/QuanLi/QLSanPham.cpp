@@ -73,7 +73,7 @@ void QLSanPham::create()
   int tempGiamGia;
   printRes("Nhap giam gia san pham: ");
   cin >> tempGiamGia;
-  string arr1[] = {"Chon size va nhap so luong: ", "S", "M", "L", "XL", "XXL", "Thoat."};
+  string arr1[] = {"Chon size va nhap so luong: ", "S", "M", "L", "XL", "XXL", "Hoan tat."};
   bool arrCheck[] = {
       false,
       true,
@@ -94,7 +94,7 @@ void QLSanPham::create()
     string tempSize = arr1[key];
     if (!arrCheck[key])
     {
-      printWarning("Ban da co size nay roi!");
+      printWarning("Ban da co nhap so luong size nay roi!\n");
       string arr3[] = {"Ban muon?: ", "Thay doi so luong.", "Them vao so luong da co.", "Quay lai"};
       printOpt(arr3, 3);
       int key = getKey(3);
@@ -126,7 +126,7 @@ void QLSanPham::create()
             int tempSoLuong;
             string warning = "So luong hien tai cua size " + tempSize + " la: " + to_string(pTemp->getData().getSoLuong());
             printWarning(warning);
-            printRes("\nNhap so luong: ");
+            printRes("\n\tNhap so luong: ");
             cin >> tempSoLuong;
             SanPham tempSP(tempMa, tempSize, tempTen, tempXuatXu, pTemp->getData().getSoLuong() + tempSoLuong, tempGiaNhap, tempGiaBan, tempGiamGia);
             pTemp->setData(tempSP);
