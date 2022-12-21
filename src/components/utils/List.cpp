@@ -58,7 +58,7 @@ int List<T>::getSize()
 template <class T>
 void List<T>::deleteNode(const int &index)
 {
-    if (index == -1)
+    if (index < 0 || index >= this->size) // index nằm ngoài vùng xóa
         return;
     if (index == 0)
     {
@@ -74,12 +74,13 @@ void List<T>::deleteNode(const int &index)
     }
     else
     {
-        Node<T> *pBefore = this->pHead, *pAfter = nullptr;
+        Node<T> *pBefore = this->pHead, *pAfter = nullptr; 
         for (int i = 0; i < index; i++)
         {
             pAfter = pBefore;
             pBefore = pBefore->getpNext();
         }
+        // Bước này thì ta có pBefore trỏ tới Node cần xóa, pAfter trỏ tới Node ngay trước Node cần xóa
 
         pAfter->setpNext(pBefore->getpNext()); // Cho pAfter liên kết tới Node mà pBefore đang liên kết
         pBefore = pBefore->getpNext(); // Cho pBefore trỏ tới Node tiếp theo 
