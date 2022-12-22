@@ -85,17 +85,19 @@ void Menu::checkLogin()
         fileAdmin.ignore(1);
         for (int i = 0; i < size; i++)
         {
+            Ma checkMa;
             string checktk, checkmk;
 
-            getline(fileAdmin, checktk, '|');
+            // getline(fileAdmin, checktk, '|');
+            checkMa.docFile(fileAdmin);
             getline(fileAdmin, checkmk, '|');
             // cout << checktk << " " << string(tk) << endl;
-            if (checkmk.compare(mk) == 0 && checktk.compare(tk) == 0)
+            if (checkmk.compare(mk) == 0 && string(checkMa).compare(tk) == 0)
             {
                 this->checkRole = 3;
                 // cout << "Hello !! Ban dang truy cap voi quyen quan tri vien." << endl;
-                Ma ma("ADMIN", 1);
-                this->DatabaseHD->setMaDangNhap(ma);
+                // Ma ma("AD", 1);
+                this->DatabaseHD->setMaDangNhap(checkMa);
 
                 return;
                 break;

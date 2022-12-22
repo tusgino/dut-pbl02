@@ -14,6 +14,11 @@ List<T>::List()
 template <class T>
 List<T>::~List()
 {
+    Node<T> *pTemp = this->pHead;
+    while(pTemp){
+        pTemp->~Node();
+        pTemp = pTemp->getpNext();
+    }
 }
 
 template <class T>

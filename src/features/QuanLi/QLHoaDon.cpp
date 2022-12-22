@@ -235,11 +235,11 @@ void QLHoaDon::update()
     }
     if (cnt == 0)
     {
-      cout << "\n\tKhach hang co " << tempSDT << " chua mua san pham nao";
+      cout << "\n\tKhach hang co so dien thoai " << tempSDT << " chua mua san pham nao";
     }
     else
     {
-      cout << "\n\tKhach hang co " << tempSDT << " da mua " << cnt << " lan.\n";
+      cout << "\n\tKhach hang co so dien thoai " << tempSDT << " da mua " << cnt << " lan.\n";
       cout << table;
     }
     break;
@@ -275,7 +275,8 @@ void QLHoaDon::update()
                 system("cls");
                 printUI("src/components/data/Pages/qlhoadon.txt");
                 tempRepair.xuat();
-                string arr[] = {"Ban muon lam gi: ", "Them san pham", "Xoa san pham", "Thoat"};
+                cout << endl << endl;
+                string arr[] = {"Ban muon lam gi: ", "Them san pham", "Xoa san pham", "Hoan tat"};
                 printOpt(arr, 3);
                 int key = getKey(3);
                 switch (key)
@@ -712,11 +713,11 @@ void QLHoaDon::deleteIndex()
     }
     if (cnt == 0)
     {
-      cout << "\n\tKhach hang co " << tempSDT << " chua mua san pham nao";
+      cout << "\n\tKhach hang co so dien thoai  " << tempSDT << " chua mua san pham nao";
     }
     else
     {
-      cout << "\n\tKhach hang co " << tempSDT << " da mua " << cnt << " lan.\n";
+      cout << "\n\tKhach hang co so dien thoai  " << tempSDT << " da mua " << cnt << " lan.\n";
       cout << table;
     }
     break;
@@ -827,11 +828,11 @@ void QLHoaDon::find()
     }
     if (cnt == 0)
     {
-      cout << "\n\tKhach hang co " << tempSDT << " chua mua san pham nao";
+      cout << "\n\tKhach hang co so dien thoai  " << tempSDT << " chua mua san pham nao";
     }
     else
     {
-      cout << "\n\tKhach hang co " << tempSDT << " da mua " << cnt << " lan.\n";
+      cout << "\n\tKhach hang co so dien thoai  " << tempSDT << " da mua " << cnt << " lan.\n";
       cout << table;
     }
     printRes("Co muon tim lai khach hang khac khong? (y/n): ");
