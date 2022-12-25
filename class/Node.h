@@ -6,6 +6,7 @@ class Node
 private:
     T data;
     Node<T> *pNext;
+    Node<T> *pBack;
 
 public:
     Node();
@@ -14,8 +15,10 @@ public:
     
     T getData();
     Node<T> *getpNext();
+    Node<T> *getpBack();
     void setData(const T &);
     void setpNext(Node<T> *);
+    void setpBack(Node<T> *);
 };
 
 #endif
