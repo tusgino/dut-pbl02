@@ -220,7 +220,7 @@ void NVMenu::nvMenu(Menu &menu)
     cout << "\n\tVui long chon nhung tac vu de thuc hien";
     NVMenu::printInfo();
     int key;
-    key = getKey(7);
+    key = getKey(5);
     switch (key)
     {
     case 1:

@@ -77,7 +77,7 @@ int getKey(int keyMax)
   while (int(key) < 49 || int(key) > (keyMax + 48))
   {
     cout << "\n\tVui long nhap lai lua chon!";
-    string error = "Hinh nhu ban da nhap sai lua chon(ki tu hoac so luon hon " + to_string(keyMax) + " hoac so be hon 0, vui long nhap dung lua chon!";
+    string error = "Hinh nhu ban da nhap sai lua chon (ki tu hoac so lon hon " + to_string(keyMax) + " hoac so be hon 0), Vui long nhap dung lua chon!";
     printError(error);
     cout << "\n\tNhap lua chon: ";
     fflush(stdin);
