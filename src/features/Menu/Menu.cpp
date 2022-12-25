@@ -30,10 +30,10 @@ Menu::Menu()
 
 Menu::~Menu()
 {
-    delete this->DatabaseNV; 
-    delete this->DatabaseSP; 
-    delete this->DatabaseKH; 
-    delete this->DatabaseHD; 
+    delete this->DatabaseNV;
+    delete this->DatabaseSP;
+    delete this->DatabaseKH;
+    delete this->DatabaseHD;
 }
 
 void Menu::setLog(const bool &log)
@@ -52,28 +52,30 @@ void Menu::checkLogin()
         string tk;
         cout << "\t\tVui long nhap tai khoan, mat khau de dang nhap he thong.";
         cout << "\n\t\tTen dang nhap: ";
-        fflush(stdin); getline(cin, tk);
+        fflush(stdin);
+        getline(cin, tk);
         cout << "\t\tMat Khau: ";
         fflush(stdin);
         string tempPass = "";
-        char c = getchar();
+        char c;
+        c = getch();
         while (c != 10 && c != 13)
         {
             if (c != 8)
             {
-                cout << '*';
+                cout << "*";
                 tempPass += c;
-                c = getchar();
+                c = getch();
             }
             else if (tempPass.length() > 0)
             {
                 cout << "\b \b";
                 tempPass = tempPass.erase(tempPass.size() - 1);
-                c = getchar();
+                c = getch();
             }
             else
             {
-                c = getchar();
+                c = getch();
             }
         }
         mk = tempPass;
